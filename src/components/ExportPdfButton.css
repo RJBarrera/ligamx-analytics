@@ -1,0 +1,168 @@
+/* =========================================================
+   EXPORT PDF BUTTON
+   ========================================================= */
+
+.match-export-button {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 11px;
+
+  min-height: 48px;
+
+  padding: 7px 10px 7px 9px;
+
+  border: 1px solid rgba(33, 201, 144, 0.28);
+
+  border-radius: 11px;
+
+  color: #17352d;
+
+  background: linear-gradient(145deg, #f9fffc, #effbf7);
+
+  box-shadow: 0 8px 20px rgba(24, 120, 91, 0.07);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.match-export-button:hover:not(:disabled) {
+  border-color: rgba(23, 190, 137, 0.48);
+
+  background: linear-gradient(145deg, #ffffff, #eafbf5);
+
+  box-shadow: 0 12px 26px rgba(24, 120, 91, 0.12);
+
+  transform: translateY(-1px);
+}
+
+.match-export-button:disabled {
+  cursor: wait;
+
+  opacity: 0.72;
+}
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.match-export-button__icon {
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  color: #087c5b;
+
+  background: linear-gradient(145deg, #dff8ef, #cef2e6);
+}
+
+.match-export-button__icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.match-export-button__content {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  min-width: 110px;
+
+  text-align: left;
+}
+
+.match-export-button__content strong {
+  color: #1e342e;
+
+  font-size: 0.83rem;
+  font-weight: 850;
+}
+
+.match-export-button__content small {
+  margin-top: 2px;
+
+  color: #81928c;
+
+  font-size: 0.65rem;
+}
+
+/* =========================================================
+   TYPE
+   ========================================================= */
+
+.match-export-button__type {
+  display: grid;
+  place-items: center;
+
+  min-width: 31px;
+  height: 23px;
+
+  padding: 0 6px;
+
+  border: 1px solid #d5e8e1;
+
+  border-radius: 5px;
+
+  color: #0b8c67;
+
+  background: #ffffff;
+
+  font-size: 0.6rem;
+  font-weight: 950;
+
+  letter-spacing: 0.06em;
+}
+
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
+.match-export-button__spinner {
+  width: 15px;
+  height: 15px;
+
+  border: 2px solid rgba(12, 130, 95, 0.18);
+
+  border-top-color: #0c825f;
+
+  border-radius: 50%;
+
+  animation: match-export-spin 0.7s linear infinite;
+}
+
+@keyframes match-export-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .match-export-button {
+    width: 100%;
+
+    justify-content: flex-start;
+  }
+
+  .match-export-button__type {
+    margin-left: auto;
+  }
+}

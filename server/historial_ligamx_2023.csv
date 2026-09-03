@@ -1,0 +1,1015 @@
+fixture_id,date,referee,home_team,away_team,home_goals,away_goals,home_corners,away_corners,total_corners,home_cards,away_cards,total_cards
+864094,2022-07-02 22:00:00+00:00,L. Santander,Necaxa,Toluca,1,3,14,1,15,3,3,6
+864095,2022-07-02 02:05:00+00:00,D. Quintero,Mazatlán,Puebla,2,4,10,3,13,1,2,3
+864096,2022-07-02 22:00:00+00:00,I. Lopez,Guadalajara Chivas,FC Juarez,0,0,9,3,12,3,1,4
+864097,2022-07-03 00:05:00+00:00,Ó. Mejía,Tigres UANL,Cruz Azul,2,3,4,0,4,1,0,1
+864098,2022-07-03 02:05:00+00:00,F. Guerrero,Club America,Atlas,0,0,4,4,8,1,1,2
+864099,2022-07-03 17:00:00+00:00,A. Escobedo,U.N.A.M. - Pumas,Club Tijuana,1,1,9,1,10,5,2,7
+864100,2022-07-03 22:00:00+00:00,F. Hernández,Atletico San Luis,Leon,1,2,7,2,9,0,1,1
+864101,2022-07-04 00:05:00+00:00,J. Pérez,Santos Laguna,Monterrey,4,3,7,6,13,2,4,6
+864102,2022-07-05 02:00:00+00:00,C. Ramos,CF Pachuca,Club Queretaro,2,0,3,0,3,0,4,4
+864103,2022-07-09 00:00:00+00:00,A. Escobedo,Mazatlán,Tigres UANL,0,1,2,9,11,3,5,8
+864104,2022-07-09 02:05:00+00:00,C. Ramos,Puebla,Santos Laguna,1,0,10,2,12,3,2,5
+864105,2022-07-09 02:05:00+00:00,Ó. Macías,Club Tijuana,FC Juarez,0,2,4,6,10,4,0,4
+864106,2022-07-10 00:05:00+00:00,Ó. Mejía,Guadalajara Chivas,Atletico San Luis,0,1,3,4,7,2,1,3
+864107,2022-07-10 02:05:00+00:00,V. Cáceres,Cruz Azul,CF Pachuca,1,2,3,8,11,2,1,3
+864108,2022-07-10 02:05:00+00:00,M. Ortíz,Monterrey,Club America,3,2,4,8,12,2,2,4
+864109,2022-07-10 17:00:00+00:00,F. Hernández,Toluca,Atlas,3,2,4,8,12,3,4,7
+864110,2022-07-10 22:00:00+00:00,F. Guerrero,Club Queretaro,Necaxa,1,2,3,3,6,1,1,2
+864111,2022-07-10 00:00:00+00:00,J. Lopez,Leon,U.N.A.M. - Pumas,3,3,6,1,7,4,4,8
+864112,2022-07-14 02:00:00+00:00,A. Escobedo,Club America,Toluca,1,0,7,3,10,1,3,4
+864113,2022-07-16 00:00:00+00:00,E. Miranda,Puebla,Leon,1,1,7,7,14,6,5,11
+864114,2022-07-16 02:05:00+00:00,E. Galván,FC Juarez,Club Queretaro,1,1,9,1,10,1,2,3
+864115,2022-07-16 22:00:00+00:00,Ó. Macías,Atlas,Cruz Azul,3,2,4,0,4,1,6,7
+864116,2022-07-17 00:05:00+00:00,M. Ortíz,Santos Laguna,Guadalajara Chivas,1,1,5,3,8,3,9,12
+864117,2022-07-17 17:00:00+00:00,D. Quintero,U.N.A.M. - Pumas,Necaxa,1,0,6,2,8,1,3,4
+864118,2022-07-17 22:00:00+00:00,F. Guerrero,Atletico San Luis,Monterrey,0,1,4,4,8,4,4,8
+864119,2022-07-18 00:00:00+00:00,V. Cáceres,Tigres UANL,Club Tijuana,1,0,4,5,9,2,2,4
+864120,2022-07-19 00:00:00+00:00,J. Camacho,CF Pachuca,Mazatlán,1,1,9,2,11,2,3,5
+864121,2022-07-21 02:05:00+00:00,J. Pérez,Guadalajara Chivas,Leon,0,0,5,3,8,5,3,8
+864122,2022-07-22 02:00:00+00:00,L. Santander,Club Queretaro,Monterrey,0,3,3,3,6,1,1,2
+864123,2022-07-23 00:00:00+00:00,I. Lopez,Mazatlán,Atletico San Luis,1,1,8,12,20,2,5,7
+864124,2022-07-23 02:05:00+00:00,C. Ramos,Necaxa,FC Juarez,1,0,2,8,10,8,5,13
+864125,2022-07-23 22:00:00+00:00,D. Montaño,Toluca,Santos Laguna,2,1,9,2,11,2,3,5
+864126,2022-07-24 00:05:00+00:00,F. Guerrero,Cruz Azul,Puebla,2,2,7,3,10,2,2,4
+864127,2022-07-24 02:05:00+00:00,M. Ortíz,Tigres UANL,Atlas,2,0,8,1,9,4,4,8
+864128,2022-07-24 01:00:00+00:00,F. Hernández,Club Tijuana,Club America,2,0,7,2,9,3,3,6
+864129,2022-07-25 00:00:00+00:00,B. González,CF Pachuca,U.N.A.M. - Pumas,0,0,13,4,17,4,5,9
+864130,2022-07-27 00:00:00+00:00,D. Montaño,Atlas,Club Tijuana,1,2,10,1,11,3,7,10
+864131,2022-07-27 00:00:00+00:00,Ó. Macías,Monterrey,Puebla,1,0,4,6,10,2,4,6
+864132,2022-07-27 00:00:00+00:00,F. Hernández,FC Juarez,Tigres UANL,0,1,4,3,7,4,8,12
+864133,2022-07-27 02:05:00+00:00,A. Escobedo,Atletico San Luis,Cruz Azul,0,0,8,5,13,3,5,8
+864134,2022-07-27 02:05:00+00:00,G. Pacheco,Leon,Toluca,0,1,4,5,9,8,2,10
+864135,2022-07-28 00:00:00+00:00,C. Ramos,Club Queretaro,Guadalajara Chivas,2,2,9,4,13,2,2,4
+864136,2022-07-28 00:00:00+00:00,J. Pérez,Necaxa,CF Pachuca,2,0,3,9,12,5,3,8
+864137,2022-07-28 02:05:00+00:00,L. Santander,U.N.A.M. - Pumas,Mazatlán,1,1,7,3,10,2,1,3
+864139,2022-07-30 02:05:00+00:00,F. Guerrero,FC Juarez,Toluca,1,1,7,1,8,3,6,9
+864140,2022-07-30 22:00:00+00:00,E. Miranda,Cruz Azul,Necaxa,1,0,3,4,7,3,4,7
+864141,2022-07-31 00:05:00+00:00,I. Lopez,Tigres UANL,Club Queretaro,2,1,4,3,7,7,5,12
+864142,2022-07-31 02:05:00+00:00,A. Escobedo,Guadalajara Chivas,CF Pachuca,0,0,7,4,11,5,7,12
+864143,2022-07-31 02:05:00+00:00,M. Ortíz,Puebla,Atletico San Luis,0,0,7,1,8,1,3,4
+864144,2022-07-31 02:05:00+00:00,D. Quintero,Club Tijuana,Mazatlán,2,0,7,2,9,3,3,6
+864145,2022-07-31 17:00:00+00:00,D. Montaño,U.N.A.M. - Pumas,Monterrey,1,1,6,1,7,1,6,7
+864146,2022-08-01 00:05:00+00:00,C. Ramos,Santos Laguna,Atlas,1,0,3,4,7,2,2,4
+864147,2022-08-01 02:05:00+00:00,Ó. Macías,Leon,Club America,3,2,5,4,9,4,3,7
+864229,2022-08-03 01:00:00+00:00,V. Cáceres,Toluca,Puebla,1,1,8,6,14,4,5,9
+864230,2022-08-04 00:00:00+00:00,Ó. Macías,FC Juarez,Atletico San Luis,1,1,8,2,10,3,1,4
+864148,2022-08-05 02:00:00+00:00,F. Guerrero,Atlas,Club Queretaro,3,1,5,5,10,3,6,9
+864150,2022-08-06 02:05:00+00:00,J. Camacho,Mazatlán,Guadalajara Chivas,2,1,4,4,8,6,6,12
+864151,2022-08-07 00:05:00+00:00,M. Ortíz,Monterrey,Leon,5,1,0,0,0,0,0,0
+864153,2022-08-07 02:05:00+00:00,Ó. Macías,Santos Laguna,Cruz Azul,4,0,6,6,12,0,0,0
+864154,2022-08-07 17:00:00+00:00,C. Ramos,Toluca,Club Tijuana,3,1,12,4,16,1,6,7
+864155,2022-08-07 21:00:00+00:00,E. Galván,Atletico San Luis,Necaxa,1,2,5,3,8,1,2,3
+864156,2022-08-07 23:05:00+00:00,D. Quintero,CF Pachuca,Tigres UANL,2,0,5,4,9,3,4,7
+864152,2022-08-08 01:05:00+00:00,L. Santander,Club America,FC Juarez,2,1,3,2,5,2,1,3
+864157,2022-08-12 02:00:00+00:00,E. Miranda,Club Queretaro,Atletico San Luis,1,1,7,4,11,3,0,3
+864158,2022-08-13 02:00:00+00:00,G. Pacheco,Necaxa,Monterrey,1,2,2,6,8,2,2,4
+864159,2022-08-13 02:05:00+00:00,L. Santander,Club Tijuana,Puebla,3,3,6,4,10,1,0,1
+864161,2022-08-13 22:00:00+00:00,E. Galván,Leon,Mazatlán,0,3,9,1,10,1,4,5
+864162,2022-08-14 00:05:00+00:00,A. Escobedo,U.N.A.M. - Pumas,Club America,0,3,4,5,9,2,0,2
+864163,2022-08-14 02:05:00+00:00,M. Ortíz,Guadalajara Chivas,Atlas,1,1,5,3,8,3,6,9
+864164,2022-08-14 22:00:00+00:00,F. Hernández,Cruz Azul,Toluca,2,3,7,4,11,6,2,8
+864165,2022-08-15 00:05:00+00:00,D. Montaño,Tigres UANL,Santos Laguna,2,0,5,3,8,5,6,11
+864166,2022-08-17 00:00:00+00:00,A. Escobedo,Atlas,FC Juarez,0,1,8,4,12,1,6,7
+864167,2022-08-17 01:00:00+00:00,L. Santander,Mazatlán,Club Queretaro,1,1,3,6,9,1,2,3
+864168,2022-08-17 02:05:00+00:00,F. Guerrero,Puebla,Necaxa,2,2,6,5,11,1,1,2
+864169,2022-08-18 00:00:00+00:00,D. Quintero,Toluca,Monterrey,1,1,10,2,12,2,3,5
+864170,2022-08-18 02:05:00+00:00,D. Montaño,Cruz Azul,Club Tijuana,1,2,8,3,11,0,2,2
+864171,2022-08-18 02:05:00+00:00,C. Ramos,CF Pachuca,Club America,0,3,5,5,10,5,2,7
+864172,2022-08-19 00:05:00+00:00,V. Cáceres,Santos Laguna,Leon,2,1,6,3,9,1,4,5
+864173,2022-08-19 02:05:00+00:00,Ó. Macías,Atletico San Luis,U.N.A.M. - Pumas,3,2,3,9,12,3,3,6
+864175,2022-08-20 00:00:00+00:00,Ó. Mejía,Necaxa,Guadalajara Chivas,0,4,4,4,8,2,0,2
+864177,2022-08-20 22:00:00+00:00,G. Pacheco,Club Queretaro,Club Tijuana,2,0,6,5,11,4,3,7
+864176,2022-08-21 02:05:00+00:00,D. Quintero,FC Juarez,Mazatlán,1,1,7,7,14,5,3,8
+864178,2022-08-21 00:05:00+00:00,C. Ramos,Atlas,Puebla,1,1,6,2,8,3,4,7
+864179,2022-08-21 00:05:00+00:00,F. Guerrero,Monterrey,Tigres UANL,0,0,7,4,11,3,2,5
+864180,2022-08-21 02:05:00+00:00,L. Santander,Club America,Cruz Azul,7,0,2,2,4,1,3,4
+864181,2022-08-21 17:00:00+00:00,M. Ortíz,U.N.A.M. - Pumas,Santos Laguna,1,5,8,4,12,0,0,0
+864182,2022-08-21 22:00:00+00:00,D. Montaño,Atletico San Luis,Toluca,1,0,8,5,13,3,1,4
+864183,2022-08-22 00:05:00+00:00,I. Lopez,CF Pachuca,Leon,1,0,8,4,12,3,8,11
+864231,2022-08-24 00:05:00+00:00,L. Santander,Guadalajara Chivas,Monterrey,1,0,5,9,14,1,2,3
+864232,2022-08-24 02:05:00+00:00,V. Cáceres,Club Queretaro,Club America,0,1,4,9,13,0,2,2
+864234,2022-08-25 02:05:00+00:00,Ó. Mejía,U.N.A.M. - Pumas,Tigres UANL,1,1,0,10,10,4,1,5
+864235,2022-08-26 00:05:00+00:00,F. Guerrero,CF Pachuca,Atlas,3,1,3,3,6,0,2,2
+864236,2022-08-26 02:05:00+00:00,A. Escobedo,Club Tijuana,Santos Laguna,0,2,7,2,9,4,3,7
+864184,2022-08-27 00:00:00+00:00,M. Ortíz,Puebla,FC Juarez,2,2,5,4,9,3,2,5
+864185,2022-08-27 02:05:00+00:00,E. Miranda,Mazatlán,Club America,1,3,3,5,8,6,2,8
+864186,2022-08-27 22:00:00+00:00,D. Quintero,Cruz Azul,Club Queretaro,2,1,4,5,9,7,2,9
+864187,2022-08-28 00:05:00+00:00,F. Hernández,Tigres UANL,Necaxa,0,0,7,2,9,1,3,4
+864188,2022-08-28 02:05:00+00:00,D. Montaño,Guadalajara Chivas,U.N.A.M. - Pumas,3,1,5,0,5,2,2,4
+864189,2022-08-28 17:00:00+00:00,G. Pacheco,Toluca,CF Pachuca,1,4,3,5,8,8,4,12
+864190,2022-08-29 00:05:00+00:00,F. Guerrero,Santos Laguna,Atletico San Luis,4,1,5,5,10,1,2,3
+864191,2022-08-29 00:00:00+00:00,Ó. Macías,Leon,Atlas,4,2,5,5,10,1,1,2
+864192,2022-08-29 02:05:00+00:00,B. González,Club Tijuana,Monterrey,0,3,7,15,22,3,1,4
+864193,2022-09-02 00:00:00+00:00,D. Quintero,Atletico San Luis,Club Tijuana,0,0,1,8,9,5,2,7
+864194,2022-09-02 02:05:00+00:00,I. Lopez,Club Queretaro,Puebla,1,1,2,3,5,4,2,6
+864195,2022-09-03 00:00:00+00:00,M. Ortíz,Necaxa,Leon,3,2,1,10,11,1,1,2
+864196,2022-09-03 02:05:00+00:00,B. González,FC Juarez,Cruz Azul,2,2,4,2,6,4,7,11
+864197,2022-09-03 22:05:00+00:00,F. Hernández,CF Pachuca,Santos Laguna,2,0,9,7,16,4,5,9
+864198,2022-09-04 00:05:00+00:00,V. Cáceres,Monterrey,Mazatlán,0,0,6,4,10,1,3,4
+864199,2022-09-04 00:05:00+00:00,L. Santander,Atlas,U.N.A.M. - Pumas,0,0,2,6,8,1,2,3
+864200,2022-09-04 02:05:00+00:00,D. Montaño,Club America,Tigres UANL,2,1,4,9,13,5,4,9
+864201,2022-09-04 22:00:00+00:00,C. Ramos,Toluca,Guadalajara Chivas,0,0,7,5,12,2,5,7
+864202,2022-09-07 00:00:00+00:00,J. Camacho,Leon,FC Juarez,1,0,3,0,3,5,8,13
+864203,2022-09-07 00:05:00+00:00,D. Quintero,Santos Laguna,Necaxa,3,1,1,2,3,1,2,3
+864204,2022-09-07 02:05:00+00:00,Ó. Mejía,Monterrey,Cruz Azul,3,2,3,0,3,5,1,6
+864205,2022-09-07 02:05:00+00:00,V. Cáceres,Club America,Atletico San Luis,3,0,8,3,11,2,4,6
+864206,2022-09-08 00:00:00+00:00,A. Escobedo,Puebla,CF Pachuca,2,2,3,4,7,5,4,9
+864207,2022-09-08 00:00:00+00:00,M. Ortíz,Tigres UANL,Toluca,3,1,6,3,9,2,3,5
+864208,2022-09-08 02:05:00+00:00,C. Ramos,U.N.A.M. - Pumas,Club Queretaro,4,1,4,4,8,1,1,2
+864209,2022-09-08 02:05:00+00:00,G. Pacheco,Club Tijuana,Guadalajara Chivas,1,2,6,3,9,3,4,7
+864210,2022-09-08 02:00:00+00:00,F. Hernández,Mazatlán,Atlas,1,0,3,8,11,1,2,3
+864212,2022-09-10 02:05:00+00:00,D. Montaño,FC Juarez,Monterrey,0,1,6,8,14,0,3,3
+864213,2022-09-10 22:00:00+00:00,L. Santander,Club Queretaro,Santos Laguna,3,3,7,4,11,2,2,4
+864211,2022-09-11 00:00:00+00:00,F. Guerrero,Necaxa,Club America,1,2,3,9,12,2,0,2
+864214,2022-09-11 00:05:00+00:00,A. Escobedo,Tigres UANL,Leon,0,1,9,5,14,0,6,6
+864215,2022-09-11 02:05:00+00:00,F. Hernández,Toluca,U.N.A.M. - Pumas,2,2,3,7,10,3,4,7
+864216,2022-09-11 02:05:00+00:00,D. Quintero,Guadalajara Chivas,Puebla,1,0,2,6,8,0,4,4
+864217,2022-09-11 21:00:00+00:00,C. Ramos,Cruz Azul,Mazatlán,2,0,7,1,8,0,3,3
+864218,2022-09-11 23:05:00+00:00,Ó. Mejía,Atlas,Atletico San Luis,1,3,4,4,8,2,1,3
+864219,2022-09-12 01:05:00+00:00,Ó. Macías,CF Pachuca,Club Tijuana,6,1,6,7,13,1,1,2
+864174,2022-09-14 02:05:00+00:00,F. Guerrero,Guadalajara Chivas,Tigres UANL,1,4,10,8,18,0,3,3
+864138,2022-09-15 02:05:00+00:00,F. Hernández,Club America,Santos Laguna,3,3,11,2,13,0,6,6
+864160,2022-09-15 02:05:00+00:00,V. Cáceres,FC Juarez,CF Pachuca,2,1,4,4,8,3,2,5
+864233,2022-09-16 00:00:00+00:00,M. Ortíz,Cruz Azul,Leon,2,1,18,2,20,2,2,4
+864220,2022-09-17 00:00:00+00:00,C. Ramos,Puebla,Tigres UANL,2,1,5,6,11,4,9,13
+864221,2022-09-17 02:00:00+00:00,D. Quintero,Mazatlán,Toluca,1,1,4,4,8,3,3,6
+864223,2022-09-18 00:05:00+00:00,M. Ortíz,Monterrey,Atlas,2,0,6,1,7,2,2,4
+864224,2022-09-18 01:00:00+00:00,A. Escobedo,Club America,Guadalajara Chivas,2,1,3,6,9,1,4,5
+864225,2022-09-18 22:00:00+00:00,F. Guerrero,U.N.A.M. - Pumas,Cruz Azul,1,2,7,5,12,1,2,3
+864222,2022-09-19 02:00:00+00:00,L. Santander,Atletico San Luis,CF Pachuca,1,2,2,5,7,1,3,4
+864226,2022-09-19 00:05:00+00:00,Ó. Macías,Santos Laguna,FC Juarez,2,0,7,7,14,1,3,4
+864227,2022-09-19 00:05:00+00:00,Ó. Mejía,Leon,Club Queretaro,3,1,4,4,8,0,5,5
+864228,2022-09-19 02:05:00+00:00,D. Montaño,Club Tijuana,Necaxa,1,1,3,5,8,2,3,5
+864149,2022-09-24 02:05:00+00:00,A. Escobedo,Puebla,U.N.A.M. - Pumas,2,1,4,4,8,3,3,6
+864237,2022-09-24 00:00:00+00:00,F. Hernández,Necaxa,Mazatlán,2,2,5,4,9,3,3,6
+864238,2022-10-01 00:00:00+00:00,M. Ortíz,Puebla,Club America,1,2,3,4,7,1,1,2
+864239,2022-10-01 02:00:00+00:00,D. Quintero,FC Juarez,U.N.A.M. - Pumas,3,1,1,6,7,3,9,12
+864240,2022-10-01 22:00:00+00:00,Ó. Mejía,Atletico San Luis,Tigres UANL,0,3,1,5,6,3,5,8
+864241,2022-10-01 22:05:00+00:00,F. Hernández,Monterrey,CF Pachuca,0,0,3,1,4,2,3,5
+864242,2022-10-02 00:05:00+00:00,V. Cáceres,Atlas,Necaxa,1,0,1,4,5,0,2,2
+864243,2022-10-02 02:05:00+00:00,C. Ramos,Cruz Azul,Guadalajara Chivas,2,1,2,5,7,2,1,3
+864244,2022-10-02 17:00:00+00:00,E. Morales,Toluca,Club Queretaro,4,1,7,5,12,4,3,7
+864245,2022-10-02 23:05:00+00:00,A. Escobedo,Santos Laguna,Mazatlán,3,0,5,2,7,2,3,5
+864246,2022-10-03 01:00:00+00:00,L. Santander,Leon,Club Tijuana,2,2,6,1,7,1,3,4
+963835,2022-10-09 00:00:00+00:00,C. Ramos,Tigres UANL,Necaxa,2,0,6,3,9,4,7,11
+963836,2022-10-09 17:00:00+00:00,M. Ortíz,Toluca,FC Juarez,3,0,1,5,6,4,3,7
+963837,2022-10-09 02:15:00+00:00,F. Guerrero,Cruz Azul,Leon,1,0,4,7,11,3,1,4
+965503,2022-10-13 02:06:00+00:00,V. Cáceres,Cruz Azul,Monterrey,0,0,8,2,10,0,1,1
+965507,2022-10-13 00:06:00+00:00,M. Ortíz,Puebla,Club America,1,6,1,2,3,1,2,3
+965505,2022-10-14 00:06:00+00:00,D. Montaño,Toluca,Santos Laguna,4,3,3,4,7,5,6,11
+965509,2022-10-14 02:06:00+00:00,F. Hernández,Tigres UANL,CF Pachuca,1,0,6,5,11,3,3,6
+965504,2022-10-16 23:06:00+00:00,A. Escobedo,Monterrey,Cruz Azul,3,0,7,8,15,5,1,6
+965508,2022-10-16 01:06:00+00:00,D. Quintero,Club America,Puebla,5,1,3,2,5,2,1,3
+965506,2022-10-17 00:06:00+00:00,L. Santander,Santos Laguna,Toluca,1,2,11,3,14,3,1,4
+965510,2022-10-17 02:06:00+00:00,F. Guerrero,CF Pachuca,Tigres UANL,2,1,2,3,5,5,6,11
+967071,2022-10-20 02:06:00+00:00,M. Ortíz,Toluca,Club America,2,1,1,4,5,2,2,4
+967073,2022-10-21 02:06:00+00:00,C. Ramos,CF Pachuca,Monterrey,5,2,6,1,7,1,5,6
+967072,2022-10-23 01:06:00+00:00,A. Escobedo,Club America,Toluca,1,1,7,2,9,3,5,8
+967074,2022-10-24 01:06:00+00:00,L. Santander,Monterrey,CF Pachuca,0,1,8,2,10,2,2,4
+968247,2022-10-28 01:06:00+00:00,M. Ortíz,Toluca,CF Pachuca,1,5,10,4,14,3,1,4
+968248,2022-10-31 01:36:00+00:00,A. Escobedo,CF Pachuca,Toluca,3,1,7,3,10,3,4,7
+973610,2023-01-07 01:00:00+00:00,F. Hernández,Necaxa,Atletico San Luis,2,3,6,7,13,2,1,3
+973612,2023-01-07 23:00:00+00:00,V. Cáceres,Club America,Club Queretaro,0,0,15,3,18,0,3,3
+973614,2023-01-08 03:10:00+00:00,A. Escobedo,Monterrey,Guadalajara Chivas,0,1,9,1,10,2,5,7
+973615,2023-01-08 18:00:00+00:00,Ó. Macías,U.N.A.M. - Pumas,FC Juarez,2,1,5,2,7,0,5,5
+973616,2023-01-09 01:00:00+00:00,Ó. Mejía,Santos Laguna,Tigres UANL,0,3,10,6,16,3,2,5
+973618,2023-01-09 03:10:00+00:00,D. Quintero,Club Tijuana,Cruz Azul,1,1,6,6,12,3,3,6
+973617,2023-01-10 03:10:00+00:00,D. Montaño,CF Pachuca,Puebla,5,1,12,0,12,0,1,1
+973619,2023-01-13 03:00:00+00:00,I. Lopez,Atlas,Mazatlán,2,1,8,0,8,3,2,5
+973620,2023-01-14 01:05:00+00:00,D. Quintero,Atletico San Luis,Guadalajara Chivas,0,0,2,9,11,5,1,6
+973621,2023-01-14 03:05:00+00:00,J. Camacho,Puebla,Club Queretaro,2,0,4,1,5,1,4,5
+973622,2023-01-14 23:00:00+00:00,C. Ramos,Cruz Azul,Monterrey,2,3,6,9,15,6,2,8
+973623,2023-01-15 01:05:00+00:00,F. Guerrero,Toluca,Club America,2,2,8,3,11,2,2,4
+973624,2023-01-15 03:10:00+00:00,L. Santander,Santos Laguna,U.N.A.M. - Pumas,3,0,7,10,17,1,1,2
+973625,2023-01-15 01:05:00+00:00,V. Cáceres,FC Juarez,Club Tijuana,3,0,4,3,7,4,2,6
+973626,2023-01-16 01:05:00+00:00,M. Ortíz,Tigres UANL,CF Pachuca,4,1,5,3,8,2,2,4
+973627,2023-01-17 03:05:00+00:00,B. González,Leon,Necaxa,2,1,4,1,5,1,1,2
+974323,2023-01-21 03:00:00+00:00,C. Ramos,Mazatlán,Santos Laguna,1,2,7,9,16,2,2,4
+974324,2023-01-21 03:10:00+00:00,A. Escobedo,Club Tijuana,Tigres UANL,1,1,4,4,8,3,3,6
+974325,2023-01-22 23:06:00+00:00,F. Guerrero,Monterrey,Atletico San Luis,3,1,3,3,6,1,1,2
+974326,2023-01-22 01:10:00+00:00,Ó. Mejía,Club America,Puebla,2,2,15,2,17,1,6,7
+974327,2023-01-22 03:10:00+00:00,M. Ortíz,Guadalajara Chivas,Toluca,1,2,6,4,10,0,1,1
+974328,2023-01-22 03:10:00+00:00,J. Camacho,Necaxa,Cruz Azul,1,0,2,8,10,6,3,9
+974329,2023-01-22 18:00:00+00:00,E. Morales,U.N.A.M. - Pumas,Leon,4,1,2,6,8,3,1,4
+974330,2023-01-22 23:00:00+00:00,Ó. Macías,Club Queretaro,Atlas,3,3,5,3,8,1,1,2
+974331,2023-01-23 01:10:00+00:00,I. Lopez,CF Pachuca,FC Juarez,4,1,5,6,11,1,2,3
+974332,2023-01-27 03:05:00+00:00,M. Ortíz,Atlas,Santos Laguna,2,2,9,1,10,3,1,4
+974333,2023-01-28 01:05:00+00:00,J. Lopez,Puebla,Monterrey,1,2,6,6,12,2,2,4
+974334,2023-01-28 03:05:00+00:00,I. Lopez,Club Tijuana,U.N.A.M. - Pumas,0,0,12,3,15,2,5,7
+974336,2023-01-29 01:05:00+00:00,D. Montaño,Tigres UANL,Atletico San Luis,0,0,10,0,10,1,2,3
+974337,2023-01-29 03:05:00+00:00,L. Santander,Club America,Mazatlán,6,0,5,4,9,2,4,6
+974338,2023-01-29 03:05:00+00:00,C. Ramos,FC Juarez,Guadalajara Chivas,1,2,9,2,11,0,0,0
+974339,2023-01-29 18:00:00+00:00,A. Escobedo,Toluca,Leon,0,0,12,1,13,1,7,8
+974340,2023-01-30 01:00:00+00:00,V. Cáceres,CF Pachuca,Necaxa,2,1,9,4,13,2,3,5
+973613,2023-02-02 02:05:00+00:00,L. Santander,Atlas,Toluca,0,0,5,7,12,1,2,3
+974341,2023-02-03 03:00:00+00:00,A. Escobedo,Atletico San Luis,Puebla,2,0,4,7,11,3,3,6
+974342,2023-02-04 01:00:00+00:00,C. Ramos,Necaxa,Club Tijuana,1,1,8,2,10,3,7,10
+974343,2023-02-04 03:05:00+00:00,M. Ortíz,Mazatlán,FC Juarez,2,3,6,3,9,1,3,4
+974344,2023-02-04 23:00:00+00:00,G. Pacheco,Leon,CF Pachuca,0,1,10,4,14,3,5,8
+974345,2023-02-05 01:05:00+00:00,L. Santander,Cruz Azul,Tigres UANL,0,1,5,4,9,1,1,2
+974346,2023-02-05 03:05:00+00:00,D. Montaño,Santos Laguna,Club America,2,2,5,7,12,3,2,5
+974347,2023-02-05 18:00:00+00:00,D. Quintero,U.N.A.M. - Pumas,Atlas,2,2,4,5,9,6,4,10
+974348,2023-02-05 23:00:00+00:00,E. Morales,Guadalajara Chivas,Club Queretaro,1,1,7,3,10,1,2,3
+974349,2023-02-06 01:10:00+00:00,V. Cáceres,Monterrey,Toluca,2,1,3,9,12,3,1,4
+974350,2023-02-10 01:05:00+00:00,J. Lopez,Club Queretaro,Leon,0,3,5,8,13,3,3,6
+974351,2023-02-10 03:05:00+00:00,Ó. Mejía,Atlas,Monterrey,0,2,5,4,9,1,3,4
+974352,2023-02-11 01:00:00+00:00,E. Morales,Puebla,Mazatlán,3,1,3,7,10,0,1,1
+974353,2023-02-11 03:10:00+00:00,L. Santander,Club Tijuana,Atletico San Luis,1,0,7,4,11,2,4,6
+974354,2023-02-11 23:00:00+00:00,I. Lopez,Club America,Necaxa,2,1,4,5,9,4,5,9
+974355,2023-02-12 01:05:00+00:00,G. Pacheco,FC Juarez,Santos Laguna,3,1,9,6,15,0,3,3
+974356,2023-02-12 01:05:00+00:00,F. Hernández,Tigres UANL,U.N.A.M. - Pumas,4,2,8,7,15,3,3,6
+974357,2023-02-12 03:05:00+00:00,A. Escobedo,CF Pachuca,Guadalajara Chivas,1,1,3,5,8,2,0,2
+974358,2023-02-12 18:00:00+00:00,M. Ortíz,Toluca,Cruz Azul,3,1,5,8,13,2,4,6
+974359,2023-02-15 01:05:00+00:00,Ó. Macías,Leon,Puebla,2,0,10,3,13,0,5,5
+974360,2023-02-15 01:05:00+00:00,C. Ramos,Tigres UANL,FC Juarez,0,0,3,7,10,2,3,5
+974361,2023-02-15 03:05:00+00:00,F. Hernández,Atletico San Luis,Club America,1,3,4,6,10,1,2,3
+974362,2023-02-16 01:05:00+00:00,B. González,Monterrey,Club Queretaro,2,0,0,1,1,2,2,4
+974363,2023-02-16 01:05:00+00:00,D. Montaño,Guadalajara Chivas,Club Tijuana,2,1,10,3,13,0,2,2
+974364,2023-02-16 03:05:00+00:00,F. Guerrero,Necaxa,U.N.A.M. - Pumas,3,1,2,13,15,4,4,8
+974365,2023-02-17 03:00:00+00:00,E. Miranda,Mazatlán,CF Pachuca,2,3,4,3,7,2,2,4
+974368,2023-02-18 23:00:00+00:00,Ó. Mejía,Atletico San Luis,Santos Laguna,1,1,3,12,15,2,3,5
+974369,2023-02-18 01:06:00+00:00,I. Lopez,FC Juarez,Leon,0,0,1,3,4,6,6,12
+974370,2023-02-18 03:05:00+00:00,E. Galván,Puebla,Cruz Azul,1,3,2,4,6,3,2,5
+974371,2023-02-19 23:06:00+00:00,G. Pacheco,Monterrey,Necaxa,2,1,4,4,8,4,1,5
+974372,2023-02-19 01:05:00+00:00,A. Escobedo,Atlas,Tigres UANL,0,1,2,5,7,5,7,12
+974373,2023-02-19 03:05:00+00:00,M. Ortíz,U.N.A.M. - Pumas,Guadalajara Chivas,1,2,5,7,12,5,4,9
+974374,2023-02-19 23:00:00+00:00,F. Hernández,Club Queretaro,Mazatlán,1,1,7,0,7,4,1,5
+974375,2023-02-20 01:05:00+00:00,F. Guerrero,Club America,Club Tijuana,2,1,7,3,10,3,3,6
+974376,2023-02-20 03:05:00+00:00,L. Santander,CF Pachuca,Toluca,1,2,7,5,12,0,2,2
+974366,2023-02-23 02:05:00+00:00,C. Ramos,Cruz Azul,Atlas,1,0,5,5,10,2,3,5
+974367,2023-02-24 02:05:00+00:00,F. Guerrero,Santos Laguna,Toluca,0,5,8,1,9,1,0,1
+974377,2023-02-25 01:05:00+00:00,M. Ortíz,Necaxa,Club Queretaro,1,1,4,3,7,2,1,3
+974378,2023-02-25 03:10:00+00:00,E. Galván,Mazatlán,U.N.A.M. - Pumas,1,2,6,8,14,3,1,4
+974379,2023-02-25 23:00:00+00:00,Ó. Macías,Cruz Azul,FC Juarez,1,0,2,7,9,2,2,4
+974380,2023-02-26 01:05:00+00:00,D. Quintero,Tigres UANL,Guadalajara Chivas,1,2,9,3,12,1,5,6
+974381,2023-02-26 03:05:00+00:00,L. Santander,Atlas,Club America,2,2,1,7,8,3,0,3
+974382,2023-02-26 18:00:00+00:00,J. Camacho,Toluca,Atletico San Luis,2,0,4,4,8,2,1,3
+974383,2023-02-27 01:05:00+00:00,B. González,Santos Laguna,Puebla,3,2,5,2,7,1,4,5
+974384,2023-02-27 03:05:00+00:00,F. Hernández,Club Tijuana,CF Pachuca,2,0,6,5,11,3,2,5
+974385,2023-02-28 03:10:00+00:00,C. Ramos,Leon,Monterrey,1,1,5,2,7,4,2,6
+974386,2023-03-04 01:05:00+00:00,F. Hernández,Necaxa,Tigres UANL,0,1,3,1,4,4,3,7
+974387,2023-03-04 01:05:00+00:00,J. Lopez,Mazatlán,Cruz Azul,3,1,8,1,9,3,2,5
+974388,2023-03-04 03:15:00+00:00,D. Quintero,Club Tijuana,Atlas,1,1,5,4,9,3,3,6
+974389,2023-03-04 23:00:00+00:00,F. Guerrero,Leon,Atletico San Luis,2,0,10,2,12,1,2,3
+974390,2023-03-05 01:10:00+00:00,L. Santander,Monterrey,FC Juarez,3,0,9,4,13,1,1,2
+974391,2023-03-05 01:05:00+00:00,A. Escobedo,Club America,CF Pachuca,0,3,9,4,13,1,0,1
+974392,2023-03-05 03:05:00+00:00,V. Cáceres,Guadalajara Chivas,Santos Laguna,2,0,8,7,15,2,1,3
+974393,2023-03-05 18:00:00+00:00,C. Ramos,U.N.A.M. - Pumas,Puebla,2,4,5,7,12,3,2,5
+974394,2023-03-06 01:05:00+00:00,Ó. Macías,Club Queretaro,Toluca,1,0,3,8,11,3,1,4
+974395,2023-03-11 01:05:00+00:00,C. Ramos,Atletico San Luis,Club Queretaro,2,0,9,3,12,5,3,8
+974396,2023-03-11 03:05:00+00:00,Ó. Mejía,Puebla,Guadalajara Chivas,1,0,2,7,9,4,1,5
+974397,2023-03-11 23:00:00+00:00,M. Ortíz,Atlas,Leon,0,1,7,3,10,2,2,4
+974398,2023-03-12 01:05:00+00:00,D. Quintero,Cruz Azul,U.N.A.M. - Pumas,1,0,6,1,7,2,4,6
+974399,2023-03-12 03:10:00+00:00,V. Cáceres,Tigres UANL,Club America,0,2,3,3,6,2,3,5
+974400,2023-03-12 18:00:00+00:00,L. Santander,Toluca,Mazatlán,4,1,6,0,6,1,3,4
+974401,2023-03-13 01:05:00+00:00,F. Guerrero,CF Pachuca,Monterrey,1,2,4,1,5,0,0,0
+974402,2023-03-13 01:05:00+00:00,I. Lopez,Santos Laguna,Club Tijuana,3,2,14,5,19,1,1,2
+974403,2023-03-13 03:15:00+00:00,E. Miranda,FC Juarez,Necaxa,1,1,5,2,7,4,3,7
+974404,2023-03-18 01:00:00+00:00,Ó. Macías,Puebla,Atlas,0,4,3,2,5,3,0,3
+974405,2023-03-18 03:05:00+00:00,D. Quintero,Mazatlán,Necaxa,0,1,3,4,7,1,2,3
+974406,2023-03-18 03:05:00+00:00,E. Morales,Club Tijuana,Toluca,3,3,4,5,9,6,2,8
+974407,2023-03-18 23:00:00+00:00,G. Pacheco,Cruz Azul,Atletico San Luis,1,0,9,3,12,2,4,6
+974408,2023-03-19 01:05:00+00:00,C. Ramos,Tigres UANL,Monterrey,0,1,5,4,9,3,3,6
+974409,2023-03-19 03:10:00+00:00,M. Ortíz,Guadalajara Chivas,Club America,2,4,9,3,12,4,3,7
+974410,2023-03-19 18:00:00+00:00,V. Cáceres,U.N.A.M. - Pumas,CF Pachuca,0,2,0,7,7,4,1,5
+974411,2023-03-20 01:05:00+00:00,F. Guerrero,Club Queretaro,FC Juarez,2,2,8,5,13,1,3,4
+974412,2023-03-20 03:05:00+00:00,A. Escobedo,Leon,Santos Laguna,4,1,5,3,8,2,4,6
+973611,2023-03-25 03:05:00+00:00,M. Ortíz,Mazatlán,Leon,1,2,2,2,4,1,1,2
+974335,2023-03-30 03:05:00+00:00,Ó. Mejía,Club Queretaro,Cruz Azul,2,2,7,1,8,2,1,3
+974413,2023-04-01 01:05:00+00:00,E. Morales,Necaxa,Santos Laguna,0,0,5,5,10,2,2,4
+974414,2023-04-01 03:00:00+00:00,D. Montaño,FC Juarez,Puebla,0,2,9,1,10,4,4,8
+974415,2023-04-01 23:00:00+00:00,L. Santander,CF Pachuca,Cruz Azul,0,2,10,3,13,1,5,6
+974416,2023-04-02 01:05:00+00:00,F. Hernández,Club America,Leon,2,2,3,5,8,1,3,4
+974417,2023-04-02 01:15:00+00:00,Ó. Macías,Monterrey,Club Tijuana,4,0,2,6,8,2,3,5
+974418,2023-04-02 03:10:00+00:00,C. Ramos,Atlas,Guadalajara Chivas,3,3,8,2,10,6,5,11
+974419,2023-04-02 18:00:00+00:00,M. Ortíz,Toluca,Tigres UANL,3,2,2,3,5,1,7,8
+974420,2023-04-02 23:00:00+00:00,E. Miranda,Atletico San Luis,Mazatlán,2,1,5,6,11,5,3,8
+974421,2023-04-03 01:05:00+00:00,A. Escobedo,Club Queretaro,U.N.A.M. - Pumas,1,0,4,4,8,5,2,7
+974422,2023-04-08 01:05:00+00:00,I. Lopez,Puebla,Toluca,1,2,3,4,7,3,4,7
+974423,2023-04-08 03:10:00+00:00,L. Santander,Club Tijuana,Club Queretaro,1,2,9,8,17,0,2,2
+974425,2023-04-08 23:00:00+00:00,B. González,Guadalajara Chivas,Necaxa,1,0,6,6,12,0,0,0
+974424,2023-04-09 01:05:00+00:00,D. Montaño,Leon,Cruz Azul,0,0,9,5,14,2,1,3
+974426,2023-04-09 01:05:00+00:00,F. Guerrero,Tigres UANL,Mazatlán,1,2,9,1,10,0,2,2
+974427,2023-04-09 03:10:00+00:00,V. Cáceres,Club America,Monterrey,2,1,6,4,10,3,4,7
+974428,2023-04-09 18:00:00+00:00,Ó. Mejía,U.N.A.M. - Pumas,Atletico San Luis,3,1,1,5,6,1,2,3
+974429,2023-04-10 00:05:00+00:00,Ó. Macías,Santos Laguna,CF Pachuca,1,4,3,4,7,6,3,9
+974430,2023-04-10 02:10:00+00:00,A. Escobedo,FC Juarez,Atlas,1,1,3,7,10,7,8,15
+974431,2023-04-14 03:05:00+00:00,L. Santander,Atletico San Luis,FC Juarez,2,0,6,4,10,3,1,4
+974432,2023-04-15 01:05:00+00:00,A. Escobedo,Necaxa,Puebla,1,1,7,1,8,2,2,4
+974433,2023-04-15 03:05:00+00:00,C. Ramos,Mazatlán,Club Tijuana,1,2,5,5,10,3,4,7
+974434,2023-04-15 23:00:00+00:00,E. Morales,Atlas,CF Pachuca,4,1,0,9,9,0,2,2
+974435,2023-04-16 01:05:00+00:00,V. Cáceres,Leon,Guadalajara Chivas,0,2,2,5,7,2,4,6
+974436,2023-04-16 03:10:00+00:00,F. Guerrero,Cruz Azul,Club America,1,3,1,4,5,5,2,7
+974437,2023-04-16 18:00:00+00:00,D. Montaño,U.N.A.M. - Pumas,Toluca,3,1,4,7,11,3,7,10
+974438,2023-04-16 23:00:00+00:00,Ó. Macías,Club Queretaro,Tigres UANL,0,0,8,3,11,2,3,5
+974439,2023-04-17 01:10:00+00:00,M. Ortíz,Monterrey,Santos Laguna,1,2,9,2,11,7,5,12
+974440,2023-04-21 02:05:00+00:00,E. Miranda,Tigres UANL,Puebla,1,0,7,3,10,2,4,6
+974441,2023-04-22 01:05:00+00:00,V. Cáceres,Necaxa,Atlas,1,3,4,4,8,3,0,3
+974442,2023-04-22 01:05:00+00:00,L. Santander,Mazatlán,Monterrey,0,2,5,2,7,5,0,5
+974443,2023-04-22 03:05:00+00:00,E. Morales,Club Tijuana,Leon,0,0,8,5,13,2,4,6
+974444,2023-04-22 23:00:00+00:00,D. Quintero,CF Pachuca,Atletico San Luis,2,1,10,3,13,4,3,7
+974445,2023-04-23 01:05:00+00:00,A. Escobedo,Guadalajara Chivas,Cruz Azul,2,1,1,7,8,4,4,8
+974446,2023-04-23 03:10:00+00:00,C. Ramos,Club America,U.N.A.M. - Pumas,1,1,9,4,13,2,4,6
+974447,2023-04-23 18:00:00+00:00,F. Guerrero,Toluca,FC Juarez,1,1,4,4,8,8,2,10
+974448,2023-04-24 01:05:00+00:00,J. Camacho,Santos Laguna,Club Queretaro,0,2,6,7,13,1,2,3
+974449,2023-04-29 23:00:00+00:00,D. Montaño,Puebla,Club Tijuana,5,2,8,6,14,1,2,3
+974450,2023-04-29 03:05:00+00:00,D. Quintero,FC Juarez,Club America,0,1,9,3,12,3,2,5
+974451,2023-04-30 01:00:00+00:00,M. Ortíz,Atletico San Luis,Atlas,0,0,9,3,12,2,4,6
+974452,2023-04-30 01:05:00+00:00,Ó. Macías,Monterrey,U.N.A.M. - Pumas,4,1,5,6,11,3,3,6
+974453,2023-04-30 01:05:00+00:00,Ó. Mejía,Guadalajara Chivas,Mazatlán,4,1,9,8,17,2,5,7
+974454,2023-04-30 03:05:00+00:00,L. Santander,Cruz Azul,Santos Laguna,3,2,3,6,9,0,0,0
+974455,2023-04-30 18:00:00+00:00,C. Ramos,Toluca,Necaxa,3,0,2,3,5,2,3,5
+974456,2023-04-30 23:00:00+00:00,V. Cáceres,Club Queretaro,CF Pachuca,0,1,6,3,9,0,0,0
+974457,2023-05-01 01:05:00+00:00,F. Guerrero,Leon,Tigres UANL,3,0,4,6,10,2,2,4
+1024695,2023-05-06 23:00:00+00:00,C. Ramos,Cruz Azul,Atlas,0,1,5,4,9,2,3,5
+1024693,2023-05-08 01:06:00+00:00,V. Cáceres,Leon,Atlético San Luis,1,3,12,4,16,1,2,3
+1024694,2023-05-08 03:10:00+00:00,M. Ortíz,Tigres UANL,Puebla,1,0,3,6,9,3,4,7
+1025954,2023-05-11 01:00:00+00:00,L. Santander,Santos Laguna,Monterrey,0,0,6,5,11,1,4,5
+1026493,2023-05-11 03:10:00+00:00,F. Guerrero,Atletico San Luis,Club America,1,3,2,5,7,2,4,6
+1026495,2023-05-12 01:00:00+00:00,M. Ortíz,Atlas,Guadalajara Chivas,1,0,4,9,13,2,2,4
+1026497,2023-05-12 03:10:00+00:00,A. Escobedo,Tigres UANL,Toluca,4,1,1,5,6,1,1,2
+1025953,2023-05-14 01:06:00+00:00,Ó. Macías,Monterrey,Santos Laguna,2,0,1,6,7,1,1,2
+1026492,2023-05-14 03:16:00+00:00,D. Quintero,Club America,Atletico San Luis,1,2,11,4,15,4,2,6
+1026496,2023-05-14 18:00:00+00:00,C. Ramos,Toluca,Tigres UANL,3,1,2,3,5,3,6,9
+1026494,2023-05-15 01:05:00+00:00,V. Cáceres,Guadalajara Chivas,Atlas,1,0,3,4,7,2,2,4
+1027143,2023-05-18 03:00:00+00:00,F. Guerrero,Tigres UANL,Monterrey,1,1,4,5,9,3,4,7
+1027145,2023-05-19 02:10:00+00:00,C. Ramos,Guadalajara Chivas,Club America,0,1,8,7,15,3,1,4
+1027144,2023-05-21 01:06:00+00:00,L. Santander,Monterrey,Tigres UANL,0,1,4,4,8,1,2,3
+1027146,2023-05-22 02:00:00+00:00,V. Cáceres,Club America,Guadalajara Chivas,1,3,4,2,6,6,4,10
+1028348,2023-05-26 02:00:00+00:00,F. Guerrero,Tigres UANL,Guadalajara Chivas,0,0,2,2,4,3,4,7
+1031275,2023-07-01 01:00:00+00:00,I. Lopez,Club America,FC Juarez,1,2,10,2,12,2,2,4
+1031276,2023-07-01 03:10:00+00:00,D. Quintero,Club Tijuana,U.N.A.M. - Pumas,2,3,5,6,11,1,3,4
+1031277,2023-07-01 01:00:00+00:00,J. Lopez,Mazatlán,CF Pachuca,1,1,2,9,11,3,2,5
+1031278,2023-07-01 23:00:00+00:00,J. Camacho,Atletico San Luis,Monterrey,1,1,5,2,7,2,2,4
+1031279,2023-07-02 01:00:00+00:00,Ó. Macías,Tigres UANL,Puebla,1,1,6,3,9,1,4,5
+1031280,2023-07-02 03:10:00+00:00,V. Cáceres,Atlas,Cruz Azul,2,0,8,4,12,4,2,6
+1031281,2023-07-02 18:00:00+00:00,I. López,Toluca,Necaxa,0,0,5,4,9,2,4,6
+1031282,2023-07-03 01:05:00+00:00,A. Quirarte,Santos Laguna,Club Queretaro,0,2,10,8,18,4,4,8
+1031283,2023-07-04 02:00:00+00:00,Ó. Mejía,Leon,Guadalajara Chivas,1,2,16,7,23,1,3,4
+1031284,2023-07-08 01:00:00+00:00,B. González,Puebla,Santos Laguna,2,3,8,5,13,5,2,7
+1031288,2023-07-08 23:50:00+00:00,I. Lopez,Cruz Azul,Toluca,0,2,3,4,7,6,4,10
+1031290,2023-07-08 03:00:00+00:00,Ó. Mejía,Necaxa,Club Tijuana,1,1,6,11,17,5,3,8
+1031285,2023-07-09 00:06:00+00:00,J. Lopez,FC Juarez,Tigres UANL,1,1,4,11,15,0,1,1
+1031286,2023-07-09 00:05:00+00:00,V. Cáceres,Guadalajara Chivas,Atletico San Luis,3,1,4,4,8,2,2,4
+1031289,2023-07-09 18:00:00+00:00,Ó. Macías,U.N.A.M. - Pumas,Mazatlán,0,0,11,3,14,2,6,8
+1031287,2023-07-10 01:00:00+00:00,E. Morales,Monterrey,Atlas,1,0,0,6,6,3,3,6
+1031292,2023-07-11 02:00:00+00:00,J. Camacho,Leon,CF Pachuca,4,0,11,4,15,3,1,4
+1031293,2023-07-14 01:05:00+00:00,D. Montaño,Santos Laguna,Atlas,0,0,2,4,6,3,2,5
+1031294,2023-07-14 03:00:00+00:00,J. Lopez,Guadalajara Chivas,Necaxa,2,0,5,4,9,1,3,4
+1031295,2023-07-15 01:00:00+00:00,B. González,Mazatlán,Monterrey,0,3,2,8,10,3,3,6
+1031296,2023-07-15 03:10:00+00:00,E. Morales,Club Tijuana,Cruz Azul,2,1,7,1,8,2,2,4
+1031297,2023-07-15 23:00:00+00:00,D. Quintero,Atletico San Luis,Club Queretaro,4,1,3,9,12,1,6,7
+1031298,2023-07-16 01:00:00+00:00,V. Cáceres,Club America,Puebla,3,0,4,5,9,1,1,2
+1031299,2023-07-16 03:05:00+00:00,I. Lopez,Tigres UANL,Leon,1,0,3,5,8,3,5,8
+1031300,2023-07-16 18:00:00+00:00,M. Terrazas,Toluca,FC Juarez,2,4,5,5,10,4,3,7
+1031301,2023-07-17 02:15:00+00:00,Ó. Mejía,CF Pachuca,U.N.A.M. - Pumas,1,1,15,2,17,3,7,10
+1031302,2023-08-19 03:06:00+00:00,I. Lopez,Puebla,Atletico San Luis,1,2,4,5,9,1,1,2
+1031303,2023-08-19 03:10:00+00:00,F. Hernández,FC Juarez,Guadalajara Chivas,1,1,3,3,6,2,1,3
+1031305,2023-08-19 01:06:00+00:00,M. Quintero,Leon,Mazatlán,2,1,4,5,9,2,5,7
+1031308,2023-08-19 03:00:00+00:00,L. Santander,U.N.A.M. - Pumas,Toluca,1,1,8,3,11,5,6,11
+1031309,2023-08-20 23:00:00+00:00,M. Ortíz,Cruz Azul,Santos Laguna,2,2,3,3,6,2,2,4
+1031304,2023-08-21 03:10:00+00:00,G. Pacheco,Necaxa,Tigres UANL,0,3,7,5,12,3,2,5
+1031307,2023-08-21 01:10:00+00:00,A. Escobedo,Club America,Atlas,1,1,5,3,8,1,4,5
+1031310,2023-08-21 01:06:00+00:00,V. Arce,Club Queretaro,CF Pachuca,1,1,2,1,3,3,2,5
+1031312,2023-08-23 03:06:00+00:00,I. López,FC Juarez,U.N.A.M. - Pumas,4,1,4,5,9,4,2,6
+1031316,2023-08-23 01:00:00+00:00,A. Escobedo,Guadalajara Chivas,Club Tijuana,1,0,11,2,13,3,4,7
+1031317,2023-08-23 01:00:00+00:00,L. Santander,Mazatlán,Puebla,1,0,3,6,9,4,0,4
+1031311,2023-08-24 01:00:00+00:00,M. Ortíz,Club America,Necaxa,3,2,13,2,15,2,2,4
+1031314,2023-08-24 01:06:00+00:00,J. Lopez,CF Pachuca,Cruz Azul,1,0,4,7,11,3,4,7
+1031424,2023-08-24 03:00:00+00:00,E. Morales,Atletico San Luis,Leon,3,0,3,2,5,3,3,6
+1031319,2023-08-26 03:10:00+00:00,F. Guerrero,Club Tijuana,Mazatlán,1,1,6,0,6,2,2,4
+1031320,2023-08-26 23:00:00+00:00,G. Pacheco,Atlas,Toluca,0,0,7,4,11,3,1,4
+1031425,2023-08-26 01:00:00+00:00,D. Montaño,Puebla,FC Juarez,1,0,4,8,12,4,4,8
+1031321,2023-08-27 01:00:00+00:00,Ó. Macías,Club America,Leon,1,1,3,1,4,5,4,9
+1031322,2023-08-27 03:05:00+00:00,Ó. Mejía,Santos Laguna,Guadalajara Chivas,2,1,6,4,10,5,5,10
+1031323,2023-08-28 22:00:00+00:00,D. Quintero,Necaxa,Club Queretaro,0,1,3,6,9,4,4,8
+1031324,2023-08-28 00:05:00+00:00,F. Hernández,U.N.A.M. - Pumas,Tigres UANL,2,1,2,2,4,5,3,8
+1031325,2023-08-28 02:05:00+00:00,C. Ramos,Monterrey,Cruz Azul,1,2,9,4,13,2,5,7
+1031326,2023-08-29 03:10:00+00:00,J. Camacho,CF Pachuca,Atletico San Luis,0,2,6,3,9,3,2,5
+1031313,2023-08-31 01:06:00+00:00,F. Hernández,Club Queretaro,Atlas,1,2,7,3,10,6,2,8
+1031315,2023-08-31 01:00:00+00:00,D. Montaño,Toluca,Monterrey,1,0,4,4,8,1,2,3
+1031318,2023-08-31 03:00:00+00:00,D. Quintero,Tigres UANL,Santos Laguna,3,2,5,2,7,1,2,3
+1031328,2023-09-02 01:06:00+00:00,A. Escobedo,FC Juarez,Mazatlán,3,1,5,3,8,2,5,7
+1031329,2023-09-02 03:10:00+00:00,C. Ramos,Puebla,Club Tijuana,3,0,1,6,7,1,1,2
+1031331,2023-09-02 23:00:00+00:00,V. Cáceres,Leon,Necaxa,1,1,9,0,9,0,0,0
+1031330,2023-09-03 23:05:00+00:00,Ó. Macías,Guadalajara Chivas,Monterrey,1,2,5,8,13,2,2,4
+1031332,2023-09-03 01:00:00+00:00,F. Guerrero,Santos Laguna,U.N.A.M. - Pumas,2,1,5,7,12,5,3,8
+1031333,2023-09-03 01:05:00+00:00,I. Lopez,Tigres UANL,Club Queretaro,5,0,4,5,9,0,1,1
+1031334,2023-09-03 03:10:00+00:00,D. Quintero,Cruz Azul,Club America,2,3,8,2,10,6,6,12
+1031335,2023-09-03 18:00:00+00:00,M. Ortíz,Toluca,CF Pachuca,5,0,6,5,11,1,2,3
+1031327,2023-09-04 02:00:00+00:00,L. Santander,Atletico San Luis,Atlas,2,0,2,6,8,2,2,4
+1031338,2023-09-16 01:00:00+00:00,M. Ortíz,Mazatlán,Cruz Azul,2,2,4,3,7,2,5,7
+1031339,2023-09-16 03:10:00+00:00,E. Miranda,Club Tijuana,Toluca,2,1,7,5,12,2,5,7
+1031340,2023-09-16 23:00:00+00:00,B. González,Necaxa,FC Juarez,1,1,3,4,7,5,3,8
+1031336,2023-09-17 01:00:00+00:00,L. Santander,Monterrey,Leon,3,1,7,4,11,4,2,6
+1031337,2023-09-17 03:10:00+00:00,F. Guerrero,Club America,Guadalajara Chivas,4,0,4,6,10,2,2,4
+1031341,2023-09-17 18:00:00+00:00,C. Ramos,U.N.A.M. - Pumas,Atletico San Luis,3,2,11,3,14,3,6,9
+1031342,2023-09-17 23:00:00+00:00,V. Cáceres,Club Queretaro,Puebla,1,1,8,3,11,3,3,6
+1031343,2023-09-18 01:00:00+00:00,A. Escobedo,Atlas,Tigres UANL,2,0,3,5,8,4,4,8
+1031344,2023-09-19 03:00:00+00:00,F. Hernández,CF Pachuca,Santos Laguna,3,2,5,5,10,2,5,7
+1031291,2023-09-21 02:06:00+00:00,D. Montaño,Club Queretaro,Club America,1,2,7,3,10,1,2,3
+1031345,2023-09-23 01:00:00+00:00,F. Hernández,Atletico San Luis,Mazatlán,3,2,7,6,13,2,5,7
+1031346,2023-09-23 01:00:00+00:00,V. Cáceres,FC Juarez,Atlas,1,2,9,1,10,1,3,4
+1031347,2023-09-23 03:10:00+00:00,G. Pacheco,Puebla,U.N.A.M. - Pumas,0,2,7,2,9,4,4,8
+1031348,2023-09-24 01:00:00+00:00,F. Guerrero,Leon,Club Tijuana,1,0,3,6,9,0,2,2
+1031349,2023-09-24 01:00:00+00:00,C. Ramos,Guadalajara Chivas,CF Pachuca,0,0,10,1,11,1,3,4
+1031350,2023-09-24 03:05:00+00:00,M. Ortíz,Tigres UANL,Monterrey,3,0,5,4,9,4,4,8
+1031426,2023-09-24 18:00:00+00:00,A. Escobedo,Toluca,Club America,1,1,4,3,7,3,0,3
+1031351,2023-09-25 22:00:00+00:00,A. Quirarte,Cruz Azul,Club Queretaro,1,3,4,8,12,1,3,4
+1031352,2023-09-25 02:05:00+00:00,Ó. Mejía,Santos Laguna,Necaxa,2,5,14,4,18,1,0,1
+1031367,2023-09-27 01:05:00+00:00,E. Morales,Guadalajara Chivas,Mazatlán,1,3,10,4,14,4,3,7
+1031353,2023-09-29 02:00:00+00:00,I. Lopez,Atlas,Puebla,2,3,10,1,11,1,5,6
+1031354,2023-09-30 01:00:00+00:00,G. Pacheco,Club Queretaro,Leon,1,1,2,8,10,3,4,7
+1031356,2023-09-30 03:10:00+00:00,F. Hernández,Club Tijuana,FC Juarez,5,1,8,3,11,5,5,10
+1031357,2023-09-30 23:00:00+00:00,M. Terrazas,CF Pachuca,Necaxa,1,1,6,4,10,7,5,12
+1031361,2023-09-30 03:00:00+00:00,A. Escobedo,Atletico San Luis,Cruz Azul,1,2,6,4,10,1,3,4
+1031355,2023-10-01 01:06:00+00:00,J. Lopez,Mazatlán,Tigres UANL,2,3,5,2,7,3,3,6
+1031359,2023-10-01 00:40:00+00:00,V. Cáceres,Club America,U.N.A.M. - Pumas,1,0,5,5,10,3,5,8
+1031360,2023-10-02 23:20:00+00:00,D. Quintero,Toluca,Guadalajara Chivas,1,1,3,5,8,3,3,6
+1031362,2023-10-04 01:00:00+00:00,E. Miranda,Puebla,Monterrey,1,1,2,8,10,1,3,4
+1031363,2023-10-04 03:00:00+00:00,M. Ortíz,Club America,CF Pachuca,4,0,4,3,7,2,3,5
+1031364,2023-10-05 01:00:00+00:00,L. Santander,U.N.A.M. - Pumas,Club Queretaro,4,0,5,2,7,1,2,3
+1031365,2023-10-05 01:00:00+00:00,F. Guerrero,Necaxa,Cruz Azul,1,3,3,7,10,1,2,3
+1031366,2023-10-05 03:00:00+00:00,C. Ramos,Tigres UANL,Toluca,2,2,8,0,8,4,7,11
+1031368,2023-10-05 03:00:00+00:00,I. Lopez,Santos Laguna,Club Tijuana,2,1,6,6,12,3,1,4
+1031370,2023-10-07 03:00:00+00:00,Ó. Mejía,Mazatlán,Club America,1,2,1,9,10,5,3,8
+1031371,2023-10-07 23:00:00+00:00,D. Quintero,Monterrey,FC Juarez,3,1,3,4,7,4,4,8
+1031372,2023-10-08 01:00:00+00:00,I. Lopez,CF Pachuca,Tigres UANL,1,1,5,2,7,1,2,3
+1031373,2023-10-08 01:00:00+00:00,A. Escobedo,Guadalajara Chivas,Atlas,4,1,4,10,14,0,4,4
+1031374,2023-10-08 03:10:00+00:00,C. Ramos,Cruz Azul,U.N.A.M. - Pumas,1,4,13,3,16,2,5,7
+1031375,2023-10-08 18:00:00+00:00,F. Hernández,Toluca,Club Queretaro,3,1,6,2,8,0,3,3
+1031376,2023-10-08 23:00:00+00:00,G. Pacheco,Necaxa,Puebla,1,2,4,4,8,5,3,8
+1031377,2023-10-09 01:05:00+00:00,M. Ortíz,Santos Laguna,Leon,0,2,3,8,11,6,1,7
+1031378,2023-10-09 03:00:00+00:00,L. Santander,Club Tijuana,Atletico San Luis,2,1,4,6,10,2,4,6
+1031379,2023-10-21 01:00:00+00:00,M. Ortíz,Atlas,Mazatlán,1,3,7,3,10,5,3,8
+1031380,2023-10-21 01:06:00+00:00,F. Guerrero,FC Juarez,CF Pachuca,0,1,5,12,17,6,2,8
+1031381,2023-10-21 23:00:00+00:00,Ó. Mejía,Leon,Toluca,1,0,8,5,13,1,6,7
+1031428,2023-10-21 03:10:00+00:00,V. Cáceres,Puebla,Guadalajara Chivas,0,2,8,2,10,4,4,8
+1031382,2023-10-22 01:00:00+00:00,C. Ramos,Club America,Santos Laguna,4,3,3,5,8,3,3,6
+1031383,2023-10-22 03:10:00+00:00,E. Morales,Tigres UANL,Cruz Azul,2,1,5,7,12,3,3,6
+1031384,2023-10-22 18:00:00+00:00,I. Lopez,U.N.A.M. - Pumas,Monterrey,0,1,4,5,9,2,6,8
+1031386,2023-10-22 01:06:00+00:00,Ó. Macías,Club Queretaro,Club Tijuana,1,0,5,6,11,8,2,10
+1031385,2023-10-23 00:00:00+00:00,F. Hernández,Atletico San Luis,Necaxa,4,0,5,7,12,1,5,6
+1031427,2023-10-25 01:00:00+00:00,D. Montaño,Leon,Atlas,1,1,8,6,14,1,3,4
+1031306,2023-10-26 01:00:00+00:00,V. Cáceres,Monterrey,Club Tijuana,3,1,7,9,16,2,1,3
+1031369,2023-10-26 03:06:00+00:00,Ó. Mejía,FC Juarez,Atletico San Luis,3,2,1,5,6,3,7,10
+1031387,2023-10-28 01:00:00+00:00,A. Quirarte,Necaxa,U.N.A.M. - Pumas,1,0,11,1,12,5,4,9
+1031388,2023-10-28 03:00:00+00:00,L. Santander,Mazatlán,Club Queretaro,3,0,6,5,11,4,2,6
+1031389,2023-10-29 00:00:00+00:00,B. González,Cruz Azul,Leon,1,0,0,0,0,0,0,0
+1031390,2023-10-29 01:05:00+00:00,J. Camacho,CF Pachuca,Puebla,1,1,7,2,9,2,1,3
+1031391,2023-10-29 01:05:00+00:00,F. Hernández,Guadalajara Chivas,Tigres UANL,0,4,9,1,10,4,3,7
+1031392,2023-10-29 03:10:00+00:00,A. Escobedo,Monterrey,Club America,0,3,1,3,4,3,3,6
+1031393,2023-10-29 18:00:00+00:00,C. Ramos,Toluca,Atletico San Luis,3,1,5,5,10,5,5,10
+1031394,2023-10-30 01:05:00+00:00,D. Montaño,Santos Laguna,FC Juarez,5,1,5,3,8,1,2,3
+1031395,2023-10-30 03:00:00+00:00,D. Quintero,Club Tijuana,Atlas,2,0,3,3,6,3,5,8
+1031396,2023-11-01 01:00:00+00:00,C. Ramos,Club Queretaro,Guadalajara Chivas,1,2,7,5,12,1,5,6
+1031397,2023-11-01 03:00:00+00:00,A. Escobedo,Leon,U.N.A.M. - Pumas,1,1,8,9,17,2,2,4
+1031398,2023-11-01 03:05:00+00:00,Ó. Mejía,Monterrey,Necaxa,3,0,8,3,11,0,0,0
+1031429,2023-11-01 01:00:00+00:00,Ó. Macías,Toluca,Puebla,0,1,2,4,6,3,2,5
+1031399,2023-11-02 01:00:00+00:00,L. Santander,Atlas,CF Pachuca,0,2,10,2,12,3,5,8
+1031400,2023-11-02 01:00:00+00:00,D. Quintero,Cruz Azul,FC Juarez,2,0,4,3,7,2,2,4
+1031401,2023-11-02 03:00:00+00:00,F. Hernández,Mazatlán,Santos Laguna,3,1,3,10,13,0,4,4
+1031402,2023-11-02 03:00:00+00:00,F. Guerrero,Atletico San Luis,Club America,0,1,6,4,10,3,1,4
+1031403,2023-11-02 03:06:00+00:00,M. Ortíz,Club Tijuana,Tigres UANL,2,0,4,4,8,3,4,7
+1031404,2023-11-04 03:00:00+00:00,E. Morales,Puebla,Leon,5,4,4,7,11,5,3,8
+1031405,2023-11-04 22:55:00+00:00,L. Santander,Tigres UANL,Atletico San Luis,2,2,12,0,12,2,2,4
+1031406,2023-11-05 01:00:00+00:00,Ó. Mejía,Club America,Club Tijuana,3,0,2,3,5,1,4,5
+1031407,2023-11-05 03:05:00+00:00,A. Escobedo,Guadalajara Chivas,Cruz Azul,1,0,4,4,8,1,3,4
+1031408,2023-11-05 03:05:00+00:00,D. Quintero,CF Pachuca,Monterrey,0,2,9,3,12,2,1,3
+1031409,2023-11-05 18:00:00+00:00,F. Guerrero,U.N.A.M. - Pumas,Atlas,3,0,7,1,8,2,3,5
+1031410,2023-11-05 22:00:00+00:00,C. Ramos,Necaxa,Mazatlán,4,0,4,2,6,1,5,6
+1031411,2023-11-06 00:05:00+00:00,V. Cáceres,Santos Laguna,Toluca,3,1,4,11,15,3,3,6
+1031412,2023-11-06 02:06:00+00:00,M. Ortíz,FC Juarez,Club Queretaro,0,3,5,4,9,4,1,5
+1031358,2023-11-09 02:00:00+00:00,F. Guerrero,Monterrey,Santos Laguna,3,0,8,5,13,1,2,3
+1031413,2023-11-11 01:00:00+00:00,G. Pacheco,Atlas,Necaxa,0,0,4,4,8,7,2,9
+1031414,2023-11-11 01:06:00+00:00,A. Escobedo,Mazatlán,Toluca,1,0,2,4,6,0,1,1
+1031415,2023-11-11 03:10:00+00:00,F. Hernández,Club Tijuana,CF Pachuca,2,3,6,4,10,0,7,7
+1031416,2023-11-11 23:00:00+00:00,V. Cáceres,Club Queretaro,Monterrey,0,0,1,6,7,2,2,4
+1031417,2023-11-11 23:00:00+00:00,M. Ortíz,Atletico San Luis,Santos Laguna,0,2,5,6,11,3,0,3
+1031418,2023-11-12 01:00:00+00:00,Ó. Mejía,U.N.A.M. - Pumas,Guadalajara Chivas,1,0,6,3,9,2,2,4
+1031419,2023-11-12 03:10:00+00:00,D. Montaño,Tigres UANL,Club America,0,0,9,7,16,1,1,2
+1031420,2023-11-13 00:00:00+00:00,L. Santander,Cruz Azul,Puebla,1,2,8,4,12,2,4,6
+1031421,2023-11-13 02:05:00+00:00,I. Lopez,Leon,FC Juarez,2,1,12,0,12,4,11,15
+1142059,2023-11-24 01:00:00+00:00,A. Escobedo,Atletico San Luis,Leon,3,2,0,6,6,2,3,5
+1142060,2023-11-24 03:10:00+00:00,F. Guerrero,Santos Laguna,Mazatlán,2,1,8,4,12,3,3,6
+1144268,2023-11-27 02:06:00+00:00,C. Ramos,Leon,Santos Laguna,3,2,6,10,16,5,0,5
+1144265,2023-11-30 01:06:00+00:00,M. Ortíz,Leon,Club America,2,2,6,6,12,6,2,8
+1144266,2023-11-30 03:10:00+00:00,D. Quintero,Atletico San Luis,Monterrey,1,0,10,4,14,2,3,5
+1142042,2023-12-01 03:05:00+00:00,F. Hernández,Guadalajara Chivas,U.N.A.M. - Pumas,1,0,6,5,11,3,2,5
+1142057,2023-12-01 01:10:00+00:00,Ó. Mejía,Puebla,Tigres UANL,2,2,0,8,8,1,2,3
+1144267,2023-12-03 03:10:00+00:00,V. Cáceres,Monterrey,Atletico San Luis,1,1,10,0,10,2,1,3
+1144390,2023-12-03 01:00:00+00:00,F. Guerrero,Club America,Leon,2,0,6,2,8,1,2,3
+1142043,2023-12-04 00:00:00+00:00,C. Ramos,U.N.A.M. - Pumas,Guadalajara Chivas,3,0,4,5,9,2,1,3
+1142058,2023-12-04 02:10:00+00:00,A. Escobedo,Tigres UANL,Puebla,3,0,3,3,6,2,4,6
+1145600,2023-12-07 03:00:00+00:00,A. Escobedo,Atletico San Luis,Club America,0,5,5,4,9,1,0,1
+1145602,2023-12-08 03:00:00+00:00,M. Ortíz,U.N.A.M. - Pumas,Tigres UANL,0,1,1,6,7,4,3,7
+1145601,2023-12-10 02:00:00+00:00,C. Ramos,Club America,Atletico San Luis,0,2,6,5,11,0,0,0
+1145603,2023-12-11 02:00:00+00:00,F. Guerrero,Tigres UANL,U.N.A.M. - Pumas,1,1,3,2,5,2,6,8
+1147013,2023-12-15 03:00:00+00:00,M. Ortíz,Tigres UANL,Club America,1,1,9,2,11,2,1,3
+1150211,2024-01-13 01:00:00+00:00,A. Quirarte,Club Queretaro,Toluca,2,2,5,8,13,3,2,5
+1150212,2024-01-13 03:00:00+00:00,M. Quintero,Mazatlán,Atletico San Luis,0,1,10,4,14,1,1,2
+1150213,2024-01-14 01:00:00+00:00,I. López,Cruz Azul,CF Pachuca,0,1,4,4,8,2,2,4
+1150214,2024-01-14 01:05:00+00:00,J. Camacho,Guadalajara Chivas,Santos Laguna,1,1,11,2,13,3,3,6
+1150215,2024-01-14 03:00:00+00:00,G. Pacheco,Monterrey,Puebla,2,0,3,5,8,0,3,3
+1150216,2024-01-14 03:00:00+00:00,E. Morales,Club Tijuana,Club America,0,2,10,1,11,2,1,3
+1150217,2024-01-14 18:00:00+00:00,M. Terrazas,U.N.A.M. - Pumas,FC Juarez,1,0,5,3,8,3,3,6
+1150218,2024-01-15 00:00:00+00:00,I. Lopez,Necaxa,Atlas,2,1,7,2,9,4,6,10
+1150219,2024-01-18 01:00:00+00:00,J. Lopez,Leon,Tigres UANL,1,2,9,3,12,1,1,2
+1150220,2024-01-20 01:00:00+00:00,V. Arce,Puebla,Necaxa,1,2,7,5,12,1,3,4
+1150221,2024-01-20 03:00:00+00:00,I. López,Atletico San Luis,U.N.A.M. - Pumas,3,1,4,8,12,2,4,6
+1150222,2024-01-20 03:10:00+00:00,E. Miranda,FC Juarez,Cruz Azul,0,0,4,13,17,2,3,5
+1150223,2024-01-20 23:00:00+00:00,J. Camacho,Toluca,Mazatlán,4,1,5,2,7,4,2,6
+1150224,2024-01-21 01:05:00+00:00,M. Quintero,Club America,Club Queretaro,2,0,10,3,13,1,3,4
+1150225,2024-01-21 03:10:00+00:00,Ó. Macías,Atlas,Club Tijuana,0,0,10,0,10,2,0,2
+1150227,2024-01-22 00:00:00+00:00,G. Pacheco,Tigres UANL,Guadalajara Chivas,1,0,2,1,3,1,3,4
+1150228,2024-01-22 02:05:00+00:00,E. Morales,Santos Laguna,Monterrey,0,2,6,5,11,5,3,8
+1150238,2024-01-25 01:00:00+00:00,V. Cáceres,Atletico San Luis,Tigres UANL,1,2,1,6,7,2,1,3
+1150239,2024-01-25 01:00:00+00:00,M. Ortíz,Monterrey,Club Queretaro,1,1,9,1,10,1,2,3
+1150240,2024-01-25 03:06:00+00:00,L. Santander,FC Juarez,Club America,0,2,4,5,9,5,1,6
+1150229,2024-01-27 01:00:00+00:00,I. López,Puebla,Toluca,1,1,3,3,6,3,3,6
+1150230,2024-01-27 03:00:00+00:00,B. González,Club Tijuana,Guadalajara Chivas,1,1,5,2,7,4,6,10
+1150231,2024-01-27 23:00:00+00:00,L. Santander,Cruz Azul,Mazatlán,2,1,8,2,10,2,4,6
+1150232,2024-01-27 23:00:00+00:00,D. Quintero,Leon,Santos Laguna,3,2,6,4,10,2,5,7
+1150233,2024-01-28 01:00:00+00:00,J. Lopez,Monterrey,Atletico San Luis,3,1,1,4,5,1,0,1
+1150234,2024-01-28 03:05:00+00:00,D. Montaño,Necaxa,Club America,0,0,5,7,12,3,4,7
+1150236,2024-01-28 23:15:00+00:00,M. Quintero,U.N.A.M. - Pumas,CF Pachuca,3,1,3,7,10,5,4,9
+1150235,2024-01-29 01:00:00+00:00,F. Hernández,Atlas,FC Juarez,2,1,6,10,16,8,3,11
+1150237,2024-01-29 03:00:00+00:00,I. Lopez,Club Queretaro,Tigres UANL,1,1,3,7,10,6,2,8
+1150241,2024-01-31 01:00:00+00:00,J. Lopez,Cruz Azul,Club Tijuana,1,0,11,3,14,6,2,8
+1150242,2024-01-31 01:00:00+00:00,E. Morales,Mazatlán,Leon,2,2,4,4,8,1,3,4
+1150243,2024-01-31 03:05:00+00:00,F. Hernández,Guadalajara Chivas,Toluca,3,2,5,7,12,4,4,8
+1150245,2024-01-31 03:00:00+00:00,B. González,Santos Laguna,Puebla,3,0,3,7,10,2,3,5
+1150244,2024-02-01 01:00:00+00:00,D. Quintero,CF Pachuca,Atlas,4,3,7,4,11,2,6,8
+1150246,2024-02-01 03:00:00+00:00,C. Ramos,U.N.A.M. - Pumas,Necaxa,2,2,11,4,15,1,7,8
+1150247,2024-02-03 01:00:00+00:00,J. Camacho,Club Queretaro,Cruz Azul,1,3,2,7,9,5,1,6
+1150248,2024-02-03 03:00:00+00:00,F. Guerrero,Puebla,Mazatlán,3,2,6,7,13,5,3,8
+1150249,2024-02-03 23:00:00+00:00,I. Lopez,Toluca,Leon,4,1,6,3,9,3,0,3
+1150250,2024-02-04 23:06:00+00:00,M. Ortíz,FC Juarez,Necaxa,2,2,6,3,9,2,3,5
+1150251,2024-02-04 01:10:00+00:00,G. Pacheco,CF Pachuca,Club Tijuana,3,2,11,5,16,4,6,10
+1150252,2024-02-04 01:05:00+00:00,F. Hernández,Tigres UANL,U.N.A.M. - Pumas,2,2,6,4,10,1,4,5
+1150253,2024-02-04 03:10:00+00:00,C. Ramos,Club America,Monterrey,1,1,5,4,9,1,4,5
+1150254,2024-02-05 00:00:00+00:00,M. Terrazas,Atlas,Santos Laguna,3,0,10,4,14,3,1,4
+1150255,2024-02-05 01:00:00+00:00,Ó. Mejía,Atletico San Luis,Guadalajara Chivas,0,2,6,5,11,5,3,8
+1150226,2024-02-08 03:10:00+00:00,A. Quirarte,CF Pachuca,Leon,3,2,4,3,7,2,4,6
+1150256,2024-02-10 01:00:00+00:00,V. Cáceres,Mazatlán,Atlas,2,0,5,4,9,2,3,5
+1150257,2024-02-10 03:10:00+00:00,A. Escobedo,Club Tijuana,Club Queretaro,1,1,3,4,7,3,4,7
+1150258,2024-02-10 23:00:00+00:00,D. Quintero,Necaxa,Toluca,3,3,2,6,8,1,2,3
+1150259,2024-02-10 23:05:00+00:00,V. Arce,Guadalajara Chivas,FC Juarez,2,1,3,3,6,4,2,6
+1150260,2024-02-11 01:05:00+00:00,F. Guerrero,Cruz Azul,Atletico San Luis,3,0,3,5,8,0,2,2
+1150261,2024-02-11 01:00:00+00:00,M. Ortíz,Leon,Club America,0,1,6,13,19,3,3,6
+1150262,2024-02-11 03:10:00+00:00,F. Hernández,Monterrey,CF Pachuca,3,2,5,2,7,1,2,3
+1150263,2024-02-11 03:10:00+00:00,Ó. Mejía,Santos Laguna,Tigres UANL,0,3,9,1,10,2,5,7
+1150264,2024-02-11 18:00:00+00:00,G. Pacheco,U.N.A.M. - Pumas,Puebla,3,0,5,3,8,0,4,4
+1150283,2024-02-15 03:00:00+00:00,J. Lopez,Atlas,U.N.A.M. - Pumas,0,0,6,1,7,0,4,4
+1150265,2024-02-17 01:00:00+00:00,F. Hernández,Club Queretaro,Necaxa,1,1,5,6,11,5,3,8
+1150266,2024-02-17 03:00:00+00:00,A. Escobedo,Mazatlán,Guadalajara Chivas,2,2,10,2,12,1,4,5
+1150268,2024-02-17 23:00:00+00:00,D. Quintero,Atletico San Luis,Club Tijuana,3,3,5,1,6,1,3,4
+1150269,2024-02-18 01:00:00+00:00,V. Cáceres,CF Pachuca,Club America,2,1,4,5,9,4,1,5
+1150270,2024-02-18 03:05:00+00:00,M. Ortíz,Cruz Azul,Tigres UANL,1,0,10,5,15,4,6,10
+1150271,2024-02-18 22:00:00+00:00,Ó. Mejía,Atlas,Leon,0,1,8,2,10,0,5,5
+1150272,2024-02-19 00:05:00+00:00,I. Lopez,U.N.A.M. - Pumas,Santos Laguna,3,0,10,5,15,4,1,5
+1150273,2024-02-19 02:10:00+00:00,L. Santander,Monterrey,Toluca,0,0,4,4,8,0,2,2
+1150284,2024-02-21 01:00:00+00:00,M. Quintero,Puebla,CF Pachuca,1,4,7,5,12,4,2,6
+1150285,2024-02-21 03:00:00+00:00,B. González,Necaxa,Guadalajara Chivas,1,0,4,11,15,4,3,7
+1150286,2024-02-22 01:00:00+00:00,A. Quirarte,Toluca,Santos Laguna,1,0,5,4,9,3,2,5
+1150287,2024-02-22 03:00:00+00:00,D. Montaño,Leon,Cruz Azul,2,3,4,4,8,2,3,5
+1150288,2024-02-22 03:00:00+00:00,I. Lopez,Club America,Mazatlán,2,2,7,3,10,0,3,3
+1150274,2024-02-24 01:00:00+00:00,J. Lopez,Puebla,Club Queretaro,0,2,6,5,11,1,3,4
+1150275,2024-02-24 03:00:00+00:00,J. Camacho,Necaxa,CF Pachuca,1,1,1,6,7,2,3,5
+1150276,2024-02-24 03:10:00+00:00,M. Ortíz,FC Juarez,Monterrey,0,3,0,5,5,1,1,2
+1150277,2024-02-24 23:00:00+00:00,I. López,Leon,Atletico San Luis,1,0,7,7,14,4,0,4
+1150278,2024-02-25 01:05:00+00:00,Ó. Macías,Guadalajara Chivas,U.N.A.M. - Pumas,3,1,4,6,10,0,1,1
+1150279,2024-02-25 01:00:00+00:00,C. Ramos,Tigres UANL,Atlas,1,1,5,3,8,1,3,4
+1150280,2024-02-25 03:10:00+00:00,Ó. Mejía,Club America,Cruz Azul,1,0,2,12,14,0,3,3
+1150281,2024-02-25 18:00:00+00:00,D. Montaño,Toluca,Club Tijuana,2,0,3,6,9,2,2,4
+1150282,2024-02-26 00:00:00+00:00,F. Guerrero,Santos Laguna,Mazatlán,1,0,3,5,8,2,2,4
+1150289,2024-02-28 01:00:00+00:00,E. Morales,Club Queretaro,Atletico San Luis,4,1,3,5,8,4,3,7
+1150290,2024-02-29 01:00:00+00:00,J. Lopez,Tigres UANL,FC Juarez,1,0,7,1,8,1,3,4
+1150291,2024-02-29 03:00:00+00:00,Ó. Mejía,Club Tijuana,Monterrey,1,1,5,8,13,4,3,7
+1150292,2024-03-02 01:00:00+00:00,B. González,Club Queretaro,Santos Laguna,0,1,7,3,10,5,4,9
+1150293,2024-03-02 01:00:00+00:00,V. Arce,Atletico San Luis,Puebla,4,0,2,4,6,2,2,4
+1150294,2024-03-02 03:00:00+00:00,M. Ortíz,Mazatlán,Necaxa,2,1,5,1,6,2,6,8
+1150295,2024-03-02 23:00:00+00:00,A. Escobedo,Toluca,Tigres UANL,2,1,6,1,7,2,5,7
+1150296,2024-03-03 01:00:00+00:00,A. Quirarte,CF Pachuca,FC Juarez,3,2,5,3,8,2,4,6
+1150297,2024-03-03 01:05:00+00:00,C. Ramos,Cruz Azul,Guadalajara Chivas,3,0,1,5,6,0,2,2
+1150298,2024-03-03 03:10:00+00:00,F. Guerrero,Atlas,Club America,1,5,1,7,8,4,0,4
+1150299,2024-03-04 01:00:00+00:00,V. Cáceres,Monterrey,U.N.A.M. - Pumas,3,0,8,5,13,0,2,2
+1150300,2024-03-04 03:00:00+00:00,G. Pacheco,Club Tijuana,Leon,1,1,6,2,8,2,3,5
+1150301,2024-03-09 01:00:00+00:00,L. Santander,Puebla,Atlas,2,2,4,10,14,1,2,3
+1150302,2024-03-09 03:10:00+00:00,F. Guerrero,FC Juarez,Toluca,1,1,3,6,9,0,0,0
+1150303,2024-03-09 03:00:00+00:00,F. Hernández,Necaxa,Atletico San Luis,3,1,3,5,8,3,6,9
+1150304,2024-03-09 23:05:00+00:00,D. Quintero,Guadalajara Chivas,Leon,1,2,7,1,8,4,1,5
+1150305,2024-03-10 01:00:00+00:00,K. Garcia,CF Pachuca,Club Queretaro,1,2,8,2,10,0,6,6
+1150306,2024-03-10 01:00:00+00:00,A. Escobedo,Santos Laguna,Cruz Azul,3,0,2,9,11,7,6,13
+1150307,2024-03-10 03:00:00+00:00,V. Cáceres,Club America,Tigres UANL,2,0,4,9,13,2,0,2
+1150308,2024-03-10 18:00:00+00:00,M. Ortíz,U.N.A.M. - Pumas,Club Tijuana,3,3,8,3,11,5,2,7
+1150309,2024-03-11 01:00:00+00:00,C. Ramos,Monterrey,Mazatlán,2,1,3,4,7,2,2,4
+1150310,2024-03-16 01:00:00+00:00,L. Santander,Club Queretaro,FC Juarez,1,0,7,5,12,5,2,7
+1150311,2024-03-16 03:00:00+00:00,D. Quintero,Club Tijuana,Santos Laguna,2,2,10,4,14,4,0,4
+1150312,2024-03-16 23:00:00+00:00,F. Guerrero,Cruz Azul,Necaxa,1,2,14,1,15,4,2,6
+1150313,2024-03-17 01:00:00+00:00,K. Hernández,Leon,Puebla,2,1,3,11,14,1,5,6
+1150315,2024-03-17 01:00:00+00:00,Ó. Mejía,Tigres UANL,Mazatlán,5,1,4,9,13,1,0,1
+1150316,2024-03-17 03:05:00+00:00,F. Hernández,Guadalajara Chivas,Club America,0,0,3,6,9,4,2,6
+1150317,2024-03-17 23:00:00+00:00,I. Lopez,Atlas,Monterrey,1,2,7,3,10,4,1,5
+1150314,2024-03-18 01:00:00+00:00,C. Ramos,Toluca,U.N.A.M. - Pumas,3,0,6,4,10,1,3,4
+1150318,2024-03-18 01:00:00+00:00,V. Cáceres,Atletico San Luis,CF Pachuca,2,1,3,11,14,6,1,7
+1150267,2024-03-24 01:00:00+00:00,C. Ramos,FC Juarez,Puebla,4,3,6,4,10,1,0,1
+1150319,2024-03-30 01:00:00+00:00,J. Camacho,Puebla,Tigres UANL,2,3,8,10,18,1,1,2
+1150320,2024-03-30 03:00:00+00:00,F. Guerrero,Mazatlán,Club Tijuana,2,0,3,3,6,1,3,4
+1150321,2024-03-30 02:00:00+00:00,J. Lopez,Club America,Atletico San Luis,2,1,9,8,17,1,1,2
+1150322,2024-03-31 01:00:00+00:00,D. Quintero,CF Pachuca,Toluca,2,3,4,1,5,5,2,7
+1150323,2024-03-31 01:00:00+00:00,A. Escobedo,Monterrey,Guadalajara Chivas,0,2,4,3,7,5,0,5
+1150324,2024-03-31 03:05:00+00:00,F. Hernández,U.N.A.M. - Pumas,Cruz Azul,0,0,5,1,6,2,2,4
+1150325,2024-03-31 23:00:00+00:00,C. Ramos,Atlas,Club Queretaro,2,3,5,6,11,6,2,8
+1150326,2024-04-01 01:00:00+00:00,V. Cáceres,Necaxa,Leon,1,2,3,4,7,1,1,2
+1150327,2024-04-01 01:36:00+00:00,E. Miranda,FC Juarez,Santos Laguna,2,1,5,2,7,3,0,3
+1150328,2024-04-06 01:00:00+00:00,V. Cáceres,Mazatlán,U.N.A.M. - Pumas,0,4,5,7,12,2,5,7
+1150329,2024-04-06 03:10:00+00:00,I. Lopez,Club Tijuana,Necaxa,2,3,5,3,8,3,3,6
+1150330,2024-04-06 23:00:00+00:00,A. Escobedo,Leon,Club Queretaro,0,2,9,4,13,0,0,0
+1150331,2024-04-07 01:05:00+00:00,F. Guerrero,Guadalajara Chivas,Puebla,3,2,6,2,8,2,2,4
+1150332,2024-04-07 01:00:00+00:00,F. Hernández,Tigres UANL,CF Pachuca,0,3,6,1,7,3,2,5
+1150333,2024-04-07 03:05:00+00:00,M. Ortíz,Cruz Azul,Monterrey,2,1,9,3,12,2,4,6
+1150334,2024-04-07 03:05:00+00:00,L. Santander,Santos Laguna,Club America,1,1,2,10,12,2,3,5
+1150335,2024-04-07 18:00:00+00:00,K. Hernández,Toluca,Atlas,4,1,7,1,8,0,3,3
+1150336,2024-04-08 00:00:00+00:00,Ó. Mejía,Atletico San Luis,FC Juarez,2,3,4,6,10,1,4,5
+1150337,2024-04-13 01:06:00+00:00,M. Ortíz,Club Queretaro,Mazatlán,0,2,8,2,10,3,3,6
+1150338,2024-04-13 03:00:00+00:00,F. Hernández,Necaxa,Santos Laguna,2,0,3,8,11,1,1,2
+1150339,2024-04-13 03:00:00+00:00,K. Garcia,Puebla,Cruz Azul,0,1,2,3,5,5,0,5
+1150340,2024-04-13 23:00:00+00:00,J. Lopez,CF Pachuca,Guadalajara Chivas,0,1,11,1,12,2,6,8
+1150341,2024-04-14 01:05:00+00:00,A. Escobedo,Club America,Toluca,5,1,3,8,11,4,2,6
+1150342,2024-04-14 03:10:00+00:00,C. Ramos,Monterrey,Tigres UANL,3,3,12,2,14,1,7,8
+1150343,2024-04-15 00:00:00+00:00,V. Cáceres,Atlas,Atletico San Luis,2,1,13,4,17,0,2,2
+1150344,2024-04-15 00:00:00+00:00,D. Quintero,U.N.A.M. - Pumas,Leon,1,0,7,4,11,1,3,4
+1150345,2024-04-15 02:06:00+00:00,L. Santander,FC Juarez,Club Tijuana,0,1,5,4,9,1,1,2
+1150346,2024-04-20 01:00:00+00:00,F. Hernández,Mazatlán,FC Juarez,0,2,8,7,15,2,0,2
+1150347,2024-04-20 03:00:00+00:00,D. Quintero,Atletico San Luis,Toluca,1,5,9,3,12,3,2,5
+1150348,2024-04-20 03:10:00+00:00,A. Escobedo,Club Tijuana,Puebla,3,1,8,1,9,3,4,7
+1150349,2024-04-20 23:00:00+00:00,V. Cáceres,Leon,Monterrey,2,0,2,3,5,2,1,3
+1150350,2024-04-21 01:05:00+00:00,M. Ortíz,Tigres UANL,Necaxa,5,2,4,1,5,2,3,5
+1150351,2024-04-21 01:05:00+00:00,Ó. Mejía,Guadalajara Chivas,Club Queretaro,2,0,6,0,6,2,5,7
+1150352,2024-04-21 03:10:00+00:00,F. Guerrero,U.N.A.M. - Pumas,Club America,2,1,2,3,5,5,7,12
+1150354,2024-04-21 01:05:00+00:00,I. Lopez,Santos Laguna,CF Pachuca,0,2,1,6,7,0,3,3
+1150353,2024-04-22 00:00:00+00:00,L. Santander,Cruz Azul,Atlas,2,2,11,0,11,2,1,3
+1150355,2024-04-27 01:00:00+00:00,G. Pacheco,Puebla,Club America,1,2,4,3,7,1,0,1
+1150356,2024-04-27 03:10:00+00:00,I. Lopez,Club Queretaro,U.N.A.M. - Pumas,1,1,4,5,9,4,1,5
+1150357,2024-04-27 23:06:00+00:00,A. Escobedo,FC Juarez,Leon,1,1,9,11,20,2,4,6
+1150358,2024-04-28 01:00:00+00:00,F. Hernández,Tigres UANL,Club Tijuana,4,1,4,5,9,2,3,5
+1150359,2024-04-28 01:10:00+00:00,L. Santander,CF Pachuca,Mazatlán,1,1,6,5,11,1,1,2
+1150360,2024-04-28 01:00:00+00:00,F. Guerrero,Toluca,Cruz Azul,0,1,6,4,10,0,2,2
+1150361,2024-04-28 03:10:00+00:00,M. Ortíz,Atlas,Guadalajara Chivas,0,1,5,5,10,5,3,8
+1150362,2024-04-29 00:00:00+00:00,J. Lopez,Necaxa,Monterrey,2,5,5,3,8,5,2,7
+1150363,2024-04-29 00:00:00+00:00,I. López,Santos Laguna,Atletico San Luis,0,3,3,5,8,4,4,8
+1198553,2024-05-06 02:06:00+00:00,F. Hernández,CF Pachuca,Necaxa,2,1,9,4,13,7,5,12
+1197967,2024-05-09 01:05:00+00:00,Ó. Mejía,Guadalajara Chivas,Toluca,1,0,3,3,6,1,1,2
+1198984,2024-05-09 03:16:00+00:00,F. Guerrero,CF Pachuca,Club America,1,1,8,4,12,1,1,2
+1197969,2024-05-10 03:10:00+00:00,M. Ortíz,Tigres UANL,Monterrey,1,2,2,0,2,3,5,8
+1198551,2024-05-10 01:00:00+00:00,L. Santander,U.N.A.M. - Pumas,Cruz Azul,0,2,7,2,9,2,2,4
+1197968,2024-05-12 02:10:00+00:00,C. Ramos,Toluca,Guadalajara Chivas,0,0,7,5,12,5,3,8
+1198985,2024-05-12 00:00:00+00:00,V. Cáceres,Club America,CF Pachuca,1,1,11,2,13,4,3,7
+1197970,2024-05-13 03:10:00+00:00,F. Hernández,Monterrey,Tigres UANL,1,1,3,5,8,2,3,5
+1198552,2024-05-13 01:00:00+00:00,D. Quintero,Cruz Azul,U.N.A.M. - Pumas,2,2,2,5,7,2,7,9
+1199963,2024-05-16 02:05:00+00:00,Ó. Mejía,Guadalajara Chivas,Club America,0,0,5,3,8,1,1,2
+1200174,2024-05-17 03:00:00+00:00,D. Quintero,Monterrey,Cruz Azul,0,1,8,2,10,1,1,2
+1199964,2024-05-19 02:00:00+00:00,C. Ramos,Club America,Guadalajara Chivas,1,0,4,3,7,0,2,2
+1200175,2024-05-20 00:00:00+00:00,F. Guerrero,Cruz Azul,Monterrey,1,2,1,5,6,1,4,5
+1200843,2024-05-24 02:00:00+00:00,F. Hernández,Cruz Azul,Club America,1,1,7,3,10,0,0,0
+1200844,2024-05-27 01:00:00+00:00,M. Ortíz,Club America,Cruz Azul,1,0,3,6,9,3,1,4
+1206004,2024-07-05 22:45:00+00:00,J. Camacho,Puebla,Santos Laguna,1,0,8,1,9,1,3,4
+1206003,2024-07-06 01:00:00+00:00,L. García,Club Queretaro,Club Tijuana,1,2,4,7,11,3,0,3
+1206005,2024-07-06 03:10:00+00:00,Ó. Macías,FC Juarez,Atlas,2,2,2,5,7,2,2,4
+1206006,2024-07-06 23:00:00+00:00,I. López,Atletico San Luis,Club America,2,1,5,2,7,2,2,4
+1206007,2024-07-07 01:00:00+00:00,V. Arce,Tigres UANL,Necaxa,1,0,7,5,12,0,1,1
+1206008,2024-07-07 01:00:00+00:00,J. Lopez,Guadalajara Chivas,Toluca,0,0,4,6,10,1,2,3
+1206009,2024-07-07 03:00:00+00:00,K. Hernández,Cruz Azul,Mazatlán,1,0,6,0,6,5,1,6
+1206010,2024-07-07 18:00:00+00:00,M. Quintero,U.N.A.M. - Pumas,Leon,4,1,6,3,9,1,3,4
+1206011,2024-07-08 01:06:00+00:00,I. Lopez,CF Pachuca,Monterrey,0,1,8,1,9,3,4,7
+1206012,2024-07-13 01:00:00+00:00,K. Garcia,Club America,Club Queretaro,3,1,1,5,6,1,2,3
+1206013,2024-07-13 03:00:00+00:00,M. Molina,Mazatlán,Atletico San Luis,2,2,5,4,9,2,1,3
+1206014,2024-07-13 03:00:00+00:00,I. López,Club Tijuana,Guadalajara Chivas,4,2,2,4,6,2,2,4
+1206015,2024-07-13 03:05:00+00:00,J. Camacho,Atlas,Tigres UANL,1,1,4,3,7,1,1,2
+1206016,2024-07-13 23:00:00+00:00,A. Quirarte,Necaxa,Puebla,4,1,5,5,10,2,0,2
+1206017,2024-07-13 23:00:00+00:00,S. Pérez Villalobos,Leon,CF Pachuca,0,0,9,1,10,5,5,10
+1206018,2024-07-14 01:10:00+00:00,V. Arce,Toluca,FC Juarez,3,2,7,3,10,0,3,3
+1206019,2024-07-14 01:25:00+00:00,M. Terrazas,Santos Laguna,U.N.A.M. - Pumas,1,1,4,11,15,6,2,8
+1206020,2024-07-14 03:10:00+00:00,M. Quintero,Monterrey,Cruz Azul,0,4,2,3,5,2,1,3
+1206021,2024-07-17 01:00:00+00:00,F. Hernández,Club Queretaro,Guadalajara Chivas,0,2,4,3,7,2,1,3
+1206022,2024-07-17 01:00:00+00:00,L. Santander,Atlas,Santos Laguna,1,0,8,4,12,1,2,3
+1206023,2024-07-17 03:00:00+00:00,M. Ortíz,Puebla,Leon,2,2,5,5,10,2,1,3
+1206024,2024-07-17 01:00:00+00:00,V. Cáceres,CF Pachuca,Atletico San Luis,2,0,7,11,18,2,1,3
+1206025,2024-07-17 03:05:00+00:00,I. Lopez,Cruz Azul,Club Tijuana,3,0,7,1,8,1,2,3
+1206026,2024-07-18 01:06:00+00:00,D. Quintero,FC Juarez,U.N.A.M. - Pumas,1,2,5,4,9,4,3,7
+1206027,2024-07-18 03:00:00+00:00,A. Escobedo,Toluca,Mazatlán,3,0,6,5,11,2,2,4
+1206028,2024-07-18 03:00:00+00:00,F. Guerrero,Tigres UANL,Club America,1,0,13,1,14,3,1,4
+1206029,2024-07-18 01:00:00+00:00,J. Lopez,Necaxa,Monterrey,0,1,3,3,6,5,1,6
+1206030,2024-07-20 01:00:00+00:00,M. Terrazas,Atletico San Luis,Club Tijuana,1,1,7,2,9,1,2,3
+1206031,2024-07-20 03:05:00+00:00,I. López,Puebla,Atlas,1,2,6,4,10,2,3,5
+1206032,2024-07-20 23:05:00+00:00,Ó. Mejía,Guadalajara Chivas,Mazatlán,2,0,4,5,9,2,4,6
+1206033,2024-07-21 01:00:00+00:00,M. Ortíz,Santos Laguna,Tigres UANL,0,3,7,6,13,3,4,7
+1206034,2024-07-21 01:00:00+00:00,V. Cáceres,Monterrey,Club Queretaro,2,1,6,4,10,1,3,4
+1206035,2024-07-21 03:10:00+00:00,M. Quintero,FC Juarez,Club America,1,2,4,6,10,1,0,1
+1206036,2024-07-21 03:05:00+00:00,J. Lopez,Cruz Azul,Toluca,1,1,10,3,13,2,2,4
+1206037,2024-07-21 23:00:00+00:00,V. Arce,U.N.A.M. - Pumas,CF Pachuca,2,0,4,6,10,5,5,10
+1206038,2024-07-22 01:05:00+00:00,L. García,Leon,Necaxa,1,1,4,4,8,2,1,3
+1206140,2024-08-17 01:00:00+00:00,S. Pérez Villalobos,Puebla,Monterrey,1,2,6,3,9,2,3,5
+1206074,2024-08-19 00:05:00+00:00,M. Quintero,Club Tijuana,Santos Laguna,3,1,1,3,4,1,5,6
+1206115,2024-08-19 02:00:00+00:00,J. Lopez,Atletico San Luis,Club Queretaro,4,0,4,5,9,2,8,10
+1206039,2024-08-24 01:00:00+00:00,G. Pacheco,Club Queretaro,Cruz Azul,0,2,1,6,7,0,4,4
+1206040,2024-08-24 02:00:00+00:00,M. Ortíz,Mazatlán,CF Pachuca,3,0,8,0,8,1,7,8
+1206041,2024-08-24 03:05:00+00:00,C. Ramos,Club Tijuana,Monterrey,2,2,3,2,5,1,2,3
+1206042,2024-08-24 23:00:00+00:00,M. Molina,Necaxa,FC Juarez,3,0,5,3,8,1,4,5
+1206043,2024-08-25 01:00:00+00:00,A. Escobedo,Leon,Santos Laguna,1,1,5,5,10,3,2,5
+1206044,2024-08-25 01:00:00+00:00,F. Hernández,Atlas,U.N.A.M. - Pumas,2,1,4,5,9,5,3,8
+1206045,2024-08-25 01:00:00+00:00,D. Quintero,Tigres UANL,Guadalajara Chivas,1,1,4,3,7,3,2,5
+1206046,2024-08-25 03:05:00+00:00,L. Santander,Club America,Puebla,0,1,7,3,10,0,1,1
+1206047,2024-08-25 18:00:00+00:00,K. Garcia,Toluca,Atletico San Luis,2,1,2,4,6,4,2,6
+1206048,2024-08-31 01:00:00+00:00,J. Camacho,Atletico San Luis,Atlas,2,1,3,0,3,1,2,3
+1206049,2024-08-31 02:00:00+00:00,I. Lopez,Mazatlán,Puebla,1,1,14,1,15,1,8,9
+1206050,2024-08-31 03:05:00+00:00,V. Cáceres,Club Tijuana,Leon,2,1,7,3,10,3,5,8
+1206051,2024-08-31 23:00:00+00:00,I. López,CF Pachuca,Club Queretaro,1,1,10,1,11,2,8,10
+1206052,2024-08-31 23:05:00+00:00,A. Escobedo,Guadalajara Chivas,FC Juarez,5,0,6,6,12,1,6,7
+1206053,2024-09-01 01:00:00+00:00,F. Guerrero,Monterrey,Toluca,1,2,3,1,4,2,3,5
+1206054,2024-09-01 03:10:00+00:00,C. Ramos,Cruz Azul,Club America,4,1,5,5,10,3,3,6
+1206055,2024-09-01 23:00:00+00:00,Ó. Mejía,U.N.A.M. - Pumas,Tigres UANL,1,3,5,5,10,3,4,7
+1206056,2024-09-02 01:05:00+00:00,G. Pacheco,Santos Laguna,Necaxa,3,2,7,6,13,2,0,2
+1206057,2024-09-14 00:00:00+00:00,V. Arce,Puebla,Club Queretaro,2,1,3,3,6,2,0,2
+1206058,2024-09-14 01:00:00+00:00,L. Santander,Atlas,CF Pachuca,2,0,5,7,12,3,5,8
+1206059,2024-09-14 02:10:00+00:00,F. Hernández,FC Juarez,Mazatlán,1,0,4,14,18,5,4,9
+1206060,2024-09-14 02:10:00+00:00,M. Molina,Tigres UANL,Atletico San Luis,1,0,3,3,6,4,0,4
+1206061,2024-09-14 03:00:00+00:00,K. Garcia,Necaxa,U.N.A.M. - Pumas,2,0,3,4,7,3,3,6
+1206062,2024-09-14 22:45:00+00:00,I. Lopez,Toluca,Club Tijuana,4,0,9,4,13,1,1,2
+1206063,2024-09-15 00:50:00+00:00,V. Cáceres,Club America,Guadalajara Chivas,1,0,4,8,12,4,2,6
+1206064,2024-09-15 02:35:00+00:00,M. Quintero,Leon,Cruz Azul,1,2,5,5,10,2,3,5
+1206065,2024-09-15 03:00:00+00:00,E. Miranda,Santos Laguna,Monterrey,0,2,9,5,14,1,2,3
+1206066,2024-09-18 01:00:00+00:00,Ó. Mejía,Atletico San Luis,Cruz Azul,3,1,4,3,7,1,2,3
+1206067,2024-09-18 01:00:00+00:00,J. Lopez,CF Pachuca,Toluca,2,2,6,8,14,4,5,9
+1206068,2024-09-18 03:05:00+00:00,I. López,U.N.A.M. - Pumas,Puebla,1,0,7,4,11,0,4,4
+1206069,2024-09-18 03:00:00+00:00,F. Guerrero,Club Queretaro,Tigres UANL,1,0,3,14,17,1,1,2
+1206070,2024-09-18 01:00:00+00:00,A. Escobedo,Club America,Atlas,3,0,4,0,4,3,5,8
+1206071,2024-09-19 01:05:00+00:00,G. Pacheco,Guadalajara Chivas,Leon,2,0,4,5,9,2,3,5
+1206072,2024-09-19 02:00:00+00:00,D. Quintero,Mazatlán,Necaxa,0,0,9,4,13,2,2,4
+1206073,2024-09-19 03:00:00+00:00,S. Pérez Villalobos,Monterrey,FC Juarez,3,2,3,6,9,4,5,9
+1206075,2024-09-21 01:00:00+00:00,J. Lopez,Atlas,Club Queretaro,0,1,10,3,13,1,3,4
+1206076,2024-09-21 01:00:00+00:00,M. Quintero,Puebla,CF Pachuca,2,3,5,6,11,1,1,2
+1206077,2024-09-21 23:00:00+00:00,L. García,Leon,Atletico San Luis,1,0,8,3,11,2,1,3
+1206078,2024-09-22 01:00:00+00:00,Ó. Mejía,Necaxa,Club America,1,1,3,6,9,4,1,5
+1206079,2024-09-22 01:00:00+00:00,I. Lopez,Monterrey,Mazatlán,0,0,2,12,14,4,3,7
+1206080,2024-09-22 03:05:00+00:00,D. Quintero,Cruz Azul,Guadalajara Chivas,1,0,8,8,16,1,1,2
+1206081,2024-09-22 23:00:00+00:00,L. Santander,U.N.A.M. - Pumas,Club Tijuana,1,0,5,2,7,1,2,3
+1206082,2024-09-23 01:10:00+00:00,V. Cáceres,FC Juarez,Tigres UANL,0,1,0,4,4,2,3,5
+1206083,2024-09-23 01:05:00+00:00,I. López,Santos Laguna,Toluca,2,0,4,13,17,4,2,6
+1206084,2024-09-28 00:00:00+00:00,Ó. Mejía,Puebla,FC Juarez,2,3,9,8,17,4,2,6
+1206085,2024-09-28 01:00:00+00:00,J. Camacho,Club Queretaro,Necaxa,0,0,7,9,16,3,2,5
+1206086,2024-09-28 02:00:00+00:00,D. Quintero,Tigres UANL,Leon,2,2,9,2,11,3,4,7
+1206087,2024-09-28 03:05:00+00:00,V. Cáceres,Club Tijuana,Mazatlán,1,0,3,7,10,1,1,2
+1206088,2024-09-28 23:00:00+00:00,M. Terrazas,Toluca,Atlas,4,1,1,2,3,2,1,3
+1206089,2024-09-29 01:05:00+00:00,A. Escobedo,CF Pachuca,Cruz Azul,2,4,3,3,6,6,3,9
+1206090,2024-09-29 03:05:00+00:00,J. Lopez,Guadalajara Chivas,Monterrey,1,1,8,1,9,2,5,7
+1206091,2024-09-29 03:10:00+00:00,M. Quintero,Atletico San Luis,Santos Laguna,3,1,3,2,5,1,2,3
+1206092,2024-09-30 00:00:00+00:00,F. Hernández,Club America,U.N.A.M. - Pumas,0,1,4,3,7,3,3,6
+1206093,2024-10-05 02:00:00+00:00,Ó. Mejía,Mazatlán,Club Queretaro,2,2,4,7,11,2,2,4
+1206094,2024-10-05 03:00:00+00:00,I. López,Club Tijuana,CF Pachuca,2,1,3,4,7,4,4,8
+1206095,2024-10-05 23:00:00+00:00,V. Arce,Tigres UANL,Puebla,1,0,4,3,7,1,2,3
+1206096,2024-10-05 23:00:00+00:00,V. Cáceres,Atletico San Luis,Monterrey,1,0,6,7,13,3,0,3
+1206100,2024-10-05 23:00:00+00:00,G. Pacheco,Cruz Azul,Necaxa,3,0,6,4,10,0,0,0
+1206097,2024-10-06 01:05:00+00:00,F. Hernández,Guadalajara Chivas,Atlas,2,3,8,6,14,3,3,6
+1206098,2024-10-06 03:00:00+00:00,C. Ramos,Leon,Club America,1,1,4,4,8,3,6,9
+1206099,2024-10-06 01:00:00+00:00,A. Escobedo,Toluca,U.N.A.M. - Pumas,1,1,5,5,10,3,1,4
+1206101,2024-10-07 02:05:00+00:00,I. Lopez,Santos Laguna,FC Juarez,0,2,6,8,14,3,4,7
+1206102,2024-10-19 01:00:00+00:00,D. Quintero,Atlas,Mazatlán,0,0,5,6,11,2,3,5
+1206103,2024-10-19 01:00:00+00:00,M. Quintero,Club Queretaro,Toluca,0,1,8,4,12,2,1,3
+1206104,2024-10-19 03:00:00+00:00,A. Escobedo,Necaxa,Club Tijuana,1,2,9,0,9,3,2,5
+1206105,2024-10-19 03:05:00+00:00,M. Terrazas,Puebla,Cruz Azul,1,2,1,9,10,1,3,4
+1206106,2024-10-19 23:00:00+00:00,C. Ramos,CF Pachuca,Guadalajara Chivas,0,2,14,6,20,2,3,5
+1206107,2024-10-20 01:06:00+00:00,V. Cáceres,FC Juarez,Leon,2,3,10,4,14,0,0,0
+1206108,2024-10-20 01:05:00+00:00,J. Lopez,Club America,Santos Laguna,3,0,8,2,10,1,5,6
+1206109,2024-10-20 03:10:00+00:00,Ó. Mejía,Monterrey,Tigres UANL,4,2,4,4,8,1,0,1
+1206110,2024-10-20 18:00:00+00:00,G. Pacheco,U.N.A.M. - Pumas,Atletico San Luis,3,0,7,3,10,3,1,4
+1206111,2024-10-23 01:05:00+00:00,V. Cáceres,Guadalajara Chivas,Necaxa,3,2,8,2,10,1,0,1
+1206112,2024-10-23 01:00:00+00:00,D. Quintero,Santos Laguna,CF Pachuca,1,1,5,8,13,4,3,7
+1206113,2024-10-23 03:06:00+00:00,C. Ramos,Mazatlán,Tigres UANL,2,0,4,10,14,4,0,4
+1206114,2024-10-23 03:05:00+00:00,J. Camacho,Toluca,Puebla,5,0,5,3,8,2,0,2
+1206116,2024-10-24 01:00:00+00:00,V. Arce,Cruz Azul,FC Juarez,4,0,5,0,5,1,1,2
+1206117,2024-10-24 01:00:00+00:00,A. Escobedo,Monterrey,U.N.A.M. - Pumas,0,0,4,2,6,0,0,0
+1206118,2024-10-24 03:00:00+00:00,Ó. Mejía,Leon,Atlas,0,0,8,8,16,0,0,0
+1206119,2024-10-24 03:05:00+00:00,F. Hernández,Club Tijuana,Club America,2,2,5,3,8,0,3,3
+1206120,2024-10-26 01:00:00+00:00,J. Camacho,Santos Laguna,Mazatlán,0,0,1,7,8,2,1,3
+1206121,2024-10-26 03:00:00+00:00,I. Lopez,Puebla,Guadalajara Chivas,1,0,3,7,10,1,0,1
+1206122,2024-10-26 23:00:00+00:00,A. Escobedo,Leon,Club Queretaro,4,0,3,4,7,2,0,2
+1206123,2024-10-27 01:00:00+00:00,C. Ramos,U.N.A.M. - Pumas,Cruz Azul,0,2,2,7,9,2,2,4
+1206124,2024-10-27 03:00:00+00:00,V. Cáceres,Tigres UANL,CF Pachuca,2,1,2,7,9,5,2,7
+1206125,2024-10-27 03:05:00+00:00,K. Garcia,Atlas,Club Tijuana,0,0,5,8,13,1,0,1
+1206126,2024-10-28 00:00:00+00:00,F. Guerrero,Necaxa,Toluca,1,3,13,3,16,1,0,1
+1206127,2024-10-28 00:06:00+00:00,M. Ortíz,FC Juarez,Atletico San Luis,2,4,4,3,7,1,1,2
+1206128,2024-10-28 02:05:00+00:00,D. Quintero,Club America,Monterrey,2,1,6,6,12,1,3,4
+1206129,2024-11-02 01:00:00+00:00,C. Ramos,Club Queretaro,FC Juarez,1,2,7,5,12,4,5,9
+1206130,2024-11-02 03:00:00+00:00,A. Escobedo,Mazatlán,Club America,0,5,7,3,10,1,0,1
+1206131,2024-11-02 03:05:00+00:00,F. Guerrero,Club Tijuana,Tigres UANL,0,3,10,6,16,1,3,4
+1206132,2024-11-02 23:00:00+00:00,Ó. Mejía,Atletico San Luis,Puebla,2,0,8,7,15,3,2,5
+1206133,2024-11-02 23:00:00+00:00,G. Pacheco,Toluca,Leon,2,2,4,6,10,7,2,9
+1206134,2024-11-03 01:05:00+00:00,M. Ortíz,Guadalajara Chivas,U.N.A.M. - Pumas,0,0,5,4,9,0,0,0
+1206135,2024-11-03 01:05:00+00:00,F. Hernández,Monterrey,Atlas,4,0,6,5,11,2,2,4
+1206136,2024-11-03 03:06:00+00:00,I. Lopez,CF Pachuca,Necaxa,6,2,3,5,8,1,2,3
+1206137,2024-11-03 03:10:00+00:00,K. Hernández,Cruz Azul,Santos Laguna,2,0,7,2,9,1,4,5
+1206138,2024-11-06 01:00:00+00:00,F. Hernández,Leon,Mazatlán,0,0,6,4,10,2,3,5
+1206139,2024-11-06 03:05:00+00:00,D. Quintero,U.N.A.M. - Pumas,Club Queretaro,2,0,8,1,9,1,5,6
+1206141,2024-11-06 01:00:00+00:00,I. López,Santos Laguna,Guadalajara Chivas,0,2,7,4,11,4,2,6
+1206142,2024-11-07 01:00:00+00:00,M. Ortíz,Tigres UANL,Toluca,2,1,6,3,9,0,1,1
+1206143,2024-11-07 01:00:00+00:00,J. Lopez,Necaxa,Atletico San Luis,1,1,2,5,7,2,2,4
+1206144,2024-11-07 01:00:00+00:00,F. Guerrero,Club America,CF Pachuca,2,1,4,4,8,1,3,4
+1206145,2024-11-07 03:06:00+00:00,Ó. Mejía,FC Juarez,Club Tijuana,1,1,5,3,8,1,1,2
+1206146,2024-11-07 03:05:00+00:00,V. Cáceres,Atlas,Cruz Azul,2,2,8,5,13,2,2,4
+1206147,2024-11-09 01:00:00+00:00,Ó. Macías,Club Queretaro,Santos Laguna,3,2,6,7,13,4,4,8
+1206148,2024-11-09 03:00:00+00:00,E. Miranda,Mazatlán,U.N.A.M. - Pumas,0,1,4,6,10,1,3,4
+1206149,2024-11-09 23:05:00+00:00,D. Quintero,Guadalajara Chivas,Atletico San Luis,0,1,6,3,9,2,4,6
+1206150,2024-11-10 01:00:00+00:00,J. Camacho,CF Pachuca,FC Juarez,0,1,6,6,12,2,2,4
+1206151,2024-11-10 01:00:00+00:00,V. Cáceres,Toluca,Club America,4,0,4,5,9,1,0,1
+1206152,2024-11-10 03:05:00+00:00,A. Escobedo,Cruz Azul,Tigres UANL,1,1,4,1,5,3,1,4
+1206153,2024-11-10 23:00:00+00:00,M. Ortíz,Necaxa,Atlas,0,0,4,7,11,2,1,3
+1206154,2024-11-11 01:05:00+00:00,C. Ramos,Monterrey,Leon,2,1,7,8,15,4,7,11
+1206155,2024-11-11 03:10:00+00:00,I. Lopez,Club Tijuana,Puebla,2,1,14,2,16,4,9,13
+1315388,2024-11-22 01:05:00+00:00,C. Ramos,Guadalajara Chivas,Atlas,1,2,2,4,6,7,6,13
+1316504,2024-11-25 03:00:00+00:00,V. Cáceres,Club Tijuana,Atlas,3,0,6,3,9,1,1,2
+1316502,2024-11-28 01:00:00+00:00,Ó. Mejía,Club America,Toluca,2,0,4,2,6,0,1,1
+1316646,2024-11-28 03:10:00+00:00,F. Hernández,Club Tijuana,Cruz Azul,3,0,7,3,10,0,2,2
+1315383,2024-11-29 01:00:00+00:00,J. Lopez,Atletico San Luis,Tigres UANL,3,0,2,11,13,0,2,2
+1315385,2024-11-29 03:10:00+00:00,D. Quintero,Monterrey,U.N.A.M. - Pumas,1,0,4,2,6,2,5,7
+1316503,2024-11-30 23:00:00+00:00,C. Ramos,Toluca,Club America,0,2,4,2,6,4,2,6
+1315386,2024-12-01 18:00:00+00:00,M. Ortíz,U.N.A.M. - Pumas,Monterrey,3,5,8,3,11,4,3,7
+1316647,2024-12-01 01:10:00+00:00,V. Cáceres,Cruz Azul,Club Tijuana,3,0,10,2,12,1,1,2
+1315384,2024-12-02 01:00:00+00:00,A. Escobedo,Tigres UANL,Atletico San Luis,0,0,6,1,7,1,2,3
+1318623,2024-12-05 03:00:00+00:00,F. Hernández,Atletico San Luis,Monterrey,2,1,5,3,8,0,0,0
+1318625,2024-12-06 02:00:00+00:00,Ó. Mejía,Club America,Cruz Azul,0,0,6,7,13,0,1,1
+1318624,2024-12-08 02:00:00+00:00,M. Ortíz,Monterrey,Atletico San Luis,5,1,9,2,11,0,2,2
+1318626,2024-12-09 01:00:00+00:00,A. Escobedo,Cruz Azul,Club America,3,4,6,1,7,6,5,11
+1320866,2024-12-13 02:00:00+00:00,V. Cáceres,Club America,Monterrey,2,1,8,5,13,2,1,3
+1320867,2024-12-16 01:00:00+00:00,C. Ramos,Monterrey,Club America,1,1,8,5,13,1,1,2
+1323483,2025-01-11 01:00:00+00:00,J. Lopez,Club Queretaro,Club America,0,1,1,6,7,4,1,5
+1323484,2025-01-11 03:05:00+00:00,J. Camacho,Club Tijuana,Toluca,2,4,2,5,7,1,3,4
+1323485,2025-01-11 03:00:00+00:00,F. Hernández,Mazatlán,FC Juarez,1,1,6,6,12,4,1,5
+1323486,2025-01-11 23:00:00+00:00,G. Pacheco,Atletico San Luis,Tigres UANL,1,3,6,5,11,2,1,3
+1323488,2025-01-12 01:05:00+00:00,D. Quintero,Guadalajara Chivas,Santos Laguna,1,0,5,4,9,1,4,5
+1323489,2025-01-12 03:05:00+00:00,M. Quintero,Cruz Azul,Atlas,1,1,8,4,12,1,1,2
+1323786,2025-01-12 18:00:00+00:00,I. Lopez,U.N.A.M. - Pumas,Necaxa,2,1,6,2,8,3,0,3
+1323487,2025-01-13 01:00:00+00:00,L. García,Monterrey,Puebla,1,1,10,1,11,0,3,3
+1323491,2025-01-17 02:10:00+00:00,K. Garcia,Club America,Club Tijuana,1,1,6,0,6,1,3,4
+1323492,2025-01-18 01:00:00+00:00,A. Quirarte,Puebla,Atletico San Luis,1,2,3,4,7,2,2,4
+1323493,2025-01-18 01:00:00+00:00,Ó. Mejía,Tigres UANL,Mazatlán,2,1,6,5,11,3,6,9
+1323494,2025-01-18 03:05:00+00:00,S. Pérez Villalobos,Necaxa,Guadalajara Chivas,3,2,5,6,11,4,3,7
+1323496,2025-01-18 23:00:00+00:00,I. López,FC Juarez,Cruz Azul,1,0,0,6,6,4,3,7
+1323495,2025-01-19 01:00:00+00:00,F. Guerrero,Toluca,Monterrey,1,1,5,6,11,1,1,2
+1323497,2025-01-19 03:00:00+00:00,C. Ramos,Atlas,Leon,1,2,10,4,14,1,1,2
+1323787,2025-01-19 23:00:00+00:00,A. Escobedo,Club Queretaro,U.N.A.M. - Pumas,3,2,1,6,7,7,2,9
+1323498,2025-01-21 01:00:00+00:00,V. Arce,CF Pachuca,Santos Laguna,2,1,6,4,10,2,4,6
+1323499,2025-01-25 01:00:00+00:00,V. Cáceres,Atletico San Luis,Necaxa,0,3,4,5,9,0,0,0
+1323500,2025-01-25 03:00:00+00:00,K. Hernández,Club Tijuana,Club Queretaro,2,1,9,5,14,2,4,6
+1323501,2025-01-25 03:00:00+00:00,A. Escobedo,Mazatlán,Toluca,2,1,2,3,5,1,4,5
+1323502,2025-01-25 23:00:00+00:00,M. Terrazas,Leon,FC Juarez,1,0,9,6,15,1,3,4
+1323503,2025-01-25 23:00:00+00:00,J. Camacho,Cruz Azul,Puebla,1,1,4,1,5,3,2,5
+1323504,2025-01-26 03:10:00+00:00,G. Pacheco,Monterrey,CF Pachuca,2,3,13,1,14,0,1,1
+1323505,2025-01-26 01:05:00+00:00,J. Lopez,Guadalajara Chivas,Tigres UANL,1,1,6,5,11,1,0,1
+1323506,2025-01-26 01:05:00+00:00,F. Hernández,Santos Laguna,Club America,1,4,7,4,11,3,1,4
+1323507,2025-01-26 18:00:00+00:00,M. Molina,U.N.A.M. - Pumas,Atlas,0,0,6,0,6,4,1,5
+1323508,2025-01-29 01:00:00+00:00,J. Camacho,Club America,Atletico San Luis,3,0,3,4,7,0,1,1
+1323509,2025-01-29 01:00:00+00:00,D. Quintero,Puebla,Mazatlán,0,1,10,0,10,1,6,7
+1323510,2025-01-29 03:00:00+00:00,Ó. Mejía,Leon,Guadalajara Chivas,2,1,3,5,8,1,2,3
+1323511,2025-01-29 03:05:00+00:00,L. García,Necaxa,Cruz Azul,1,3,2,6,8,0,3,3
+1323512,2025-01-29 03:00:00+00:00,I. López,Tigres UANL,Club Tijuana,4,0,7,3,10,1,4,5
+1323513,2025-01-30 01:00:00+00:00,M. Quintero,Atlas,Monterrey,3,3,3,6,9,1,3,4
+1323514,2025-01-30 01:00:00+00:00,S. Pérez Villalobos,Club Queretaro,CF Pachuca,0,1,5,8,13,2,2,4
+1323515,2025-01-30 03:05:00+00:00,Ó. Macías,U.N.A.M. - Pumas,Toluca,1,1,4,5,9,4,1,5
+1323516,2025-01-30 03:00:00+00:00,A. Quirarte,FC Juarez,Santos Laguna,1,0,7,3,10,1,2,3
+1323517,2025-02-01 01:00:00+00:00,L. Santander,Mazatlán,Leon,1,2,5,2,7,5,4,9
+1323518,2025-02-01 03:05:00+00:00,M. Terrazas,Club Tijuana,Cruz Azul,2,3,3,5,8,2,5,7
+1323519,2025-02-01 23:00:00+00:00,C. Ramos,Club America,FC Juarez,4,0,2,5,7,0,1,1
+1323520,2025-02-01 23:05:00+00:00,I. Lopez,Guadalajara Chivas,Club Queretaro,1,1,6,6,12,8,4,12
+1323521,2025-02-02 01:00:00+00:00,J. Lopez,CF Pachuca,Atlas,0,0,6,2,8,2,4,6
+1323522,2025-02-02 01:05:00+00:00,M. Ortíz,Monterrey,Necaxa,1,0,5,11,16,2,3,5
+1323523,2025-02-02 03:15:00+00:00,F. Hernández,Toluca,Tigres UANL,1,0,3,7,10,3,4,7
+1323524,2025-02-02 23:00:00+00:00,V. Cáceres,Santos Laguna,Puebla,0,2,3,4,7,0,3,3
+1323525,2025-02-03 01:00:00+00:00,D. Quintero,Atletico San Luis,U.N.A.M. - Pumas,2,3,6,1,7,3,5,8
+1323490,2025-02-06 03:10:00+00:00,A. Escobedo,CF Pachuca,Leon,1,2,9,3,12,6,3,9
+1323526,2025-02-08 01:00:00+00:00,V. Arce,Club Queretaro,Atletico San Luis,1,0,5,3,8,1,2,3
+1323527,2025-02-08 03:00:00+00:00,I. Lopez,Puebla,Club America,1,2,3,10,13,8,2,10
+1323528,2025-02-08 01:00:00+00:00,D. Quintero,Necaxa,Santos Laguna,3,2,8,6,14,1,1,2
+1323529,2025-02-09 01:00:00+00:00,M. Ortíz,Leon,Toluca,3,3,1,5,6,3,2,5
+1323530,2025-02-09 01:00:00+00:00,A. Escobedo,Tigres UANL,Atlas,2,1,4,3,7,2,3,5
+1323531,2025-02-09 03:00:00+00:00,L. Santander,FC Juarez,Monterrey,2,1,5,3,8,5,3,8
+1323532,2025-02-09 03:05:00+00:00,C. Ramos,Cruz Azul,CF Pachuca,2,1,12,7,19,3,4,7
+1323533,2025-02-10 03:05:00+00:00,F. Hernández,Guadalajara Chivas,Club Tijuana,2,1,7,5,12,2,5,7
+1323788,2025-02-10 00:00:00+00:00,V. Cáceres,U.N.A.M. - Pumas,Mazatlán,1,0,3,5,8,5,4,9
+1323534,2025-02-15 03:00:00+00:00,G. Pacheco,Club Tijuana,FC Juarez,1,2,5,4,9,2,1,3
+1323535,2025-02-15 03:00:00+00:00,M. Ortíz,Mazatlán,Santos Laguna,1,1,11,8,19,5,2,7
+1323536,2025-02-15 23:00:00+00:00,L. Santander,Atlas,Puebla,3,2,7,3,10,3,3,6
+1323537,2025-02-15 03:00:00+00:00,Ó. Mejía,Club America,Necaxa,2,3,7,3,10,4,1,5
+1323538,2025-02-16 01:00:00+00:00,V. Cáceres,Tigres UANL,Cruz Azul,2,1,6,5,11,6,5,11
+1323539,2025-02-16 03:10:00+00:00,J. Lopez,Toluca,Guadalajara Chivas,2,1,5,5,10,1,0,1
+1323540,2025-02-16 23:00:00+00:00,F. Hernández,Club Queretaro,Monterrey,2,4,5,3,8,3,2,5
+1323541,2025-02-17 01:00:00+00:00,M. Quintero,Atletico San Luis,Leon,1,2,6,3,9,1,2,3
+1323789,2025-02-17 01:05:00+00:00,K. Garcia,CF Pachuca,U.N.A.M. - Pumas,2,1,14,5,19,2,0,2
+1323551,2025-02-19 03:10:00+00:00,V. Cáceres,Atlas,Necaxa,0,4,8,3,11,3,3,6
+1323550,2025-02-20 03:05:00+00:00,J. Lopez,Santos Laguna,Cruz Azul,0,1,7,10,17,2,3,5
+1323552,2025-02-20 01:00:00+00:00,C. Ramos,Club America,Leon,1,1,2,2,4,1,4,5
+1323542,2025-02-22 01:00:00+00:00,I. Lopez,Necaxa,Mazatlán,3,1,10,4,14,1,3,4
+1323543,2025-02-22 03:00:00+00:00,M. Ortíz,Puebla,Club Tijuana,2,0,3,5,8,2,4,6
+1323547,2025-02-22 23:00:00+00:00,A. Escobedo,FC Juarez,Toluca,0,4,5,2,7,4,2,6
+1323544,2025-02-23 01:00:00+00:00,Ó. Mejía,Leon,Tigres UANL,1,0,4,3,7,2,3,5
+1323545,2025-02-23 01:00:00+00:00,D. Quintero,Monterrey,Atletico San Luis,3,1,6,6,12,0,2,2
+1323546,2025-02-23 01:05:00+00:00,G. Pacheco,Guadalajara Chivas,CF Pachuca,2,1,2,11,13,6,4,10
+1323548,2025-02-23 23:00:00+00:00,M. Quintero,Santos Laguna,Atlas,2,0,6,6,12,2,2,4
+1323790,2025-02-23 03:05:00+00:00,F. Hernández,U.N.A.M. - Pumas,Club America,0,2,4,6,10,5,0,5
+1323549,2025-02-24 01:05:00+00:00,J. Camacho,Cruz Azul,Club Queretaro,1,0,11,2,13,1,1,2
+1323553,2025-02-26 01:00:00+00:00,D. Quintero,Tigres UANL,FC Juarez,0,1,11,1,12,4,5,9
+1323554,2025-02-26 03:00:00+00:00,A. Quirarte,Mazatlán,Monterrey,1,0,1,8,9,4,2,6
+1323791,2025-02-26 03:00:00+00:00,S. Pérez Villalobos,Club Tijuana,U.N.A.M. - Pumas,4,2,2,11,13,3,1,4
+1323555,2025-02-27 01:00:00+00:00,M. Terrazas,CF Pachuca,Puebla,2,1,7,2,9,1,4,5
+1323556,2025-02-27 03:00:00+00:00,M. Molina,Toluca,Club Queretaro,5,0,9,4,13,0,3,3
+1323557,2025-02-27 03:05:00+00:00,I. Lopez,Atletico San Luis,Guadalajara Chivas,3,1,2,8,10,2,2,4
+1323558,2025-03-01 03:00:00+00:00,L. García,Mazatlán,Cruz Azul,1,1,4,2,6,2,4,6
+1323560,2025-03-01 23:00:00+00:00,J. Lopez,Club America,Toluca,3,0,4,11,15,2,1,3
+1323562,2025-03-01 23:00:00+00:00,L. Santander,FC Juarez,CF Pachuca,2,2,2,7,9,2,6,8
+1323559,2025-03-02 01:00:00+00:00,G. Pacheco,Necaxa,Tigres UANL,1,2,5,6,11,2,0,2
+1323561,2025-03-02 01:00:00+00:00,I. Lopez,Leon,Club Tijuana,2,1,6,2,8,1,1,2
+1323563,2025-03-02 22:00:00+00:00,C. Ramos,Club Queretaro,Puebla,2,0,4,6,10,3,1,4
+1323792,2025-03-02 03:10:00+00:00,D. Quintero,U.N.A.M. - Pumas,Guadalajara Chivas,0,1,7,12,19,3,1,4
+1323564,2025-03-03 00:00:00+00:00,J. Camacho,Atlas,Atletico San Luis,3,1,5,3,8,0,1,1
+1323565,2025-03-03 02:05:00+00:00,A. Escobedo,Monterrey,Santos Laguna,4,2,7,4,11,0,2,2
+1323566,2025-03-08 01:00:00+00:00,M. Ortíz,Atletico San Luis,FC Juarez,1,0,6,3,9,1,3,4
+1323567,2025-03-08 01:00:00+00:00,I. López,Tigres UANL,Club Queretaro,1,0,5,7,12,1,1,2
+1323568,2025-03-08 03:00:00+00:00,V. Cáceres,Puebla,U.N.A.M. - Pumas,1,3,8,6,14,6,3,9
+1323569,2025-03-08 23:00:00+00:00,K. Garcia,Toluca,Necaxa,5,2,5,2,7,4,5,9
+1323570,2025-03-09 01:05:00+00:00,Ó. Mejía,Cruz Azul,Monterrey,1,1,5,6,11,3,2,5
+1323571,2025-03-09 01:00:00+00:00,M. Quintero,CF Pachuca,Mazatlán,1,1,6,1,7,2,3,5
+1323572,2025-03-09 03:05:00+00:00,A. Escobedo,Guadalajara Chivas,Club America,0,0,4,5,9,5,1,6
+1323573,2025-03-09 23:00:00+00:00,G. Pacheco,Santos Laguna,Leon,2,1,3,3,6,4,5,9
+1323574,2025-03-10 03:00:00+00:00,F. Hernández,Club Tijuana,Atlas,3,4,6,9,15,4,2,6
+1323575,2025-03-15 01:00:00+00:00,L. Santander,Club Queretaro,Mazatlán,1,0,2,14,16,5,7,12
+1323576,2025-03-15 01:00:00+00:00,M. Ortíz,Necaxa,Leon,2,1,3,8,11,4,1,5
+1323577,2025-03-15 03:05:00+00:00,S. Pérez Villalobos,Puebla,Toluca,0,3,3,6,9,3,1,4
+1323578,2025-03-15 23:00:00+00:00,C. Ramos,Tigres UANL,Santos Laguna,3,0,9,0,9,0,1,1
+1323579,2025-03-16 01:00:00+00:00,V. Cáceres,Cruz Azul,Atletico San Luis,3,0,11,9,20,1,0,1
+1323580,2025-03-16 01:10:00+00:00,F. Hernández,FC Juarez,Guadalajara Chivas,1,1,4,3,7,3,1,4
+1323581,2025-03-16 03:05:00+00:00,Ó. Mejía,Atlas,Club America,1,3,8,5,13,6,1,7
+1323582,2025-03-17 02:00:00+00:00,J. Camacho,CF Pachuca,Club Tijuana,4,1,8,4,12,3,2,5
+1323793,2025-03-17 00:00:00+00:00,I. Lopez,U.N.A.M. - Pumas,Monterrey,1,3,6,3,9,1,4,5
+1323583,2025-03-29 01:00:00+00:00,A. Quirarte,Necaxa,Club Queretaro,2,0,8,6,14,3,1,4
+1323584,2025-03-29 23:00:00+00:00,D. Quintero,FC Juarez,Puebla,2,0,3,7,10,2,1,3
+1323585,2025-03-29 03:10:00+00:00,C. Ramos,Mazatlán,Atlas,3,2,5,7,12,3,5,8
+1323586,2025-03-29 23:00:00+00:00,M. Ortíz,Toluca,CF Pachuca,3,2,4,1,5,3,1,4
+1323587,2025-03-30 01:05:00+00:00,V. Cáceres,Club America,Tigres UANL,3,0,4,8,12,5,2,7
+1323588,2025-03-30 03:15:00+00:00,L. Santander,Monterrey,Club Tijuana,1,2,4,1,5,2,5,7
+1323589,2025-03-30 03:05:00+00:00,J. Lopez,Guadalajara Chivas,Cruz Azul,0,1,10,4,14,2,2,4
+1323590,2025-03-30 23:00:00+00:00,K. Garcia,Santos Laguna,Atletico San Luis,2,3,7,3,10,0,2,2
+1323794,2025-03-31 01:05:00+00:00,A. Escobedo,Leon,U.N.A.M. - Pumas,1,2,3,3,6,2,3,5
+1323591,2025-04-05 01:00:00+00:00,M. Quintero,Club Queretaro,Leon,1,1,3,5,8,2,3,5
+1323592,2025-04-05 03:00:00+00:00,Ó. Mejía,Club Tijuana,Necaxa,1,2,12,3,15,1,2,3
+1323593,2025-04-05 03:05:00+00:00,J. Camacho,Puebla,Tigres UANL,0,0,1,9,10,4,2,6
+1323594,2025-04-05 23:00:00+00:00,A. Escobedo,Atlas,FC Juarez,1,1,0,4,4,3,2,5
+1323595,2025-04-05 23:00:00+00:00,F. Hernández,CF Pachuca,Club America,1,0,0,0,0,0,0,0
+1323596,2025-04-06 01:05:00+00:00,G. Pacheco,Monterrey,Guadalajara Chivas,3,1,4,4,8,1,5,6
+1323597,2025-04-06 03:10:00+00:00,D. Quintero,Cruz Azul,U.N.A.M. - Pumas,3,2,2,2,4,2,3,5
+1323599,2025-04-06 01:00:00+00:00,J. Lopez,Atletico San Luis,Mazatlán,2,1,4,3,7,2,2,4
+1323598,2025-04-07 00:00:00+00:00,L. Santander,Toluca,Santos Laguna,2,1,1,4,5,2,3,5
+1323608,2025-04-11 02:05:00+00:00,M. Terrazas,Club Tijuana,Atletico San Luis,2,1,5,7,12,1,1,2
+1323600,2025-04-12 01:00:00+00:00,J. Lopez,Necaxa,CF Pachuca,3,5,8,4,12,3,2,5
+1323601,2025-04-12 03:05:00+00:00,F. Hernández,Mazatlán,Guadalajara Chivas,1,1,11,2,13,4,13,17
+1323602,2025-04-12 23:00:00+00:00,G. Pacheco,U.N.A.M. - Pumas,FC Juarez,0,0,3,3,6,1,2,3
+1323603,2025-04-12 23:00:00+00:00,L. Santander,Leon,Puebla,1,0,4,4,8,3,6,9
+1323604,2025-04-13 01:05:00+00:00,D. Quintero,Atlas,Toluca,2,3,7,4,11,5,3,8
+1323605,2025-04-13 01:00:00+00:00,M. Ortíz,Tigres UANL,Monterrey,2,1,5,5,10,6,8,14
+1323606,2025-04-13 03:15:00+00:00,C. Ramos,Club America,Cruz Azul,0,0,9,0,9,0,1,1
+1323607,2025-04-13 23:00:00+00:00,V. Cáceres,Santos Laguna,Club Queretaro,1,2,10,6,16,3,1,4
+1323609,2025-04-16 01:00:00+00:00,C. Ramos,CF Pachuca,Tigres UANL,0,0,9,6,15,1,2,3
+1323610,2025-04-16 01:05:00+00:00,K. Garcia,Guadalajara Chivas,Puebla,1,0,4,7,11,1,2,3
+1323611,2025-04-16 03:05:00+00:00,Ó. Mejía,Cruz Azul,Leon,2,1,4,4,8,1,6,7
+1323612,2025-04-16 03:00:00+00:00,J. Camacho,FC Juarez,Necaxa,2,2,2,3,5,3,3,6
+1323613,2025-04-17 02:00:00+00:00,M. Quintero,Atletico San Luis,Toluca,0,1,11,7,18,1,1,2
+1323614,2025-04-17 01:00:00+00:00,M. Ortíz,Club Queretaro,Atlas,1,2,9,1,10,4,3,7
+1323615,2025-04-17 01:00:00+00:00,D. Quintero,Monterrey,Club America,1,0,7,8,15,3,2,5
+1323616,2025-04-17 03:00:00+00:00,V. Cáceres,Mazatlán,Club Tijuana,0,2,4,4,8,4,3,7
+1323795,2025-04-17 03:05:00+00:00,A. Escobedo,U.N.A.M. - Pumas,Santos Laguna,2,0,6,4,10,0,2,2
+1323617,2025-04-19 01:00:00+00:00,G. Pacheco,Puebla,Necaxa,0,1,3,2,5,2,1,3
+1323618,2025-04-19 23:00:00+00:00,K. Garcia,Club America,Mazatlán,5,0,8,4,12,0,4,4
+1323620,2025-04-20 01:05:00+00:00,L. Santander,Toluca,Cruz Azul,2,2,3,6,9,2,3,5
+1323621,2025-04-20 03:15:00+00:00,V. Cáceres,Atlas,Guadalajara Chivas,1,1,4,5,9,4,5,9
+1323622,2025-04-20 23:00:00+00:00,M. Ortíz,Santos Laguna,Club Tijuana,0,4,4,4,8,1,1,2
+1323796,2025-04-20 03:00:00+00:00,C. Ramos,Tigres UANL,U.N.A.M. - Pumas,2,1,5,1,6,3,1,4
+1323619,2025-04-21 03:00:00+00:00,D. Quintero,FC Juarez,Club Queretaro,0,2,4,1,5,3,0,3
+1323623,2025-04-21 01:05:00+00:00,A. Escobedo,Leon,Monterrey,0,2,4,4,8,5,3,8
+1323624,2025-04-21 01:00:00+00:00,A. Quirarte,Atletico San Luis,CF Pachuca,2,1,4,7,11,1,4,5
+1372469,2025-04-28 01:30:00+00:00,L. Santander,Monterrey,CF Pachuca,1,2,5,8,13,2,0,2
+1373369,2025-05-05 01:30:00+00:00,A. Escobedo,Monterrey,U.N.A.M. - Pumas,2,0,3,0,3,3,6,9
+1373367,2025-05-08 03:10:00+00:00,J. Lopez,CF Pachuca,Club America,0,0,5,3,8,3,3,6
+1374342,2025-05-08 01:00:00+00:00,G. Pacheco,Monterrey,Toluca,3,2,1,2,3,3,2,5
+1372465,2025-05-09 03:10:00+00:00,C. Ramos,Leon,Cruz Azul,2,3,3,0,3,4,3,7
+1372467,2025-05-09 01:00:00+00:00,Ó. Mejía,Necaxa,Tigres UANL,0,0,10,1,11,2,2,4
+1373368,2025-05-11 03:10:00+00:00,D. Quintero,Club America,CF Pachuca,2,0,4,6,10,2,7,9
+1374343,2025-05-11 01:00:00+00:00,F. Hernández,Toluca,Monterrey,2,1,5,6,11,7,3,10
+1372466,2025-05-12 01:00:00+00:00,V. Cáceres,Cruz Azul,Leon,2,1,5,6,11,1,1,2
+1372468,2025-05-12 03:10:00+00:00,M. Ortíz,Tigres UANL,Necaxa,2,2,5,8,13,1,1,2
+1375216,2025-05-15 03:00:00+00:00,A. Escobedo,Tigres UANL,Toluca,1,1,5,8,13,2,1,3
+1375218,2025-05-16 02:00:00+00:00,L. Santander,Cruz Azul,Club America,1,0,5,6,11,2,1,3
+1375217,2025-05-18 01:00:00+00:00,F. Hernández,Toluca,Tigres UANL,3,0,2,5,7,3,2,5
+1375219,2025-05-19 01:15:00+00:00,V. Cáceres,Club America,Cruz Azul,2,1,4,3,7,1,2,3
+1375860,2025-05-23 02:00:00+00:00,D. Quintero,Club America,Toluca,0,0,2,2,4,2,2,4
+1375861,2025-05-26 01:00:00+00:00,C. Ramos,Toluca,Club America,2,0,4,1,5,2,1,3
