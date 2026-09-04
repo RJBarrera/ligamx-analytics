@@ -7,10 +7,17 @@ import time
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+from live_service import (
+    LiveFootballService,
+    get_quota_status,
+)
+from live_intelligence import build_live_intelligence
+from live_ai import answer_live_question
 
 from prediccion_ligamx import (
     DixonColesModel,
@@ -58,6 +65,16 @@ STATE = {
     "arbitros": [],
 }
 
+# ============================================================
+# LIVE CENTER
+# ============================================================
+
+LIVE_SERVICE = LiveFootballService()
+
+
+class LiveAIRequest(BaseModel):
+    question: str = ""
+
 
 ## Modelo Petición
 class PrediccionRequest(BaseModel):
@@ -66,6 +83,17 @@ class PrediccionRequest(BaseModel):
     local: str
     visitante: str
     arbitro: str
+
+
+class ResolveLiveRequest(BaseModel):
+    event_id: str | None = None
+    date: str
+    home: str
+    away: str
+
+
+class LiveAIRequest(BaseModel):
+    question: str = ""
 
 
 def convertir_json(valor):
@@ -386,6 +414,183 @@ def calcular_prediccion(request: PrediccionRequest):
             status_code=500,
             detail=str(error),
         ) from error
+
+
+# ============================================================
+# LIVE - LISTADO
+#
+# THE SPORTS DB
+# ============================================================
+
+
+# ============================================================
+# LIVE CENTER
+# ============================================================
+
+
+@app.get("/api/live")
+def obtener_partidos_live(
+    scope: str = Query(
+        default="today",
+        pattern="^(live|today)$",
+    ),
+):
+
+    try:
+
+        result = LIVE_SERVICE.get_matches(scope=scope)
+
+        return {
+            "success": True,
+            "scope": scope,
+            **result,
+        }
+
+    except Exception as error:
+
+        print(
+            "ERROR LIVE CENTER:",
+            error,
+        )
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(error),
+        )
+
+
+# ============================================================
+# QUOTA
+# ============================================================
+
+
+@app.get("/api/live/quota/status")
+def obtener_live_quota():
+
+    return {
+        "success": True,
+        "quota": get_quota_status(),
+    }
+
+
+# ============================================================
+# LIVE - RESOLVER PARTIDO
+#
+# THE SPORTS DB -> API FOOTBALL
+#
+# DEBE IR ANTES DE /{fixture_id}
+# ============================================================
+
+
+@app.post("/api/live/resolve")
+def resolver_live_match(
+    request: ResolveLiveRequest,
+):
+
+    try:
+
+        result = LIVE_SERVICE.resolve_match(
+            date=request.date,
+            home=request.home,
+            away=request.away,
+        )
+
+        return {
+            "success": True,
+            **result,
+        }
+
+    except Exception as error:
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(error),
+        )
+
+
+# ============================================================
+# LIVE - DETALLE
+# ============================================================
+
+
+@app.get("/api/live/{fixture_id}")
+def obtener_detalle_live(
+    fixture_id: int,
+):
+
+    try:
+
+        detail = LIVE_SERVICE.get_fixture_detail(fixture_id)
+
+        intelligence = build_live_intelligence(
+            detail,
+            STATE,
+        )
+
+        return {
+            "success": True,
+            "provider": "api-football",
+            "data": {
+                **detail,
+                "intelligence": intelligence,
+            },
+        }
+
+    except Exception as error:
+
+        print(
+            "ERROR LIVE DETAIL:",
+            error,
+        )
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(error),
+        )
+
+
+# ============================================================
+# LIVE - MATCHLAB AI
+# ============================================================
+
+
+@app.post("/api/live/{fixture_id}/ai")
+def consultar_live_ai(
+    fixture_id: int,
+    request: LiveAIRequest,
+):
+
+    try:
+
+        detail = LIVE_SERVICE.get_fixture_detail(fixture_id)
+
+        intelligence = build_live_intelligence(
+            detail,
+            STATE,
+        )
+
+        response = answer_live_question(
+            detail,
+            intelligence,
+            request.question,
+        )
+
+        return {
+            "success": True,
+            **response,
+        }
+
+    except Exception as error:
+
+        print(
+            "ERROR LIVE AI:",
+            error,
+        )
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(error),
+        )
 
 
 ## FrontEnd React

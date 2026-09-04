@@ -478,3 +478,53 @@
     margin-left: auto;
   }
 }
+
+
+.navbar-live-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.navbar-live-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #36dda8;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(54, 221, 168, 0.08);
+
+  animation:
+    navbar-live-pulse
+    1.6s
+    infinite;
+}
+
+
+.navbar-live-link small {
+  padding: 3px 5px;
+
+  border-radius: 4px;
+
+  color: #0b7a59;
+
+  background: #dff8ef;
+
+  font-size: 0.46rem;
+  font-weight: 900;
+}
+
+
+@keyframes navbar-live-pulse {
+  50% {
+    box-shadow:
+      0 0 0 8px
+      rgba(54, 221, 168, 0);
+  }
+}

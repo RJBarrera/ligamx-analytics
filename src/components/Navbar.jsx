@@ -82,6 +82,11 @@ function Navbar() {
               {item.label}
             </a>
           ))}
+          <a href="#en-vivo" className="navbar-live-link">
+            <span className="navbar-live-dot" />
+            En Vivo
+            <small>LIVE</small>
+          </a>
         </nav>
 
         {/* ================================================= */}
