@@ -444,7 +444,7 @@ class MatchHistoryService:
 
         date = detail.get("date")
 
-        referee = str(detail.get("referee") or "").strip()
+        referee = str(detail.get("referee") or "Desconocido").strip()
 
         home_name = str(
             detail.get(
@@ -510,8 +510,8 @@ class MatchHistoryService:
         if not date:
             missing.append("date")
 
-        if not referee:
-            missing.append("referee")
+        # if not referee:
+        #     missing.append("referee")
 
         if not home_name:
             missing.append("home_team")
