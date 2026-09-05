@@ -1,0 +1,82 @@
+name: Sync MatchLab Dataset
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # 12:15 UTC
+    # Ajusta después si quieres otro horario.
+    - cron: "15 12 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-dataset:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ======================================================
+      # REPOSITORY
+      # ======================================================
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ======================================================
+      # DESCARGAR CSV DESDE RAILWAY
+      # ======================================================
+
+      - name: Download MatchLab dataset
+        env:
+          DATASET_URL: ${{ secrets.MATCHLAB_DATASET_URL }}
+          DATASET_TOKEN: ${{ secrets.MATCHLAB_DATASET_SYNC_TOKEN }}
+
+        run: |
+          curl --fail \
+            --silent \
+            --show-error \
+            --location \
+            --header "x-matchlab-token: ${DATASET_TOKEN}" \
+            "${DATASET_URL}" \
+            --output server/historial_ligamx_2023.csv
+
+      # ======================================================
+      # VALIDACIÓN BÁSICA
+      # ======================================================
+
+      - name: Validate dataset
+        run: |
+          test -s server/historial_ligamx_2023.csv
+
+          echo "CSV downloaded successfully"
+
+          wc -l server/historial_ligamx_2023.csv
+
+      # ======================================================
+      # CONFIGURAR GIT
+      # ======================================================
+
+      - name: Configure Git
+        run: |
+          git config user.name "MatchLab Data Bot"
+          git config user.email "matchlab-data-bot@users.noreply.github.com"
+
+      # ======================================================
+      # COMMIT SOLO SI CAMBIÓ
+      # ======================================================
+
+      - name: Commit dataset changes
+        run: |
+
+          git add server/historial_ligamx_2023.csv
+
+          if git diff --cached --quiet; then
+            echo "No dataset changes detected."
+            exit 0
+          fi
+
+          git commit \
+            -m "data: actualizar histórico Liga MX"
+
+          git push

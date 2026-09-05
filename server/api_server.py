@@ -9,7 +9,10 @@ import time
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Header
+from fastapi.responses import (
+    FileResponse,
+)
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -772,6 +775,53 @@ def sincronizar_dataset():
             status_code=500,
             detail=str(error),
         )
+
+
+# DATASET - EXPORT PROTEGIDO
+DATASET_SYNC_TOKEN = os.getenv(
+    "MATCHLAB_DATASET_SYNC_TOKEN",
+    "",
+)
+
+
+@app.get("/api/dataset/export")
+def exportar_dataset(
+    x_matchlab_token: str | None = Header(default=None),
+):
+
+    # ========================================================
+    # VALIDAR TOKEN
+    # ========================================================
+
+    if not DATASET_SYNC_TOKEN or x_matchlab_token != DATASET_SYNC_TOKEN:
+
+        raise HTTPException(
+            status_code=401,
+            detail="No autorizado.",
+        )
+
+    # ========================================================
+    # ARCHIVO OFICIAL
+    # ========================================================
+
+    history_path = HISTORY_SERVICE.history_path
+
+    if not history_path.exists():
+
+        raise HTTPException(
+            status_code=404,
+            detail="No existe el histórico.",
+        )
+
+    # ========================================================
+    # RESPUESTA
+    # ========================================================
+
+    return FileResponse(
+        path=str(history_path),
+        media_type="text/csv",
+        filename="historial_ligamx_2023.csv",
+    )
 
 
 ## FrontEnd React
