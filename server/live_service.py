@@ -779,8 +779,8 @@ class LiveFootballService:
                         "/fixtures",
                         params={
                             "date": date_value,
-                            "league": LIGA_MX_ID,
-                            "season": "2026",
+                            #"league": LIGA_MX_ID,
+                            #"season": "2026",
                             "timezone": TIMEZONE,
                         },
                         cache_seconds=OVERLAY_CACHE_SECONDS,
@@ -897,8 +897,8 @@ class LiveFootballService:
             "/fixtures",
             params={
                 "date": date,
-                "league": LIGA_MX_ID,
-                "season": "2026",
+                #"league": LIGA_MX_ID,
+                #"season": "2026",
                 "timezone": TIMEZONE,
             },
             cache_seconds=RESOLVE_CACHE_SECONDS,
