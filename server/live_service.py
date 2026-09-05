@@ -888,7 +888,9 @@ class LiveFootballService:
     ):
 
         season = int(
-           date_value[:4]
+            str(
+               date
+            )[:4]
         )
 
         response = self._api_get(
@@ -940,15 +942,10 @@ class LiveFootballService:
 
         fixture_id = int(fixture_id)
 
-        season = int(
-           date_value[:4]
-        )
-
         response = self._api_get(
             "/fixtures",
             params={
                 "id": fixture_id,
-                "season": season,
             },
             cache_seconds=DETAIL_CACHE_SECONDS,
             allow_stale=True,
