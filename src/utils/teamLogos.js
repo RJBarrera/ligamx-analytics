@@ -69,6 +69,7 @@ const TEAM_LOGO_FILES = Object.freeze({
   toluca: "toluca.png",
   monterrey: "monterrey.png",
   atlante: "atlante.png",
+  mazatlan: "atlante.png",
 });
 
 // Obtiene logos

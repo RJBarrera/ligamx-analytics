@@ -8,6 +8,8 @@ import pandas as pd
 from scipy.optimize import minimize
 from scipy.stats import poisson
 
+from team_identity import normalize_history_teams, normalize_team_name
+
 # ==========================================
 # 1. CONFIGURACION
 # ==========================================
@@ -112,8 +114,8 @@ class LigaMXDataFetcher:
                     )
                     break
 
-                home = fix["teams"]["home"]["name"]
-                away = fix["teams"]["away"]["name"]
+                home = normalize_team_name(fix["teams"]["home"]["name"])
+                away = normalize_team_name(fix["teams"]["away"]["name"])
                 print(f"📥 Descargando partido nuevo: {home} vs {away}...")
 
                 # Extraer estadisticas
@@ -199,8 +201,8 @@ class LigaMXDataFetcher:
         for fix in fixtures:
             partidos.append(
                 {
-                    "home_team": fix["teams"]["home"]["name"],
-                    "away_team": fix["teams"]["away"]["name"],
+                    "home_team": normalize_team_name(fix["teams"]["home"]["name"]),
+                    "away_team": normalize_team_name(fix["teams"]["away"]["name"]),
                     "referee": fix["fixture"].get("referee", "Desconocido"),
                 }
             )
@@ -520,6 +522,9 @@ if __name__ == "__main__":
 
         sys.exit()
 
+    # Unificar identidad histórica antes de entrenar los modelos.
+    df_historico = normalize_history_teams(df_historico)
+
     # 2. Entrenar Modelos
     print("Entrenando modelos de probabilidad (Dixon-Coles, Corners, Tarjetas)...")
     dc_model = []
@@ -570,17 +575,14 @@ if __name__ == "__main__":
         print(
             f"\nSe encontraron {len(partidos_hoy)} partidos para el {FECHA_OBJETIVO}."
         )
-        # Diccionario de traducción temporal en caliente
-        EQUIVALENCIAS = {"Atlante": "Mazatlán"}
-
         # Predecir cada partido encontrado
         for partido in partidos_hoy:
             local = partido["home_team"]
             visitante = partido["away_team"]
             arbitro = partido["referee"]
 
-            local_modelo = EQUIVALENCIAS.get(local, local)
-            visitante_modelo = EQUIVALENCIAS.get(visitante, visitante)
+            local_modelo = normalize_team_name(local)
+            visitante_modelo = normalize_team_name(visitante)
 
             print("\n" + "═" * 50)
             print(f"PREDICCION: {local} vs {visitante}")

@@ -12,6 +12,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from team_identity import normalize_team_name
+
 # ============================================================
 # RUTAS
 # ============================================================
@@ -446,21 +448,21 @@ class MatchHistoryService:
 
         referee = str(detail.get("referee") or "Desconocido").strip()
 
-        home_name = str(
+        home_name = normalize_team_name(
             detail.get(
                 "home",
                 {},
             ).get("name")
             or ""
-        ).strip()
+        )
 
-        away_name = str(
+        away_name = normalize_team_name(
             detail.get(
                 "away",
                 {},
             ).get("name")
             or ""
-        ).strip()
+        )
 
         home_goals = _to_int(
             detail.get(

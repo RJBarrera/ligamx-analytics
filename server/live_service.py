@@ -14,6 +14,8 @@ from sportsdb_service import (
     SportsDBService,
 )
 
+from team_identity import normalize_team_name
+
 # ============================================================
 # RUTAS
 # ============================================================
@@ -188,14 +190,16 @@ TEAM_ALIASES = {
     "monterrey": "monterrey",
     "rayados": "monterrey",
     "rayados de monterrey": "monterrey",
-    "mazatlan": "mazatlan",
-    "atlante": "mazatlan",
+    "mazatlan": "atlante",
+    "atlante": "atlante",
 }
 
 
 def _canonical_team(
     value,
 ):
+
+    value = normalize_team_name(value)
 
     normalized = _normalize_text(value)
 
@@ -927,8 +931,8 @@ class LiveFootballService:
 
         return {
             "fixture_id": fixture["fixture"]["id"],
-            "home": fixture["teams"]["home"]["name"],
-            "away": fixture["teams"]["away"]["name"],
+            "home": normalize_team_name(fixture["teams"]["home"]["name"]),
+            "away": normalize_team_name(fixture["teams"]["away"]["name"]),
         }
 
     # ========================================================
@@ -1035,10 +1039,12 @@ class LiveFootballService:
                     "home",
                     {},
                 ).get("id"),
-                "name": teams.get(
-                    "home",
-                    {},
-                ).get("name"),
+                "name": normalize_team_name(
+                    teams.get(
+                        "home",
+                        {},
+                    ).get("name")
+                ),
                 "logo": teams.get(
                     "home",
                     {},
@@ -1050,10 +1056,12 @@ class LiveFootballService:
                     "away",
                     {},
                 ).get("id"),
-                "name": teams.get(
-                    "away",
-                    {},
-                ).get("name"),
+                "name": normalize_team_name(
+                    teams.get(
+                        "away",
+                        {},
+                    ).get("name")
+                ),
                 "logo": teams.get(
                     "away",
                     {},
@@ -1113,10 +1121,12 @@ class LiveFootballService:
                         "team",
                         {},
                     ).get("id"),
-                    "team": event.get(
-                        "team",
-                        {},
-                    ).get("name"),
+                    "team": normalize_team_name(
+                        event.get(
+                            "team",
+                            {},
+                        ).get("name")
+                    ),
                     "player": event.get(
                         "player",
                         {},

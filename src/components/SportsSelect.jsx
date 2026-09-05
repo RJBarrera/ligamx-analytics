@@ -4,6 +4,30 @@ import { getTeamLogo } from "../utils/teamLogos";
 
 import "./SportsSelect.css";
 
+// ============================================================
+// NOMBRES VISUALES
+//
+// IMPORTANTE:
+//
+// El valor REAL sigue siendo el que existe en el histórico.
+//
+// Ejemplo:
+//
+// Valor interno:
+// Mazatlán
+//
+// Valor mostrado:
+// Atlante
+// ============================================================
+
+const TEAM_DISPLAY_NAMES = {
+  Mazatlán: "Atlante",
+};
+
+const getDisplayName = (option) => {
+  return TEAM_DISPLAY_NAMES[option] || option;
+};
+
 function SportsSelect({
   label,
   value,
@@ -19,10 +43,15 @@ function SportsSelect({
   showTeamLogo = false,
 }) {
   const [open, setOpen] = useState(false);
+
   const [search, setSearch] = useState("");
+
   const containerRef = useRef(null);
 
-  // Valores Bloqueados
+  // ============================================================
+  // VALORES BLOQUEADOS
+  // ============================================================
+
   const disabledSet = useMemo(() => {
     return new Set(
       disabledValues
@@ -31,22 +60,43 @@ function SportsSelect({
     );
   }, [disabledValues]);
 
-  // Filtrar
+  // ============================================================
+  // FILTRAR
+  //
+  // Permite buscar tanto por:
+  //
+  // Mazatlán
+  // Atlante
+  //
+  // pero conserva internamente:
+  //
+  // Mazatlán
+  // ============================================================
+
   const filteredOptions = useMemo(() => {
     const term = search.trim().toLocaleLowerCase("es-MX");
 
-    const filtered = !term
-      ? options
-      : options.filter((option) =>
-          String(option).toLocaleLowerCase("es-MX").includes(term),
-        );
+    if (!term) {
+      return options;
+    }
 
-    return filtered.map((option) =>
-      option === "Mazatlán" ? "Atlante" : option
-    );
+    return options.filter((option) => {
+      const realName = String(option).toLocaleLowerCase("es-MX");
+
+      const displayName = String(getDisplayName(option)).toLocaleLowerCase(
+        "es-MX",
+      );
+
+      return realName.includes(term) || displayName.includes(term);
+    });
   }, [options, search]);
 
-  // Logos del valor seleccionado
+  // ============================================================
+  // LOGO DEL VALOR SELECCIONADO
+  //
+  // Se conserva el valor REAL.
+  // ============================================================
+
   const selectedLogo = useMemo(() => {
     if (!showTeamLogo || !value) {
       return null;
@@ -55,7 +105,10 @@ function SportsSelect({
     return getTeamLogo(value);
   }, [value, showTeamLogo]);
 
-  // Click fuera
+  // ============================================================
+  // CLICK FUERA
+  // ============================================================
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -63,6 +116,7 @@ function SportsSelect({
         !containerRef.current.contains(event.target)
       ) {
         setOpen(false);
+
         setSearch("");
       }
     };
@@ -74,7 +128,10 @@ function SportsSelect({
     };
   }, []);
 
-  // Esc
+  // ============================================================
+  // ESC
+  // ============================================================
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -91,7 +148,20 @@ function SportsSelect({
     };
   }, []);
 
-  // Seleccionar
+  // ============================================================
+  // SELECCIONAR
+  //
+  // IMPORTANTE:
+  //
+  // Si visualmente aparece Atlante:
+  //
+  // option sigue siendo "Mazatlán".
+  //
+  // Por lo tanto:
+  //
+  // onChange("Mazatlán")
+  // ============================================================
+
   const seleccionar = (option) => {
     const normalizado = String(option).trim().toLocaleLowerCase("es-MX");
 
@@ -100,11 +170,16 @@ function SportsSelect({
     }
 
     onChange?.(option);
+
     setOpen(false);
+
     setSearch("");
   };
 
-  // Abrir / Cerrar
+  // ============================================================
+  // ABRIR / CERRAR
+  // ============================================================
+
   const toggle = () => {
     if (disabled || loading) {
       return;
@@ -113,7 +188,10 @@ function SportsSelect({
     setOpen((prev) => !prev);
   };
 
-  // Render
+  // ============================================================
+  // RENDER
+  // ============================================================
+
   return (
     <div
       ref={containerRef}
@@ -150,7 +228,7 @@ function SportsSelect({
             {selectedLogo ? (
               <img
                 src={selectedLogo}
-                alt={value}
+                alt={value ? getDisplayName(value) : ""}
                 className="sports-select__team-logo"
               />
             ) : (
@@ -176,7 +254,11 @@ function SportsSelect({
             !value ? "sports-select__value--placeholder" : ""
           }`}
         >
-          {loading ? "Cargando catálogo..." : value || placeholder}
+          {loading
+            ? "Cargando catálogo..."
+            : value
+              ? getDisplayName(value)
+              : placeholder}
         </span>
 
         {/* =============================================== */}
@@ -288,7 +370,7 @@ function SportsSelect({
                           />
                         ) : (
                           <span className="sports-select__option-logo-fallback">
-                            {String(option).charAt(0).toUpperCase()}
+                            {getDisplayName(option)}
                           </span>
                         )}
                       </span>
@@ -302,7 +384,9 @@ function SportsSelect({
                     {/* NAME */}
                     {/* ================================= */}
 
-                    <span className="sports-select__option-name">{option}</span>
+                    <span className="sports-select__option-name">
+                      {getDisplayName(option)}
+                    </span>
 
                     {/* ================================= */}
                     {/* SELECTED */}

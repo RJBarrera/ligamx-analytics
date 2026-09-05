@@ -15,6 +15,8 @@ import requests
 
 from dotenv import load_dotenv
 
+from team_identity import normalize_team_name
+
 # ============================================================
 # RUTAS
 # ============================================================
@@ -489,13 +491,13 @@ class SportsDBService:
             },
             "home": {
                 "id": event.get("idHomeTeam"),
-                "name": event.get("strHomeTeam"),
+                "name": normalize_team_name(event.get("strHomeTeam")),
                 "logo": event.get("strHomeTeamBadge"),
                 "goals": _to_int(event.get("intHomeScore")),
             },
             "away": {
                 "id": event.get("idAwayTeam"),
-                "name": event.get("strAwayTeam"),
+                "name": normalize_team_name(event.get("strAwayTeam")),
                 "logo": event.get("strAwayTeamBadge"),
                 "goals": _to_int(event.get("intAwayScore")),
             },

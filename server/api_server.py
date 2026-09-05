@@ -38,6 +38,11 @@ from dataset_sync_service import (
     DatasetSyncService,
 )
 
+from team_identity import (
+    normalize_history_teams,
+    normalize_team_name,
+)
+
 ## Configuración
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -63,11 +68,6 @@ for candidate in FRONTEND_CANDIDATES:
 #     BASE_DIR,
 #     "historial_ligamx_2023.csv",
 # )
-
-## Equivalencias
-EQUIVALENCIAS = {
-    "Atlante": "Mazatlán",
-}
 
 ## Estado Global
 STATE = {
@@ -136,10 +136,6 @@ class ResolveLiveRequest(BaseModel):
     date: str
     home: str
     away: str
-
-
-class LiveAIRequest(BaseModel):
-    question: str = ""
 
 
 def convertir_json(valor):
@@ -235,6 +231,10 @@ def inicializar_modelos():
 
     if faltantes:
         raise RuntimeError("Faltan columnas obligatorias: " + ", ".join(faltantes))
+
+    # Normalizar identidad histórica para el modelo.
+    # El CSV físico conserva sus nombres originales.
+    df = normalize_history_teams(df)
 
     print(f"✅ Partidos cargados: {len(df)}")
 
@@ -432,107 +432,189 @@ def obtener_catalogos():
 
 ## Predicción
 @app.post("/api/prediccion")
-def calcular_prediccion(request: PrediccionRequest):
-    """Ejecuta calculos de predicciones"""
+def calcular_prediccion(
+    request: PrediccionRequest,
+):
+    """
+    Ejecuta cálculos de predicciones.
+    """
 
-    # SI SE AGREGARON PARTIDOS NUEVOS: reentrenar UNA sola vez.
+    # ========================================================
+    # SI SE AGREGARON PARTIDOS NUEVOS:
+    # REENTRENAR UNA SOLA VEZ
+    # ========================================================
+
     ensure_models_fresh()
 
-    ## Parámetros
+    # ========================================================
+    # PARÁMETROS
+    # ========================================================
+
     local = request.local.strip()
+
     visitante = request.visitante.strip()
+
     arbitro = request.arbitro.strip()
 
-    ## Validaciones
+    # ========================================================
+    # VALIDACIONES BÁSICAS
+    # ========================================================
+
     if not local:
+
         raise HTTPException(
             status_code=400,
-            detail=("El equipo local es obligatorio."),
+            detail="El equipo local es obligatorio.",
         )
 
     if not visitante:
+
         raise HTTPException(
             status_code=400,
-            detail=("El equipo visitante es obligatorio."),
+            detail="El equipo visitante es obligatorio.",
         )
 
     if not arbitro:
+
         raise HTTPException(
             status_code=400,
-            detail=("El árbitro es obligatorio."),
+            detail="El árbitro es obligatorio.",
         )
 
-    if local.casefold() == visitante.casefold():
+    # ========================================================
+    # EQUIVALENCIAS
+    #
+    # IMPORTANTE:
+    # Esto debe ocurrir ANTES de validar contra el histórico.
+    #
+    # Ejemplo:
+    #
+    # Atlante
+    #   ↓
+    # Mazatlán
+    #   ↓
+    # Validación contra STATE["equipos"]
+    # ========================================================
+
+    local_modelo = normalize_team_name(local)
+
+    visitante_modelo = normalize_team_name(visitante)
+
+    # ========================================================
+    # VALIDAR QUE NO SEA EL MISMO EQUIPO
+    #
+    # Se compara el nombre utilizado por el modelo.
+    #
+    # Esto evita algo como:
+    #
+    # Local: Mazatlán
+    # Visitante: Atlante
+    #
+    # Ambos representan el mismo equipo para nuestro histórico.
+    # ========================================================
+
+    if local_modelo.casefold() == visitante_modelo.casefold():
+
         raise HTTPException(
             status_code=400,
             detail=("El equipo local y visitante " "no pueden ser iguales."),
         )
 
-    ## Validar Equipos
+    # ========================================================
+    # EQUIPOS VÁLIDOS DEL HISTÓRICO
+    # ========================================================
+
     equipos_validos = {equipo.casefold() for equipo in STATE["equipos"]}
 
-    if local.casefold() not in equipos_validos:
+    # ========================================================
+    # VALIDAR EQUIPO LOCAL
+    # ========================================================
+
+    if local_modelo.casefold() not in equipos_validos:
+
         raise HTTPException(
             status_code=400,
             detail=(f"El equipo local '{local}' " "no existe en el histórico."),
         )
 
-    if visitante.casefold() not in equipos_validos:
+    # ========================================================
+    # VALIDAR EQUIPO VISITANTE
+    # ========================================================
+
+    if visitante_modelo.casefold() not in equipos_validos:
+
         raise HTTPException(
             status_code=400,
             detail=(f"El equipo visitante '{visitante}' " "no existe en el histórico."),
         )
 
-    ## Equivalencias
-    local_modelo = EQUIVALENCIAS.get(
-        local,
-        local,
-    )
-
-    visitante_modelo = EQUIVALENCIAS.get(
-        visitante,
-        visitante,
-    )
+    # ========================================================
+    # PREDICCIÓN
+    # ========================================================
 
     try:
+
         df = STATE["df"]
+
         dc_model = STATE["dc_model"]
+
         spec_model = STATE["spec_model"]
 
-        ## H2H
+        # ====================================================
+        # H2H
+        # ====================================================
+
         h2h = analizar_h2h(
             df,
             local_modelo,
             visitante_modelo,
         )
 
-        ## Goles
+        # ====================================================
+        # GOLES
+        # ====================================================
+
         goles = dc_model.predict_match(
             local_modelo,
             visitante_modelo,
         )
 
-        ## Córners
+        # ====================================================
+        # CÓRNERS
+        # ====================================================
+
         corners = spec_model.predict_corners(
             local_modelo,
             visitante_modelo,
         )
 
-        ## Tarjetas
+        # ====================================================
+        # TARJETAS
+        # ====================================================
+
         cards = spec_model.predict_cards(
             local_modelo,
             visitante_modelo,
             referee=arbitro,
         )
 
-        ## Respuesta
+        # ====================================================
+        # RESPUESTA
+        # ====================================================
+
         resultado = {
             "success": True,
+            # =================================================
+            # NOMBRES VISIBLES / SOLICITADOS
+            # =================================================
             "partido": {
-                "local": local,
-                "visitante": visitante,
+                "local": local_modelo,
+                "visitante": visitante_modelo,
                 "arbitro": arbitro,
             },
+            # =================================================
+            # NOMBRES REALES UTILIZADOS POR EL MODELO
+            # =================================================
             "modelo": {
                 "local": local_modelo,
                 "visitante": visitante_modelo,
@@ -550,7 +632,9 @@ def calcular_prediccion(request: PrediccionRequest):
     except Exception as error:
 
         print("❌ ERROR DE PREDICCIÓN:")
+
         print(error)
+
         raise HTTPException(
             status_code=500,
             detail=str(error),
