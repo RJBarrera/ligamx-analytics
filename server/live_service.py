@@ -770,17 +770,17 @@ class LiveFootballService:
             for date_value in dates:
 
                 try:
-                    #season = int(
+                    # season = int(
 
-                       #date_value[:4]
-                  #  )
+                    # date_value[:4]
+                    #  )
 
                     response = self._api_get(
                         "/fixtures",
                         params={
                             "date": date_value,
-                            #"league": LIGA_MX_ID,
-                            #"season": "2026",
+                            # "league": LIGA_MX_ID,
+                            # "season": "2026",
                             "timezone": TIMEZONE,
                         },
                         cache_seconds=OVERLAY_CACHE_SECONDS,
@@ -887,18 +887,18 @@ class LiveFootballService:
         away,
     ):
 
-       # season = int(
-           # str(
+        # season = int(
+        # str(
         #       date
         #    )[:4]
-        #)
+        # )
 
         response = self._api_get(
             "/fixtures",
             params={
                 "date": date,
-                #"league": LIGA_MX_ID,
-                #"season": "2026",
+                # "league": LIGA_MX_ID,
+                # "season": "2026",
                 "timezone": TIMEZONE,
             },
             cache_seconds=RESOLVE_CACHE_SECONDS,
@@ -1181,3 +1181,41 @@ class LiveFootballService:
             result[side]["values"] = values
 
         return result
+
+    # ============================================================
+
+
+# FIXTURES LIGA MX POR FECHA
+#
+# UTILIZADO POR LIVE OVERLAY Y DATASET SYNC
+# ============================================================
+
+
+def get_liga_mx_fixtures_by_date(
+    self,
+    date_value,
+):
+
+    response = self._api_get(
+        "/fixtures",
+        params={
+            "date": date_value,
+            "timezone": TIMEZONE,
+        },
+        cache_seconds=OVERLAY_CACHE_SECONDS,
+        allow_stale=True,
+    )
+
+    fixtures = [
+        item
+        for item in response["data"]
+        if (
+            item.get(
+                "league",
+                {},
+            ).get("id")
+            == LIGA_MX_ID
+        )
+    ]
+
+    return fixtures

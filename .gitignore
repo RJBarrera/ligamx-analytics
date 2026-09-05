@@ -23,7 +23,7 @@ __pycache__/
 *.pyo
 *.pyd
 .venv
-.env
+# .env
 venv/
 env/
 .pytest_cache/

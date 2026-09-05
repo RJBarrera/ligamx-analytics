@@ -1,7 +1,9 @@
 """api_server"""
 
+import asyncio
 import os
-from contextlib import asynccontextmanager
+import threading
+from contextlib import asynccontextmanager, suppress
 import time
 
 from pathlib import Path
@@ -25,6 +27,14 @@ from prediccion_ligamx import (
     analizar_h2h,
 )
 
+from match_history_service import (
+    MatchHistoryService,
+)
+
+from dataset_sync_service import (
+    DatasetSyncService,
+)
+
 ## Configuración
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -46,10 +56,10 @@ for candidate in FRONTEND_CANDIDATES:
         FRONTEND_DIR = candidate
         break
 
-CSV_PATH = os.path.join(
-    BASE_DIR,
-    "historial_ligamx_2023.csv",
-)
+# CSV_PATH = os.path.join(
+#     BASE_DIR,
+#     "historial_ligamx_2023.csv",
+# )
 
 ## Equivalencias
 EQUIVALENCIAS = {
@@ -70,6 +80,39 @@ STATE = {
 # ============================================================
 
 LIVE_SERVICE = LiveFootballService()
+
+# ============================================================
+# DATASET
+# ============================================================
+
+HISTORY_SERVICE = MatchHistoryService()
+
+
+DATASET_SYNC_SERVICE = DatasetSyncService(
+    live_service=LIVE_SERVICE,
+    history_service=HISTORY_SERVICE,
+)
+
+CSV_PATH = str(HISTORY_SERVICE.history_path)
+
+
+# ============================================================
+# MODEL LOCK
+# ============================================================
+
+MODEL_RELOAD_LOCK = threading.RLock()
+
+
+# ============================================================
+# DATASET SYNC INTERVAL
+# ============================================================
+
+DATASET_SYNC_SECONDS = int(
+    os.getenv(
+        "MATCHLAB_DATASET_SYNC_SECONDS",
+        "600",
+    )
+)
 
 
 class LiveAIRequest(BaseModel):
@@ -234,6 +277,84 @@ def inicializar_modelos():
     print("🟢 MOTOR LISTO")
     print("=" * 50 + "\n")
 
+    # MODELOS SINCRONIZADOS CON EL CSV
+    HISTORY_SERVICE.mark_models_clean()
+
+
+# ASEGURAR MODELOS ACTUALIZADOS
+def ensure_models_fresh():
+
+    if not HISTORY_SERVICE.is_dirty():
+
+        return False
+
+    with MODEL_RELOAD_LOCK:
+
+        # Otro thread pudo actualizar mientras esperábamos.
+        if not HISTORY_SERVICE.is_dirty():
+
+            return False
+
+        print("")
+
+        print("==============================================")
+
+        print("🔄 MATCHLAB DATASET ACTUALIZADO")
+
+        print("🔄 Reentrenando modelos...")
+
+        print("==============================================")
+
+        inicializar_modelos()
+
+        print("✅ Modelos sincronizados con el nuevo histórico.")
+
+        return True
+
+
+# ============================================================
+# DATASET BACKGROUND WORKER
+# ============================================================
+
+
+async def dataset_sync_worker():
+
+    # Dar tiempo a FastAPI/modelos de iniciar.
+    await asyncio.sleep(30)
+
+    while True:
+
+        try:
+
+            result = await asyncio.to_thread(DATASET_SYNC_SERVICE.sync_today)
+
+            if (
+                result.get(
+                    "saved_count",
+                    0,
+                )
+                > 0
+            ):
+
+                print("")
+
+                print("==============================================")
+
+                print("📊 MATCHLAB DATASET")
+
+                print(f"✅ Nuevos partidos: " f"{result['saved_count']}")
+
+                print("==============================================")
+
+        except Exception as error:
+
+            print(
+                "⚠️ Dataset Sync:",
+                error,
+            )
+
+        await asyncio.sleep(DATASET_SYNC_SECONDS)
+
 
 ## Lifespan FastAPI
 @asynccontextmanager
@@ -241,7 +362,21 @@ async def lifespan(_app: FastAPI):
     """Lifespan FastAPI"""
 
     inicializar_modelos()
-    yield
+
+    # SINCRONIZAR SET DE DATOS
+    dataset_task = asyncio.create_task(dataset_sync_worker())
+
+    try:
+
+        yield
+
+    finally:
+
+        dataset_task.cancel()
+
+        with suppress(asyncio.CancelledError):
+
+            await dataset_task
 
 
 ## FastAPI
@@ -296,6 +431,9 @@ def obtener_catalogos():
 @app.post("/api/prediccion")
 def calcular_prediccion(request: PrediccionRequest):
     """Ejecuta calculos de predicciones"""
+
+    # SI SE AGREGARON PARTIDOS NUEVOS: reentrenar UNA sola vez.
+    ensure_models_fresh()
 
     ## Parámetros
     local = request.local.strip()
@@ -521,6 +659,7 @@ def obtener_detalle_live(
     try:
 
         detail = LIVE_SERVICE.get_fixture_detail(fixture_id)
+        history_sync = HISTORY_SERVICE.save_finished_match(detail)
 
         intelligence = build_live_intelligence(
             detail,
@@ -534,6 +673,7 @@ def obtener_detalle_live(
                 **detail,
                 "intelligence": intelligence,
             },
+            "history_sync": history_sync,
         }
 
     except Exception as error:
@@ -586,6 +726,47 @@ def consultar_live_ai(
             "ERROR LIVE AI:",
             error,
         )
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(error),
+        )
+
+
+# DATASET STATUS
+@app.get("/api/dataset/status")
+def obtener_dataset_status():
+
+    try:
+
+        return {
+            "success": True,
+            "dataset": HISTORY_SERVICE.get_status(),
+        }
+
+    except Exception as error:
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(error),
+        )
+
+
+# DATASET SYNC MANUAL
+@app.post("/api/dataset/sync")
+def sincronizar_dataset():
+
+    try:
+
+        result = DATASET_SYNC_SERVICE.sync_today(force=True)
+
+        return {
+            "success": True,
+            "result": result,
+            "dataset": HISTORY_SERVICE.get_status(),
+        }
+
+    except Exception as error:
 
         raise HTTPException(
             status_code=500,
