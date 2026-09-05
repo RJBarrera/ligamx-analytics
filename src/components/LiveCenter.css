@@ -253,7 +253,7 @@
 .live-engine-status > div:last-child > span {
   color: #63798d;
 
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   font-weight: 850;
 
   letter-spacing: 0.12em;
@@ -264,7 +264,7 @@
 
   color: #e7eef5;
 
-  font-size: 0.83rem;
+  font-size: 0.93rem;
 }
 
 .live-engine-status small {
@@ -272,7 +272,7 @@
 
   color: #688092;
 
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 /* =========================================================
@@ -296,7 +296,7 @@
 
   margin-bottom: 20px;
 
-  padding: 8px;
+  padding: 19px;
 
   border: 1px solid var(--live-border);
 
@@ -379,7 +379,7 @@
   display: flex;
   align-items: center;
 
-  gap: 8px;
+  gap: 10px;
 
   color: #37e2a8;
 
@@ -455,7 +455,7 @@
 .live-section-title small {
   color: #8793a3;
 
-  font-size: 0.8rem;
+  font-size: 0.rem;
 }
 
 /* =========================================================
@@ -2035,7 +2035,7 @@
 
 @media (max-width: 800px) {
   .live-center__shell {
-    width: min(100% - 28px, 1540px);
+    width: min(100% - 22px, 1540px);
   }
 
   .live-scoreboard__main {
@@ -2072,10 +2072,11 @@
   .live-toolbar {
     align-items: stretch;
     flex-direction: column;
+    gap: 10px;
   }
 
   .live-toolbar__refresh {
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .live-match-section,
@@ -2098,6 +2099,27 @@
     border-radius: 8px;
 
     text-align: left;
+  }
+
+  .live-toolbar__tabs {
+    justify-content: center;
+  }
+
+  .live-toolbar__tabs button {
+    font-size: 1rem;
+  }
+
+  .live-engine-status {
+    flex-direction:column-reverse;
+  }
+
+  .live-engine-status > div:last-child {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .live-engine-status__radar {
+    margin-bottom: -15px;
   }
 }
 
@@ -2150,7 +2172,7 @@
 .live-provider-strip strong {
   color: #405064;
 
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 850;
 }
 
@@ -2160,7 +2182,7 @@
 
   color: #929daa;
 
-  font-size: 0.55rem;
+  font-size: 0.6rem;
 }
 
 
@@ -2667,14 +2689,14 @@
 .live-quota__status strong {
   color: #405064;
 
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 
 
 .live-quota__status small {
   color: #96a1ad;
 
-  font-size: 0.52rem;
+  font-size: 0.65rem;
 }
 
 
@@ -2688,14 +2710,14 @@
 .live-quota__right strong {
   color: #237f65;
 
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 
 
 .live-quota__right small {
   color: #98a2ae;
 
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 
@@ -2733,11 +2755,11 @@
 @media (max-width: 600px) {
   .live-quota {
     align-items: flex-start;
-    flex-direction: column;
   }
 
 
   .live-quota__right {
-    align-items: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
   }
 }

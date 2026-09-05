@@ -18,26 +18,13 @@ import "./LiveCenter.css";
 
 const API_URL = "";
 
-// ============================================================
-// POLLING UI
-//
-// React puede preguntar frecuentemente a NUESTRO backend.
-//
-// Eso NO significa que estemos consumiendo API-Football
-// cada vez.
-//
-// FastAPI tiene cache independiente.
-// ============================================================
-
 const NORMAL_REFRESH_SECONDS = 60;
 
 const LIVE_UI_REFRESH_SECONDS = 20;
 
 const DETAIL_REFRESH_SECONDS = 90;
 
-// ============================================================
 // UTILIDADES
-// ============================================================
 
 const number = (value, fallback = 0) => {
   const n = Number(value);
@@ -61,10 +48,7 @@ const isLiveStatus = (status) => {
   return ["1H", "HT", "2H", "ET", "BT", "P", "SUSP", "INT"].includes(status);
 };
 
-// ============================================================
 // STATUS
-// ============================================================
-
 function LiveStatus({ match }) {
   const status = match?.status?.short;
 
@@ -104,10 +88,7 @@ function LiveStatus({ match }) {
   );
 }
 
-// ============================================================
 // ESCUDO
-// ============================================================
-
 function TeamBadge({ team }) {
   const localLogo = getTeamLogo(team?.name);
 
@@ -129,10 +110,7 @@ function TeamBadge({ team }) {
   );
 }
 
-// ============================================================
 // MATCH CARD
-// ============================================================
-
 function LiveMatchCard({ match, selected, onClick }) {
   const live = match?.live_verified;
 
@@ -197,10 +175,7 @@ function LiveMatchCard({ match, selected, onClick }) {
   );
 }
 
-// ============================================================
 // STAT
-// ============================================================
-
 function LiveStatRow({ label, home, away, suffix = "" }) {
   const homeValue = number(home);
 
@@ -237,10 +212,7 @@ function LiveStatRow({ label, home, away, suffix = "" }) {
   );
 }
 
-// ============================================================
 // EVENTO
-// ============================================================
-
 const getEventIcon = (event) => {
   if (event.type === "Goal") {
     return "⚽";
@@ -265,10 +237,7 @@ const getEventIcon = (event) => {
   return "•";
 };
 
-// ============================================================
 // PRINCIPAL
-// ============================================================
-
 function LiveCenter() {
   const [scope, setScope] = useState("live");
 
@@ -302,26 +271,15 @@ function LiveCenter() {
 
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  // =========================================================
   // AI
-  // =========================================================
-
   const [aiQuestion, setAiQuestion] = useState("");
 
   const [aiMessages, setAiMessages] = useState([]);
 
   const [aiLoading, setAiLoading] = useState(false);
 
-  // =========================================================
   // PARTIDOS
-  // =========================================================
-
-  // ============================================================
-  // CARGAR CARTELERA
-  //
   // THE SPORTS DB
-  // ============================================================
-
   const loadMatches = useCallback(
     async (silent = false) => {
       if (!silent) {
@@ -380,16 +338,12 @@ function LiveCenter() {
     [scope],
   );
 
-  // ============================================================
   // SELECCIONAR PARTIDO
-  //
   // TheSportsDB
   //      ↓
   // resolver
   //      ↓
   // API-Football fixture_id
-  // ============================================================
-
   const seleccionarPartido = async (match) => {
     if (!match || resolvingFixture) {
       return;
@@ -403,24 +357,15 @@ function LiveCenter() {
 
     setError("");
 
-    // =======================================================
     // YA TENEMOS FIXTURE ID
-    //
-    // gracias al Live Overlay.
-    // =======================================================
-
     if (match.fixture_id) {
       setSelectedFixture(match.fixture_id);
 
       return;
     }
 
-    // =======================================================
     // SI TODAVÍA NO TENEMOS FIXTURE ID
-    //
     // resolver bajo demanda.
-    // =======================================================
-
     setResolvingFixture(true);
 
     try {
@@ -455,10 +400,7 @@ function LiveCenter() {
     }
   };
 
-  // =========================================================
   // DETALLE
-  // =========================================================
-
   const loadDetail = useCallback(async (fixtureId, silent = false) => {
     if (!fixtureId) {
       return;
@@ -526,16 +468,9 @@ function LiveCenter() {
     }
   }, []);
 
-  // ============================================================
-  // POLLING CARTELERA
-  //
   // TheSportsDB
-  //
   // 1 request cada 5 minutos
-  //
   // Y SE DETIENE cuando estamos viendo un partido.
-  // ============================================================
-
   useEffect(() => {
     loadMatches();
 
@@ -558,14 +493,8 @@ function LiveCenter() {
     return () => window.clearInterval(interval);
   }, [loadMatches, selectedFixture, liveMeta.overlayActive]);
 
-  // ============================================================
-  // POLLING PARTIDO SELECCIONADO
-  //
   // API-Football
-  //
   // 1 request / minuto
-  // ============================================================
-
   useEffect(() => {
     if (!selectedFixture) {
       return undefined;
@@ -584,10 +513,7 @@ function LiveCenter() {
     return () => window.clearInterval(interval);
   }, [selectedFixture, loadDetail]);
 
-  // ============================================================
   // COUNTDOWN
-  // ============================================================
-
   useEffect(() => {
     const timer = window.setInterval(
       () => {
@@ -608,10 +534,7 @@ function LiveCenter() {
     return () => window.clearInterval(timer);
   }, [selectedFixture]);
 
-  // =========================================================
   // CAMBIAR SCOPE
-  // =========================================================
-
   const changeScope = (nextScope) => {
     setScope(nextScope);
 
@@ -624,18 +547,12 @@ function LiveCenter() {
     setAiQuestion("");
   };
 
-  // =========================================================
   // STATS
-  // =========================================================
-
   const getStat = (side, name) => {
     return detail?.statistics?.[side]?.values?.[name] ?? null;
   };
 
-  // =========================================================
   // INTELLIGENCE
-  // =========================================================
-
   const intelligence = detail?.intelligence || {};
 
   const momentum = intelligence?.momentum || {
@@ -648,10 +565,7 @@ function LiveCenter() {
 
   const signals = intelligence?.signals || [];
 
-  // =========================================================
   // AI
-  // =========================================================
-
   const askAI = async (forcedQuestion = "") => {
     const question = String(forcedQuestion || aiQuestion).trim();
 
@@ -712,10 +626,7 @@ function LiveCenter() {
     }
   };
 
-  // =========================================================
   // LOGOS
-  // =========================================================
-
   const homeLogo = useMemo(
     () => (detail ? getTeamLogo(detail.home?.name) || detail.home?.logo : null),
     [detail],
@@ -726,68 +637,13 @@ function LiveCenter() {
     [detail],
   );
 
-  // =========================================================
   // RENDER
-  // =========================================================
-
   return (
     <section id="en-vivo" className="live-center">
-      {/* ================================================= */}
-      {/* HERO */}
-      {/* ================================================= */}
-
-      {/* <div className="live-center__hero">
-        <div className="live-center__hero-glow" />
-
-        <div className="live-center__shell">
-          <div className="live-center__hero-content">
-            <div>
-              <span className="live-center__kicker">
-                <span />
-                StatMX En Vivo
-              </span>
-
-              <h2>
-                Sigue a tu equipo favorito.
-                <strong> En tiempo real.</strong>
-              </h2>
-
-              <p>
-                Sigue los encuentros de la Liga MX, analiza estadísticas, detecta
-                cambios de momentum y consulta a Stat AI durante los 90
-                minutos.
-              </p>
-            </div>
-
-            <div className="live-engine-status">
-              <div className="live-engine-status__radar">
-                <span />
-                <span />
-                <strong>EN VIVO</strong>
-              </div>
-
-              <div>
-                <span>MOTOR</span>
-
-                <strong>Inteligencia en tiempo real</strong>
-
-                <small>Recarga cada {REFRESH_SECONDS}s</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* ================================================= */}
       {/* BODY */}
-      {/* ================================================= */}
-
       <div className="live-center__body">
         <div className="live-center__shell">
-          {/* ============================================= */}
           {/* TOOLBAR */}
-          {/* ============================================= */}
-
           <div className="live-toolbar">
             <div className="live-toolbar__tabs">
               <button
@@ -869,7 +725,7 @@ function LiveCenter() {
               <span className="live-provider-strip__dot live-provider-strip__dot--live" />
 
               <div>
-                <strong>API-Football</strong>
+                <strong className="live-cuota-apifot">API-Football</strong>
 
                 <small>Live data bajo demanda</small>
               </div>
@@ -920,10 +776,7 @@ function LiveCenter() {
             </div>
           )}
 
-          {/* ============================================= */}
           {/* ERROR */}
-          {/* ============================================= */}
-
           {error && (
             <div className="live-error">
               <strong>Live Center</strong>
@@ -932,10 +785,7 @@ function LiveCenter() {
             </div>
           )}
 
-          {/* ============================================= */}
           {/* MATCHES */}
-          {/* ============================================= */}
-
           <div className="live-match-section">
             <div className="live-section-title">
               <div>
@@ -1016,10 +866,7 @@ function LiveCenter() {
             </div>
           )}
 
-          {/* ============================================= */}
           {/* DETALLE */}
-          {/* ============================================= */}
-
           {selectedFixture && (
             <div className="live-analysis">
               {loadingDetail && !detail ? (
@@ -1030,10 +877,7 @@ function LiveCenter() {
               ) : (
                 detail && (
                   <>
-                    {/* ===================================== */}
                     {/* SCOREBOARD */}
-                    {/* ===================================== */}
-
                     <section className="live-scoreboard">
                       <div className="live-scoreboard__top">
                         <span>StatMX en vivo</span>
@@ -1105,10 +949,7 @@ function LiveCenter() {
                       </div>
                     </section>
 
-                    {/* ===================================== */}
                     {/* MOMENTUM */}
-                    {/* ===================================== */}
-
                     <section className="live-panel live-momentum">
                       <div className="live-panel__heading">
                         <div>
@@ -1209,10 +1050,7 @@ function LiveCenter() {
                       )}
                     </section>
 
-                    {/* ===================================== */}
                     {/* STATS + SIGNALS */}
-                    {/* ===================================== */}
-
                     <div className="live-two-column">
                       <section className="live-panel">
                         <div className="live-panel__heading">
@@ -1297,10 +1135,7 @@ function LiveCenter() {
                       </section>
                     </div>
 
-                    {/* ===================================== */}
                     {/* PREMATCH VS LIVE */}
-                    {/* ===================================== */}
-
                     {shift && (
                       <section className="live-panel">
                         <div className="live-panel__heading">
@@ -1380,10 +1215,7 @@ function LiveCenter() {
                       </section>
                     )}
 
-                    {/* ===================================== */}
                     {/* TIMELINE */}
-                    {/* ===================================== */}
-
                     <section className="live-panel">
                       <div className="live-panel__heading">
                         <div>
@@ -1437,10 +1269,7 @@ function LiveCenter() {
                       </div>
                     </section>
 
-                    {/* ===================================== */}
                     {/* AI */}
-                    {/* ===================================== */}
-
                     <section className="live-ai">
                       <div className="live-ai__header">
                         <div className="live-ai__identity">

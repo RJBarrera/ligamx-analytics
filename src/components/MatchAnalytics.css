@@ -527,24 +527,6 @@
   box-shadow: 0 18px 55px rgba(25, 38, 55, 0.07);
 }
 
-.match-prediction-block::before {
-  position: absolute;
-
-  top: -1px;
-  right: -1px;
-  left: -1px;
-
-  height: 4px;
-
-  content: "";
-
-  border-radius: 22px 22px 0 0;
-
-  background: linear-gradient(90deg, #21d89d, #38bdf8, #8b5cf6);
-
-  pointer-events: none;
-}
-
 .match-prediction-block__heading {
   display: flex;
   align-items: flex-start;
@@ -2357,13 +2339,13 @@
   }
 
   .match-fixture-card__main {
-    grid-template-columns: 1fr;
-
-    gap: 24px;
+    /* grid-template-columns: 1fr; */
+    padding: 2.5rem;
+    /* gap: 24px; */
   }
 
   .match-fixture-center {
-    order: -1;
+    /* order: -1; */
   }
 
   .match-team h2 {
@@ -2389,8 +2371,13 @@
   .match-global-footer__inner {
     align-items: flex-start;
     flex-direction: column;
-
     padding: 25px 0;
+  }
+
+  .match-results-footer {
+    gap: 10px;
+    font-size: 0.78rem;
+    text-align: start;
   }
 }
 

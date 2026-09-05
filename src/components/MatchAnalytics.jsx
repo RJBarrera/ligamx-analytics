@@ -895,11 +895,11 @@ function MatchAnalytics() {
                 </p>
               </div>
 
-              <div className="match-step-badge">
+              {/* <div className="match-step-badge">
                 <span>PASO</span>
 
                 <strong>01</strong>
-              </div>
+              </div> */}
             </div>
 
             <form onSubmit={analizarPartido}>
