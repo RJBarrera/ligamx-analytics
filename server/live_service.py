@@ -887,11 +887,16 @@ class LiveFootballService:
         away,
     ):
 
+        season = int(
+           date_value[:4]
+        )
+
         response = self._api_get(
             "/fixtures",
             params={
                 "date": date,
                 "league": LIGA_MX_ID,
+                "season": season,
                 "timezone": TIMEZONE,
             },
             cache_seconds=RESOLVE_CACHE_SECONDS,
@@ -935,10 +940,15 @@ class LiveFootballService:
 
         fixture_id = int(fixture_id)
 
+        season = int(
+           date_value[:4]
+        )
+
         response = self._api_get(
             "/fixtures",
             params={
                 "id": fixture_id,
+                "season": season,
             },
             cache_seconds=DETAIL_CACHE_SECONDS,
             allow_stale=True,
