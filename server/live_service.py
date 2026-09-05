@@ -1184,38 +1184,36 @@ class LiveFootballService:
 
     # ============================================================
 
+    # FIXTURES LIGA MX POR FECHA
+    #
+    # UTILIZADO POR LIVE OVERLAY Y DATASET SYNC
+    # ============================================================
 
-# FIXTURES LIGA MX POR FECHA
-#
-# UTILIZADO POR LIVE OVERLAY Y DATASET SYNC
-# ============================================================
+    def get_liga_mx_fixtures_by_date(
+        self,
+        date_value,
+    ):
 
-
-def get_liga_mx_fixtures_by_date(
-    self,
-    date_value,
-):
-
-    response = self._api_get(
-        "/fixtures",
-        params={
-            "date": date_value,
-            "timezone": TIMEZONE,
-        },
-        cache_seconds=OVERLAY_CACHE_SECONDS,
-        allow_stale=True,
-    )
-
-    fixtures = [
-        item
-        for item in response["data"]
-        if (
-            item.get(
-                "league",
-                {},
-            ).get("id")
-            == LIGA_MX_ID
+        response = self._api_get(
+            "/fixtures",
+            params={
+                "date": date_value,
+                "timezone": TIMEZONE,
+            },
+            cache_seconds=OVERLAY_CACHE_SECONDS,
+            allow_stale=True,
         )
-    ]
 
-    return fixtures
+        fixtures = [
+            item
+            for item in response["data"]
+            if (
+                item.get(
+                    "league",
+                    {},
+                ).get("id")
+                == LIGA_MX_ID
+            )
+        ]
+
+        return fixtures
