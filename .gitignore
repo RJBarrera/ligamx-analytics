@@ -46,3 +46,7 @@ db.sqlite3
 .DS_Store
 Thumbs.db
 ehthumbs.db
+
+# MatchLab runtime state
+server/dataset_state.json
+server/*.tmp
