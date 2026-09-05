@@ -770,12 +770,17 @@ class LiveFootballService:
             for date_value in dates:
 
                 try:
+                    season = int(
+
+                       date_value[:4]
+                    )
 
                     response = self._api_get(
                         "/fixtures",
                         params={
                             "date": date_value,
                             "league": LIGA_MX_ID,
+                            "season": season,
                             "timezone": TIMEZONE,
                         },
                         cache_seconds=OVERLAY_CACHE_SECONDS,
