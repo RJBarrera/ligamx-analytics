@@ -847,3 +847,39 @@ class MatchHistoryService:
                     (state.get("pending_fixtures") or {}).values()
                 ),
             }
+
+    # ============================================================
+    # OBTENER FIXTURES PENDIENTES
+    # ============================================================
+
+    def get_pending_fixture_ids(
+        self,
+    ):
+
+        with self._lock:
+
+            state = self._read_state()
+
+            pending = state.get("pending_fixtures") or {}
+
+            fixture_ids = []
+
+            for item in pending.values():
+
+                fixture_id = item.get("fixture_id")
+
+                if fixture_id is None:
+                    continue
+
+                try:
+
+                    fixture_ids.append(int(fixture_id))
+
+                except (
+                    TypeError,
+                    ValueError,
+                ):
+
+                    continue
+
+            return fixture_ids

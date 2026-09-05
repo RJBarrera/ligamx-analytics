@@ -108,36 +108,132 @@ class DatasetSyncService:
 
         try:
 
+            # ====================================================
+            # 1. REINTENTAR FIXTURES PENDIENTES
+            # ====================================================
+
+            pending_retry = []
+
+            pending_fixture_ids = self.history_service.get_pending_fixture_ids()
+
+            for fixture_id in pending_fixture_ids:
+
+                try:
+
+                    # =============================================
+                    # SI YA EXISTE EN EL HISTÓRICO,
+                    # NO VOLVER A INSERTARLO.
+                    # =============================================
+
+                    if self.history_service.has_fixture(fixture_id):
+
+                        pending_retry.append(
+                            {
+                                "fixture_id": fixture_id,
+                                "result": {
+                                    "action": "duplicate",
+                                },
+                            }
+                        )
+
+                        continue
+
+                    # =============================================
+                    # VOLVER A CONSULTAR EL DETALLE COMPLETO
+                    # =============================================
+
+                    detail = self.live_service.get_fixture_detail(fixture_id)
+
+                    # =============================================
+                    # VOLVER A INTENTAR GUARDAR
+                    # =============================================
+
+                    result = self.history_service.save_finished_match(detail)
+
+                    pending_retry.append(
+                        {
+                            "fixture_id": fixture_id,
+                            "result": result,
+                        }
+                    )
+
+                except Exception as error:
+
+                    pending_retry.append(
+                        {
+                            "fixture_id": fixture_id,
+                            "result": {
+                                "action": "error",
+                                "error": str(error),
+                            },
+                        }
+                    )
+
+            # ====================================================
+            # 2. VALIDAR SI HAY PARTIDOS EN VENTANA DE FINALIZACIÓN
+            #
+            # IMPORTANTE:
+            #
+            # aunque no haya partidos de hoy en ventana,
+            # los pendientes anteriores YA SE REINTENTARON.
+            # ====================================================
+
             if not force and not self._should_sync_today():
 
                 return {
                     "status": "waiting",
                     "message": "No hay partidos en ventana de finalización.",
+                    "pending_retry": pending_retry,
                 }
+
+            # ====================================================
+            # 3. FECHA ACTUAL
+            # ====================================================
 
             date_value = datetime.now(TIMEZONE).date().isoformat()
 
-            # =================================================
-            # UNA CONSULTA DE API-FOOTBALL
+            # ====================================================
+            # 4. UNA CONSULTA DE API-FOOTBALL
             #
-            # Obtiene TODOS los fixtures de Liga MX que
-            # API-Football devuelve para esta fecha.
-            # =================================================
+            # Obtiene todos los fixtures disponibles de Liga MX
+            # para la fecha actual.
+            # ====================================================
 
             fixtures = self.live_service.get_liga_mx_fixtures_by_date(date_value)
 
+            # ====================================================
+            # 5. CONTENEDORES DE RESULTADO
+            # ====================================================
+
             saved = []
+
             duplicates = []
+
             pending = []
+
             unfinished = []
+
+            # ====================================================
+            # 6. PROCESAR FIXTURES DE HOY
+            # ====================================================
 
             for fixture in fixtures:
 
-                api_fixture = fixture.get("fixture", {})
+                api_fixture = fixture.get(
+                    "fixture",
+                    {},
+                )
 
                 fixture_id = api_fixture.get("id")
 
-                status = api_fixture.get("status", {}).get("short")
+                status = api_fixture.get(
+                    "status",
+                    {},
+                ).get("short")
+
+                # =============================================
+                # TODAVÍA NO TERMINA
+                # =============================================
 
                 if status not in FINAL_STATUSES:
 
@@ -145,19 +241,27 @@ class DatasetSyncService:
 
                     continue
 
+                # =============================================
+                # YA EXISTE EN EL CSV
+                # =============================================
+
                 if fixture_id and self.history_service.has_fixture(fixture_id):
 
                     duplicates.append(fixture_id)
 
                     continue
 
-                # =================================================
-                # AHORA SÍ OBTENEMOS DETALLE COMPLETO
+                # =============================================
+                # OBTENER DETALLE COMPLETO
                 #
-                # Solo ocurre una vez cuando el partido termina.
-                # =================================================
+                # Solo cuando ya terminó.
+                # =============================================
 
                 detail = self.live_service.get_fixture_detail(fixture_id)
+
+                # =============================================
+                # INTENTAR GUARDAR
+                # =============================================
 
                 result = self.history_service.save_finished_match(detail)
 
@@ -175,9 +279,14 @@ class DatasetSyncService:
 
                     pending.append(result)
 
+            # ====================================================
+            # 7. RESPONSE
+            # ====================================================
+
             return {
                 "status": "completed",
                 "date": date_value,
+                "pending_retry": pending_retry,
                 "fixtures_found": len(fixtures),
                 "saved": saved,
                 "saved_count": len(saved),
