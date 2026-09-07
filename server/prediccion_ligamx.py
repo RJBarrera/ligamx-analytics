@@ -249,7 +249,7 @@ class DixonColesModel:
         n = len(self.teams)
         team_idx = {team: i for i, team in enumerate(self.teams)}
 
-        df["date"] = pd.to_datetime(df["date"], utc=True)
+        df["date"] = pd.to_datetime(df["date"], utc=True, format="mixed")
         max_date = df["date"].max()
         weights = np.exp(-self.decay_xi * (max_date - df["date"]).dt.days.values)
 
