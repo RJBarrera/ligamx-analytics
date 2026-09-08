@@ -779,7 +779,7 @@ function MatchAnalytics() {
           <section id="prediccion" className="match-prediction-block">
             <div className="match-prediction-block__heading">
               <div>
-                <span className="match-block-kicker">Match Center</span>
+                <span className="match-block-kicker">Panel de partidos</span>
 
                 <h2>Configura el encuentro</h2>
 
@@ -982,7 +982,7 @@ function MatchAnalytics() {
                   {/* MATCH ANALYSIS */}
                   <section className="match-fixture-card">
                     <div className="match-fixture-card__topline">
-                      <span>MATCH ANALYSIS</span>
+                      <span>ANÁLISIS DEL PARTIDO</span>
 
                       <div>
                         <span className="match-live-dot" />

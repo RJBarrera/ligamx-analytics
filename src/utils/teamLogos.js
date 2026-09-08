@@ -70,6 +70,7 @@ const TEAM_LOGO_FILES = Object.freeze({
   monterrey: "monterrey.png",
   atlante: "atlante.png",
   mazatlan: "atlante.png",
+  logo: "pelota2.png"
 });
 
 // Obtiene logos

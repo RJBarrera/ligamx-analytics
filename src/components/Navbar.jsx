@@ -1,12 +1,13 @@
 import { useState } from "react";
 
+import { getTeamLogo } from "../utils/teamLogos";
 import "./Navbar.css";
 
 const NAV_ITEMS = [
-  {
-    label: "Inicio",
-    href: "#inicio",
-  },
+  // {
+  //   label: "Inicio",
+  //   href: "#inicio",
+  // },
   {
     label: "Predicción",
     href: "#prediccion",
@@ -34,37 +35,22 @@ function Navbar() {
         {/* BRAND */}
         <a href="/" className="sports-navbar__brand" onClick={cerrarMenu}>
           <div className="sports-navbar__logo">
-            <svg viewBox="0 0 40 40" aria-hidden="true">
-              <path
-                d="M7 29.5V23l7-7 5 5 9-10 5 4.5V30"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-
-              <path
-                d="M7 32.5h26"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-
-              <circle cx="28" cy="11" r="3" fill="currentColor" />
-            </svg>
+            <img
+              src={getTeamLogo("logo")}
+              alt="GoalX"
+              className="sports-select__team-logo"
+            />
           </div>
 
           <div className="sports-navbar__brand-text">
             <strong>
-              Stat
-              <span>MX</span>
+              Goal
+              <span>X</span>
             </strong>
 
             <div className="glob-sports-navbar__engine-dot">
               <span className="sports-navbar__engine-dot" />
-              <small>Análisis de la Liga MX</small>
+              <small>Análisis de tu Liga favorita</small>
             </div>
           </div>
         </a>
