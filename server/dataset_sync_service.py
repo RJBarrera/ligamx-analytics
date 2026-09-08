@@ -6,12 +6,8 @@ from datetime import (
 
 from zoneinfo import ZoneInfo
 
-# ============================================================
 # CONFIG
-# ============================================================
-
 TIMEZONE = ZoneInfo("America/Mazatlan")
-
 
 FINAL_STATUSES = {
     "FT",
@@ -20,11 +16,7 @@ FINAL_STATUSES = {
 }
 
 
-# ============================================================
 # SERVICE
-# ============================================================
-
-
 class DatasetSyncService:
 
     def __init__(
@@ -34,15 +26,10 @@ class DatasetSyncService:
     ):
 
         self.live_service = live_service
-
         self.history_service = history_service
-
         self._lock = threading.Lock()
 
-    # ========================================================
-    # ¿ESTAMOS CERCA DEL FINAL DE ALGÚN PARTIDO?
-    # ========================================================
-
+    # Validamos si hay algun partido por finalizar
     def _should_sync_today(
         self,
     ):
@@ -52,11 +39,9 @@ class DatasetSyncService:
             matches = self.live_service.sportsdb.get_matches(scope="today")
 
         except Exception:
-
             return False
 
         if not matches:
-
             return False
 
         now_timestamp = datetime.now(TIMEZONE).timestamp()
@@ -66,65 +51,39 @@ class DatasetSyncService:
             kickoff = match.get("kickoff_timestamp")
 
             if not kickoff:
-
                 continue
 
-            # =================================================
-            # DATA SYNC
-            #
-            # No necesitamos consumir API todo el partido.
-            #
-            # Empezamos aproximadamente 95 minutos
-            # después del kickoff.
-            #
-            # Y dejamos margen suficiente por tiempo añadido,
-            # suspensiones, etc.
-            # =================================================
-
+            # Se consume la api a los 95 minutos de que inicio el partido
             sync_start = kickoff + (95 * 60)
-
             sync_end = kickoff + (4 * 60 * 60)
 
             if sync_start <= now_timestamp <= sync_end:
-
                 return True
 
         return False
 
-    # ========================================================
     # SINCRONIZAR HOY
-    # ========================================================
-
     def sync_today(
         self,
         force=False,
     ):
 
         if not self._lock.acquire(blocking=False):
-
             return {
                 "status": "busy",
             }
 
         try:
 
-            # ====================================================
-            # 1. REINTENTAR FIXTURES PENDIENTES
-            # ====================================================
-
+            # REINTENTAR PARTIDOS PENDIENTES
             pending_retry = []
-
             pending_fixture_ids = self.history_service.get_pending_fixture_ids()
 
             for fixture_id in pending_fixture_ids:
 
                 try:
 
-                    # =============================================
-                    # SI YA EXISTE EN EL HISTÓRICO,
-                    # NO VOLVER A INSERTARLO.
-                    # =============================================
-
+                    # Si ya existe en el csv, no se inserta
                     if self.history_service.has_fixture(fixture_id):
 
                         pending_retry.append(
@@ -135,19 +94,12 @@ class DatasetSyncService:
                                 },
                             }
                         )
-
                         continue
 
-                    # =============================================
                     # VOLVER A CONSULTAR EL DETALLE COMPLETO
-                    # =============================================
-
                     detail = self.live_service.get_fixture_detail(fixture_id)
 
-                    # =============================================
                     # VOLVER A INTENTAR GUARDAR
-                    # =============================================
-
                     result = self.history_service.save_finished_match(detail)
 
                     pending_retry.append(
@@ -158,7 +110,6 @@ class DatasetSyncService:
                     )
 
                 except Exception as error:
-
                     pending_retry.append(
                         {
                             "fixture_id": fixture_id,
@@ -169,15 +120,7 @@ class DatasetSyncService:
                         }
                     )
 
-            # ====================================================
-            # 2. VALIDAR SI HAY PARTIDOS EN VENTANA DE FINALIZACIÓN
-            #
-            # IMPORTANTE:
-            #
-            # aunque no haya partidos de hoy en ventana,
-            # los pendientes anteriores YA SE REINTENTARON.
-            # ====================================================
-
+            # VALIDAR SI HAY PARTIDOS POR TERMINAR
             if not force and not self._should_sync_today():
 
                 return {
@@ -186,37 +129,19 @@ class DatasetSyncService:
                     "pending_retry": pending_retry,
                 }
 
-            # ====================================================
-            # 3. FECHA ACTUAL
-            # ====================================================
-
+            # FECHA ACTUAL
             date_value = datetime.now(TIMEZONE).date().isoformat()
 
-            # ====================================================
-            # 4. UNA CONSULTA DE API-FOOTBALL
-            #
-            # Obtiene todos los fixtures disponibles de Liga MX
-            # para la fecha actual.
-            # ====================================================
-
+            # Obtiene todos los fixtures disponibles de Liga MX para la fecha actual.
             fixtures = self.live_service.get_liga_mx_fixtures_by_date(date_value)
 
-            # ====================================================
-            # 5. CONTENEDORES DE RESULTADO
-            # ====================================================
-
+            # CONTENEDORES DE RESULTADO
             saved = []
-
             duplicates = []
-
             pending = []
-
             unfinished = []
 
-            # ====================================================
-            # 6. PROCESAR FIXTURES DE HOY
-            # ====================================================
-
+            # PROCESAR PARTIDOS DE HOY
             for fixture in fixtures:
 
                 api_fixture = fixture.get(
@@ -225,64 +150,38 @@ class DatasetSyncService:
                 )
 
                 fixture_id = api_fixture.get("id")
-
                 status = api_fixture.get(
                     "status",
                     {},
                 ).get("short")
 
-                # =============================================
-                # TODAVÍA NO TERMINA
-                # =============================================
-
+                # VALIRDAR SI YA FINALIZO
                 if status not in FINAL_STATUSES:
 
                     unfinished.append(fixture_id)
 
                     continue
 
-                # =============================================
-                # YA EXISTE EN EL CSV
-                # =============================================
-
+                # VALIDAR SI YA EXISTE EN EL CSV
                 if fixture_id and self.history_service.has_fixture(fixture_id):
-
                     duplicates.append(fixture_id)
-
                     continue
 
-                # =============================================
-                # OBTENER DETALLE COMPLETO
-                #
-                # Solo cuando ya terminó.
-                # =============================================
-
+                # OBTENEMOS EL DETALLE COMPLETO SI YA TERMINO EL PARTIDO
                 detail = self.live_service.get_fixture_detail(fixture_id)
 
-                # =============================================
-                # INTENTAR GUARDAR
-                # =============================================
-
+                # REALIZAMOS EL INTENTO DE GUARDADO
                 result = self.history_service.save_finished_match(detail)
-
                 action = result.get("action")
 
                 if action == "saved":
-
                     saved.append(result)
-
                 elif action == "duplicate":
-
                     duplicates.append(fixture_id)
-
                 elif action == "pending":
-
                     pending.append(result)
 
-            # ====================================================
-            # 7. RESPONSE
-            # ====================================================
-
+            # RESPUESTA
             return {
                 "status": "completed",
                 "date": date_value,
@@ -296,5 +195,4 @@ class DatasetSyncService:
             }
 
         finally:
-
             self._lock.release()

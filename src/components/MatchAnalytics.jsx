@@ -66,10 +66,7 @@ const obtenerInicialesEquipo = (nombre = "") => {
   return `${palabras[0]?.[0] || ""}${palabras[1]?.[0] || ""}`.toUpperCase();
 };
 
-// ============================================================
 // SELECCIONAR LA MAYOR PROBABILIDAD DE UN MERCADO
-// ============================================================
-
 const obtenerMayorProbabilidad = (categoria, opciones, descripcion = "") => {
   const validas = opciones
     .filter((opcion) => Number.isFinite(Number(opcion.probabilidad)))
@@ -394,10 +391,7 @@ function MatchAnalytics() {
     };
   }, [resultado]);
 
-  // ============================================================
   // RESUMEN DE MAYORES PROBABILIDADES
-  // ============================================================
-
   const resumenProbabilidades = useMemo(() => {
     if (!resultado || !datosResultado) {
       return null;
@@ -411,10 +405,7 @@ function MatchAnalytics() {
 
     const candidatos = [];
 
-    // ======================================================
     // 1X2
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Resultado 1X2",
@@ -422,25 +413,19 @@ function MatchAnalytics() {
         [
           {
             seleccion: `${resultado.partido.local} gana`,
-
             probabilidad: goles?.["1X2"]?.Home,
-
             tipo: "resultado",
           },
 
           {
             seleccion: "Empate",
-
             probabilidad: goles?.["1X2"]?.Draw,
-
             tipo: "resultado",
           },
 
           {
             seleccion: `${resultado.partido.visitante} gana`,
-
             probabilidad: goles?.["1X2"]?.Away,
-
             tipo: "resultado",
           },
         ],
@@ -449,10 +434,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // GOLES 1.5
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Total de goles 1.5",
@@ -460,17 +442,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: "Más de 1.5 goles",
-
             probabilidad: goles?.Over_Under?.["Over 1.5"],
-
             tipo: "goles",
           },
 
           {
             seleccion: "Menos de 1.5 goles",
-
             probabilidad: goles?.Over_Under?.["Under 1.5"],
-
             tipo: "goles",
           },
         ],
@@ -479,10 +457,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // GOLES 2.5
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Total de goles 2.5",
@@ -490,17 +465,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: "Más de 2.5 goles",
-
             probabilidad: goles?.Over_Under?.["Over 2.5"],
-
             tipo: "goles",
           },
 
           {
             seleccion: "Menos de 2.5 goles",
-
             probabilidad: goles?.Over_Under?.["Under 2.5"],
-
             tipo: "goles",
           },
         ],
@@ -509,10 +480,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // BTTS
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Ambos equipos anotan",
@@ -520,17 +488,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: "Sí anotan ambos",
-
             probabilidad: goles?.BTTS?.Yes,
-
             tipo: "goles",
           },
 
           {
             seleccion: "No anotan ambos",
-
             probabilidad: goles?.BTTS?.No,
-
             tipo: "goles",
           },
         ],
@@ -539,10 +503,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // CÓRNERS TOTALES
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Córners totales",
@@ -550,17 +511,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: "Más de 9.5 córners",
-
             probabilidad: corners?.["Over 9.5"],
-
             tipo: "corners",
           },
 
           {
             seleccion: "Menos de 9.5 córners",
-
             probabilidad: corners?.["Under 9.5"],
-
             tipo: "corners",
           },
         ],
@@ -569,10 +526,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // CÓRNERS PRIMERA MITAD
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Córners 1T",
@@ -580,17 +534,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: "Más de 4.5 córners 1T",
-
             probabilidad: corners?.["Over 4.5 1H"],
-
             tipo: "corners",
           },
 
           {
             seleccion: "Menos de 4.5 córners 1T",
-
             probabilidad: corners?.["Under 4.5 1H"],
-
             tipo: "corners",
           },
         ],
@@ -599,10 +549,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // CÓRNERS LOCAL 4.5
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         `${resultado.partido.local} - córners`,
@@ -610,17 +557,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: `${resultado.partido.local} +4.5 córners`,
-
             probabilidad: corners?.["Home_Over_4.5"],
-
             tipo: "corners",
           },
 
           {
             seleccion: `${resultado.partido.local} -4.5 córners`,
-
             probabilidad: corners?.["Home_Under_4.5"],
-
             tipo: "corners",
           },
         ],
@@ -629,10 +572,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // CÓRNERS LOCAL 5.5
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         `${resultado.partido.local} - línea 5.5`,
@@ -640,17 +580,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: `${resultado.partido.local} +5.5 córners`,
-
             probabilidad: corners?.["Home_Over_5.5"],
-
             tipo: "corners",
           },
 
           {
             seleccion: `${resultado.partido.local} -5.5 córners`,
-
             probabilidad: corners?.["Home_Under_5.5"],
-
             tipo: "corners",
           },
         ],
@@ -659,10 +595,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // CÓRNERS VISITANTE 3.5
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         `${resultado.partido.visitante} - córners`,
@@ -670,17 +603,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: `${resultado.partido.visitante} +3.5 córners`,
-
             probabilidad: corners?.["Away_Over_3.5"],
-
             tipo: "corners",
           },
 
           {
             seleccion: `${resultado.partido.visitante} -3.5 córners`,
-
             probabilidad: corners?.["Away_Under_3.5"],
-
             tipo: "corners",
           },
         ],
@@ -689,10 +618,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // CÓRNERS VISITANTE 4.5
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         `${resultado.partido.visitante} - línea 4.5`,
@@ -700,17 +626,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: `${resultado.partido.visitante} +4.5 córners`,
-
             probabilidad: corners?.["Away_Over_4.5"],
-
             tipo: "corners",
           },
 
           {
             seleccion: `${resultado.partido.visitante} -4.5 córners`,
-
             probabilidad: corners?.["Away_Under_4.5"],
-
             tipo: "corners",
           },
         ],
@@ -719,10 +641,7 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // TARJETAS
-    // ======================================================
-
     candidatos.push(
       obtenerMayorProbabilidad(
         "Tarjetas",
@@ -730,17 +649,13 @@ function MatchAnalytics() {
         [
           {
             seleccion: "Más de 4.5 tarjetas",
-
             probabilidad: tarjetas?.["Over 4.5"],
-
             tipo: "tarjetas",
           },
 
           {
             seleccion: "Menos de 4.5 tarjetas",
-
             probabilidad: tarjetas?.["Under 4.5"],
-
             tipo: "tarjetas",
           },
         ],
@@ -749,31 +664,19 @@ function MatchAnalytics() {
       ),
     );
 
-    // ======================================================
     // LIMPIAR
-    // ======================================================
-
     const ordenados = candidatos
       .filter(Boolean)
       .filter((item) => item.probabilidad >= 0 && item.probabilidad <= 1)
       .sort((a, b) => b.probabilidad - a.probabilidad);
 
-    // ======================================================
     // TOP 5
-    // ======================================================
-
     const top = ordenados.slice(0, 5);
 
-    // ======================================================
     // SEÑAL PRINCIPAL
-    // ======================================================
-
     const principal = top[0] || null;
 
-    // ======================================================
     // MARCADOR EXACTO MÁS PROBABLE
-    // ======================================================
-
     const marcador =
       Object.entries(goles?.Top_Scores || {})
         .map(([score, probability]) => ({
@@ -783,10 +686,7 @@ function MatchAnalytics() {
         }))
         .sort((a, b) => b.probabilidad - a.probabilidad)[0] || null;
 
-    // ======================================================
     // TENDENCIA GENERAL
-    // ======================================================
-
     const totalXg =
       Number(goles?.expected_goals_home || 0) +
       Number(goles?.expected_goals_away || 0);
@@ -872,16 +772,10 @@ function MatchAnalytics() {
   // Render
   return (
     <main className="match-page">
-      {/* ================================================= */}
       {/* CONTENIDO PRINCIPAL */}
-      {/* ================================================= */}
-
       <div className="match-main-area">
         <div className="match-shell">
-          {/* ================================================= */}
           {/* FORMULARIO */}
-          {/* ================================================= */}
-
           <section id="prediccion" className="match-prediction-block">
             <div className="match-prediction-block__heading">
               <div>
@@ -894,20 +788,11 @@ function MatchAnalytics() {
                   motor estadístico.
                 </p>
               </div>
-
-              {/* <div className="match-step-badge">
-                <span>PASO</span>
-
-                <strong>01</strong>
-              </div> */}
             </div>
 
             <form onSubmit={analizarPartido}>
               <div className="match-form-grid">
-                {/* ======================================= */}
                 {/* EQUIPO LOCAL */}
-                {/* ======================================= */}
-
                 <SportsSelect
                   label="Equipo local"
                   badge="HOME"
@@ -922,18 +807,12 @@ function MatchAnalytics() {
                   onChange={(value) => actualizarCampo("local", value)}
                 />
 
-                {/* ======================================= */}
                 {/* VS */}
-                {/* ======================================= */}
-
                 <div className="match-versus">
                   <span>VS</span>
                 </div>
 
-                {/* ======================================= */}
                 {/* EQUIPO VISITANTE */}
-                {/* ======================================= */}
-
                 <SportsSelect
                   label="Equipo visitante"
                   badge="AWAY"
@@ -948,10 +827,7 @@ function MatchAnalytics() {
                   onChange={(value) => actualizarCampo("visitante", value)}
                 />
 
-                {/* ======================================= */}
                 {/* ÁRBITRO */}
-                {/* ======================================= */}
-
                 <SportsSelect
                   label="Árbitro"
                   badge="REF"
@@ -965,10 +841,7 @@ function MatchAnalytics() {
                 />
               </div>
 
-              {/* ========================================= */}
               {/* ERROR CATÁLOGOS */}
-              {/* ========================================= */}
-
               {errorCatalogos && (
                 <div className="match-error">
                   <div className="match-error__icon">!</div>
@@ -981,10 +854,7 @@ function MatchAnalytics() {
                 </div>
               )}
 
-              {/* ========================================= */}
               {/* ERROR GENERAL */}
-              {/* ========================================= */}
-
               {error && (
                 <div className="match-error">
                   <div className="match-error__icon">!</div>
@@ -997,10 +867,7 @@ function MatchAnalytics() {
                 </div>
               )}
 
-              {/* ========================================= */}
               {/* ACCIONES */}
-              {/* ========================================= */}
-
               <div className="match-search-actions">
                 <div className="match-data-note">
                   {/* <span className="match-data-note__dot" />
@@ -1035,23 +902,15 @@ function MatchAnalytics() {
             </form>
           </section>
 
-          {/* ================================================= */}
           {/* ANALÍTICA */}
-          {/* ================================================= */}
-
           <section id="analitica" className="match-analysis-area">
-            {/* =============================================== */}
             {/* EMPTY */}
-            {/* =============================================== */}
-
             {!resultado && !loading && (
               <div className="match-empty-state">
                 <div className="match-empty-state__visual">
                   <div className="match-empty-radar">
                     <span className="match-empty-radar__one" />
-
                     <span className="match-empty-radar__two" />
-
                     <span className="match-empty-radar__three" />
 
                     <strong>%</strong>
@@ -1069,22 +928,15 @@ function MatchAnalytics() {
 
                 <div className="match-empty-state__markets">
                   <span>Resultado</span>
-
                   <span>Goles</span>
-
                   <span>Córners</span>
-
                   <span>Tarjetas</span>
-
                   <span>Marcadores</span>
                 </div>
               </div>
             )}
 
-            {/* =============================================== */}
             {/* LOADING */}
-            {/* =============================================== */}
-
             {loading && (
               <div className="match-processing">
                 <div className="match-processing__pitch">
@@ -1094,24 +946,15 @@ function MatchAnalytics() {
                 </div>
 
                 <span className="match-block-kicker">Calculando</span>
-
                 <h2>Procesando modelo estadístico</h2>
-
                 <p>Generando probabilidades del encuentro.</p>
               </div>
             )}
 
-            {/* =============================================== */}
             {/* RESULTADOS */}
-            {/* =============================================== */}
-
             {resultado && datosResultado && !loading && (
               <>
-                {/* ========================================= */}
-                {/* TOOLBAR */}
                 {/* FUERA DEL PDF */}
-                {/* ========================================= */}
-
                 <div className="match-results-toolbar">
                   <div className="match-results-toolbar__info">
                     <span className="match-results-toolbar__status">
@@ -1134,15 +977,9 @@ function MatchAnalytics() {
                   />
                 </div>
 
-                {/* ========================================= */}
                 {/* CONTENIDO DEL PDF */}
-                {/* ========================================= */}
-
                 <div ref={reportRef} className="match-results">
-                  {/* ======================================= */}
                   {/* MATCH ANALYSIS */}
-                  {/* ======================================= */}
-
                   <section className="match-fixture-card">
                     <div className="match-fixture-card__topline">
                       <span>MATCH ANALYSIS</span>
@@ -1154,10 +991,7 @@ function MatchAnalytics() {
                     </div>
 
                     <div className="match-fixture-card__main">
-                      {/* ================================= */}
                       {/* LOCAL */}
-                      {/* ================================= */}
-
                       <div className="match-team">
                         <span className="match-team-label">LOCAL</span>
 
@@ -1178,10 +1012,7 @@ function MatchAnalytics() {
                         <h2>{resultado.partido.local}</h2>
                       </div>
 
-                      {/* ================================= */}
                       {/* CENTRO */}
-                      {/* ================================= */}
-
                       <div className="match-fixture-center">
                         <span>PREDICCIÓN</span>
 
@@ -1194,10 +1025,7 @@ function MatchAnalytics() {
                         </div>
                       </div>
 
-                      {/* ================================= */}
                       {/* VISITANTE */}
-                      {/* ================================= */}
-
                       <div className="match-team">
                         <span className="match-team-label">VISITANTE</span>
 
@@ -1222,10 +1050,7 @@ function MatchAnalytics() {
                     </div>
                   </section>
 
-                  {/* ======================================= */}
                   {/* H2H */}
-                  {/* ======================================= */}
-
                   <section className="match-h2h-card">
                     <div className="match-h2h-icon">H2H</div>
 
@@ -1238,10 +1063,7 @@ function MatchAnalytics() {
                     <div className="match-h2h-card__badge">Histórico</div>
                   </section>
 
-                  {/* ======================================= */}
                   {/* RESULTADO 1X2 */}
-                  {/* ======================================= */}
-
                   <section className="match-dashboard-section">
                     <SectionHeader
                       code="1X2"
@@ -1319,10 +1141,7 @@ function MatchAnalytics() {
                     </div>
                   </section>
 
-                  {/* ======================================= */}
                   {/* GOLES */}
-                  {/* ======================================= */}
-
                   <section className="match-dashboard-section">
                     <SectionHeader
                       code="xG"
@@ -1360,10 +1179,7 @@ function MatchAnalytics() {
                     </div>
 
                     <div className="match-two-columns">
-                      {/* ================================= */}
                       {/* OVER / UNDER */}
-                      {/* ================================= */}
-
                       <div className="match-panel">
                         <div className="match-panel-title">
                           <div>
@@ -1401,10 +1217,7 @@ function MatchAnalytics() {
                         />
                       </div>
 
-                      {/* ================================= */}
                       {/* BTTS */}
-                      {/* ================================= */}
-
                       <div className="match-panel">
                         <div className="match-panel-title">
                           <div>
@@ -1450,10 +1263,7 @@ function MatchAnalytics() {
                       </div>
                     </div>
 
-                    {/* ================================= */}
                     {/* MARCADOR EXACTO */}
-                    {/* ================================= */}
-
                     <div className="match-panel match-panel--scores">
                       <div className="match-panel-title">
                         <div>
@@ -1497,10 +1307,7 @@ function MatchAnalytics() {
                     </div>
                   </section>
 
-                  {/* ======================================= */}
                   {/* CÓRNERS */}
-                  {/* ======================================= */}
-
                   <section className="match-dashboard-section">
                     <SectionHeader
                       code="CK"
@@ -1543,10 +1350,7 @@ function MatchAnalytics() {
                     </div>
 
                     <div className="match-two-columns">
-                      {/* ================================= */}
                       {/* LÍNEAS CÓRNERS */}
-                      {/* ================================= */}
-
                       <div className="match-panel">
                         <ProbabilityBar
                           label="Más de 9.5 córners"
@@ -1573,10 +1377,7 @@ function MatchAnalytics() {
                         />
                       </div>
 
-                      {/* ================================= */}
                       {/* GRÁFICA CÓRNERS */}
-                      {/* ================================= */}
-
                       <div className="match-panel">
                         <ResponsiveContainer width="100%" height={260}>
                           <BarChart data={datosResultado.cornersEquipos}>
@@ -1607,13 +1408,9 @@ function MatchAnalytics() {
                       </div>
                     </div>
 
-                    {/* ================================= */}
                     {/* MERCADOS POR EQUIPO */}
-                    {/* ================================= */}
-
                     <div className="match-team-markets">
                       {/* LOCAL */}
-
                       <div className="match-team-market-card">
                         <div className="match-team-market-card__heading">
                           <span>LOCAL</span>
@@ -1646,7 +1443,6 @@ function MatchAnalytics() {
                       </div>
 
                       {/* VISITANTE */}
-
                       <div className="match-team-market-card">
                         <div className="match-team-market-card__heading">
                           <span>VISITANTE</span>
@@ -1680,10 +1476,7 @@ function MatchAnalytics() {
                     </div>
                   </section>
 
-                  {/* ======================================= */}
                   {/* TARJETAS */}
-                  {/* ======================================= */}
-
                   <section className="match-dashboard-section">
                     <SectionHeader
                       code="YC"
@@ -1720,10 +1513,7 @@ function MatchAnalytics() {
                     </div>
                   </section>
 
-                  {/* ======================================================= */}
                   {/* RESUMEN FINAL */}
-                  {/* ======================================================= */}
-
                   {resumenProbabilidades && (
                     <section className="match-dashboard-section match-summary-section">
                       <SectionHeader
@@ -1733,10 +1523,7 @@ function MatchAnalytics() {
                         description="Lectura consolidada de los mercados con mayor probabilidad calculada por el modelo."
                       />
 
-                      {/* =================================================== */}
                       {/* PRINCIPAL */}
-                      {/* =================================================== */}
-
                       {resumenProbabilidades.principal && (
                         <div className="match-summary-highlight">
                           <div className="match-summary-highlight__content">
@@ -1762,10 +1549,7 @@ function MatchAnalytics() {
                         </div>
                       )}
 
-                      {/* =================================================== */}
                       {/* TOP SEÑALES */}
-                      {/* =================================================== */}
-
                       <div className="match-summary-ranking">
                         {resumenProbabilidades.top.map((item, index) => {
                           const probability = porcentaje(item.probabilidad);
@@ -1815,10 +1599,7 @@ function MatchAnalytics() {
                         })}
                       </div>
 
-                      {/* =================================================== */}
                       {/* LECTURA GENERAL */}
-                      {/* =================================================== */}
-
                       <div className="match-summary-bottom">
                         <div className="match-summary-insights">
                           <span className="match-summary-title">
@@ -1850,10 +1631,7 @@ function MatchAnalytics() {
                           )}
                         </div>
 
-                        {/* ================================================= */}
                         {/* MARCADOR */}
-                        {/* ================================================= */}
-
                         {resumenProbabilidades.marcador && (
                           <div className="match-summary-score">
                             <span>MARCADOR MÁS PROBABLE</span>
@@ -1872,10 +1650,7 @@ function MatchAnalytics() {
                         )}
                       </div>
 
-                      {/* =================================================== */}
                       {/* NOTA */}
-                      {/* =================================================== */}
-
                       <div className="match-summary-disclaimer">
                         <span>i</span>
 
@@ -1891,10 +1666,7 @@ function MatchAnalytics() {
                     </section>
                   )}
 
-                  {/* ======================================= */}
                   {/* FOOTER */}
-                  {/* ======================================= */}
-
                   <footer className="match-results-footer">
                     <span className="match-live-dot" />
                     Resultados estadísticos basados en información histórica.

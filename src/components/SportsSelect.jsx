@@ -4,22 +4,6 @@ import { getTeamLogo } from "../utils/teamLogos";
 
 import "./SportsSelect.css";
 
-// ============================================================
-// NOMBRES VISUALES
-//
-// IMPORTANTE:
-//
-// El valor REAL sigue siendo el que existe en el histórico.
-//
-// Ejemplo:
-//
-// Valor interno:
-// Mazatlán
-//
-// Valor mostrado:
-// Atlante
-// ============================================================
-
 const TEAM_DISPLAY_NAMES = {
   Mazatlán: "Atlante",
 };
@@ -43,15 +27,10 @@ function SportsSelect({
   showTeamLogo = false,
 }) {
   const [open, setOpen] = useState(false);
-
   const [search, setSearch] = useState("");
-
   const containerRef = useRef(null);
 
-  // ============================================================
-  // VALORES BLOQUEADOS
-  // ============================================================
-
+  // Valores Bloqueados
   const disabledSet = useMemo(() => {
     return new Set(
       disabledValues
@@ -60,19 +39,7 @@ function SportsSelect({
     );
   }, [disabledValues]);
 
-  // ============================================================
-  // FILTRAR
-  //
-  // Permite buscar tanto por:
-  //
-  // Mazatlán
-  // Atlante
-  //
-  // pero conserva internamente:
-  //
-  // Mazatlán
-  // ============================================================
-
+  // Filtrar
   const filteredOptions = useMemo(() => {
     const term = search.trim().toLocaleLowerCase("es-MX");
 
@@ -91,12 +58,7 @@ function SportsSelect({
     });
   }, [options, search]);
 
-  // ============================================================
-  // LOGO DEL VALOR SELECCIONADO
-  //
-  // Se conserva el valor REAL.
-  // ============================================================
-
+  // Logos del valor seleccionado
   const selectedLogo = useMemo(() => {
     if (!showTeamLogo || !value) {
       return null;
@@ -105,10 +67,7 @@ function SportsSelect({
     return getTeamLogo(value);
   }, [value, showTeamLogo]);
 
-  // ============================================================
-  // CLICK FUERA
-  // ============================================================
-
+  // Click fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -116,7 +75,6 @@ function SportsSelect({
         !containerRef.current.contains(event.target)
       ) {
         setOpen(false);
-
         setSearch("");
       }
     };
@@ -128,10 +86,7 @@ function SportsSelect({
     };
   }, []);
 
-  // ============================================================
-  // ESC
-  // ============================================================
-
+  // Esc
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -148,20 +103,7 @@ function SportsSelect({
     };
   }, []);
 
-  // ============================================================
-  // SELECCIONAR
-  //
-  // IMPORTANTE:
-  //
-  // Si visualmente aparece Atlante:
-  //
-  // option sigue siendo "Mazatlán".
-  //
-  // Por lo tanto:
-  //
-  // onChange("Mazatlán")
-  // ============================================================
-
+  // Seleccionar
   const seleccionar = (option) => {
     const normalizado = String(option).trim().toLocaleLowerCase("es-MX");
 
@@ -170,16 +112,11 @@ function SportsSelect({
     }
 
     onChange?.(option);
-
     setOpen(false);
-
     setSearch("");
   };
 
-  // ============================================================
-  // ABRIR / CERRAR
-  // ============================================================
-
+  // Abrir / Cerrar
   const toggle = () => {
     if (disabled || loading) {
       return;
@@ -188,10 +125,7 @@ function SportsSelect({
     setOpen((prev) => !prev);
   };
 
-  // ============================================================
-  // RENDER
-  // ============================================================
-
+  // Render
   return (
     <div
       ref={containerRef}
@@ -199,30 +133,21 @@ function SportsSelect({
         open ? "sports-select--open" : ""
       }`}
     >
-      {/* ================================================= */}
       {/* LABEL */}
-      {/* ================================================= */}
-
       <div className="sports-select__label-row">
         <span className="sports-select__label">{label}</span>
 
         {badge && <span className="sports-select__badge">{badge}</span>}
       </div>
 
-      {/* ================================================= */}
       {/* CONTROL */}
-      {/* ================================================= */}
-
       <button
         type="button"
         className="sports-select__control"
         onClick={toggle}
         disabled={disabled || loading}
       >
-        {/* =============================================== */}
         {/* LOGO / ICONO */}
-        {/* =============================================== */}
-
         {showTeamLogo ? (
           <span className="sports-select__team-logo-wrapper">
             {selectedLogo ? (
@@ -245,10 +170,7 @@ function SportsSelect({
           <span className="sports-select__accent">A</span>
         )}
 
-        {/* =============================================== */}
         {/* VALUE */}
-        {/* =============================================== */}
-
         <span
           className={`sports-select__value ${
             !value ? "sports-select__value--placeholder" : ""
@@ -261,10 +183,7 @@ function SportsSelect({
               : placeholder}
         </span>
 
-        {/* =============================================== */}
         {/* CHEVRON */}
-        {/* =============================================== */}
-
         {loading ? (
           <span className="sports-select__loader" />
         ) : (
@@ -278,16 +197,10 @@ function SportsSelect({
         )}
       </button>
 
-      {/* ================================================= */}
       {/* DROPDOWN */}
-      {/* ================================================= */}
-
       {open && (
         <div className="sports-select__dropdown">
-          {/* =============================================== */}
           {/* SEARCH */}
-          {/* =============================================== */}
-
           <div className="sports-select__search-wrapper">
             <span>⌕</span>
 
@@ -300,10 +213,7 @@ function SportsSelect({
             />
           </div>
 
-          {/* =============================================== */}
           {/* META */}
-          {/* =============================================== */}
-
           <div className="sports-select__dropdown-meta">
             <span>{filteredOptions.length} opciones</span>
 
@@ -323,10 +233,7 @@ function SportsSelect({
             )}
           </div>
 
-          {/* =============================================== */}
           {/* OPTIONS */}
-          {/* =============================================== */}
-
           <div className="sports-select__options">
             {filteredOptions.length === 0 ? (
               <div className="sports-select__empty">
@@ -335,13 +242,10 @@ function SportsSelect({
             ) : (
               filteredOptions.map((option) => {
                 const optionKey = String(option);
-
                 const selected = optionKey === value;
-
                 const optionDisabled = disabledSet.has(
                   optionKey.trim().toLocaleLowerCase("es-MX"),
                 );
-
                 const teamLogo = showTeamLogo ? getTeamLogo(option) : null;
 
                 return (
@@ -356,10 +260,7 @@ function SportsSelect({
                     }`}
                     onClick={() => seleccionar(option)}
                   >
-                    {/* ================================= */}
                     {/* LOGO / CHECK */}
-                    {/* ================================= */}
-
                     {showTeamLogo ? (
                       <span className="sports-select__option-logo-wrapper">
                         {teamLogo ? (
@@ -380,28 +281,19 @@ function SportsSelect({
                       </span>
                     )}
 
-                    {/* ================================= */}
                     {/* NAME */}
-                    {/* ================================= */}
-
                     <span className="sports-select__option-name">
                       {getDisplayName(option)}
                     </span>
 
-                    {/* ================================= */}
                     {/* SELECTED */}
-                    {/* ================================= */}
-
                     {selected && !optionDisabled && (
                       <span className="sports-select__selected-indicator">
                         ✓
                       </span>
                     )}
 
-                    {/* ================================= */}
                     {/* DISABLED */}
-                    {/* ================================= */}
-
                     {optionDisabled && (
                       <span className="sports-select__option-disabled-label">
                         Ya seleccionado

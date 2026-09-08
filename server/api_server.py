@@ -38,11 +38,6 @@ from dataset_sync_service import (
     DatasetSyncService,
 )
 
-from team_identity import (
-    normalize_history_teams,
-    normalize_team_name,
-)
-
 ## Configuración
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -64,10 +59,11 @@ for candidate in FRONTEND_CANDIDATES:
         FRONTEND_DIR = candidate
         break
 
-# CSV_PATH = os.path.join(
-#     BASE_DIR,
-#     "historial_ligamx_2023.csv",
-# )
+
+## Equivalencias
+EQUIVALENCIAS = {
+    "Atlante": "Mazatlán",
+}
 
 ## Estado Global
 STATE = {
@@ -78,16 +74,10 @@ STATE = {
     "arbitros": [],
 }
 
-# ============================================================
 # LIVE CENTER
-# ============================================================
-
 LIVE_SERVICE = LiveFootballService()
 
-# ============================================================
 # DATASET
-# ============================================================
-
 HISTORY_SERVICE = MatchHistoryService()
 
 
@@ -99,17 +89,10 @@ DATASET_SYNC_SERVICE = DatasetSyncService(
 CSV_PATH = str(HISTORY_SERVICE.history_path)
 
 
-# ============================================================
 # MODEL LOCK
-# ============================================================
-
 MODEL_RELOAD_LOCK = threading.RLock()
 
-
-# ============================================================
 # DATASET SYNC INTERVAL
-# ============================================================
-
 DATASET_SYNC_SECONDS = int(
     os.getenv(
         "MATCHLAB_DATASET_SYNC_SECONDS",
@@ -232,10 +215,6 @@ def inicializar_modelos():
     if faltantes:
         raise RuntimeError("Faltan columnas obligatorias: " + ", ".join(faltantes))
 
-    # Normalizar identidad histórica para el modelo.
-    # El CSV físico conserva sus nombres originales.
-    df = normalize_history_teams(df)
-
     print(f"✅ Partidos cargados: {len(df)}")
 
     ## Catálogo de equipos
@@ -280,7 +259,7 @@ def inicializar_modelos():
     print("🟢 MOTOR LISTO")
     print("=" * 50 + "\n")
 
-    # MODELOS SINCRONIZADOS CON EL CSV
+    # Obtiene CSV actualizado
     HISTORY_SERVICE.mark_models_clean()
 
 
@@ -288,38 +267,26 @@ def inicializar_modelos():
 def ensure_models_fresh():
 
     if not HISTORY_SERVICE.is_dirty():
-
         return False
 
     with MODEL_RELOAD_LOCK:
 
         # Otro thread pudo actualizar mientras esperábamos.
         if not HISTORY_SERVICE.is_dirty():
-
             return False
 
-        print("")
-
-        print("==============================================")
-
+        print("\n" + "=" * 50)
         print("🔄 MATCHLAB DATASET ACTUALIZADO")
-
         print("🔄 Reentrenando modelos...")
-
-        print("==============================================")
+        print("=" * 50)
 
         inicializar_modelos()
-
         print("✅ Modelos sincronizados con el nuevo histórico.")
 
         return True
 
 
-# ============================================================
 # DATASET BACKGROUND WORKER
-# ============================================================
-
-
 async def dataset_sync_worker():
 
     # Dar tiempo a FastAPI/modelos de iniciar.
@@ -339,22 +306,14 @@ async def dataset_sync_worker():
                 > 0
             ):
 
-                print("")
-
-                print("==============================================")
-
+                print("\n" + "=" * 50)
                 print("📊 MATCHLAB DATASET")
-
                 print(f"✅ Nuevos partidos: " f"{result['saved_count']}")
-
-                print("==============================================")
+                print("=" * 50)
 
         except Exception as error:
 
-            print(
-                "⚠️ Dataset Sync:",
-                error,
-            )
+            print("⚠️ Dataset Sync:", error)
 
         await asyncio.sleep(DATASET_SYNC_SECONDS)
 
@@ -378,7 +337,6 @@ async def lifespan(_app: FastAPI):
         dataset_task.cancel()
 
         with suppress(asyncio.CancelledError):
-
             await dataset_task
 
 
@@ -432,189 +390,107 @@ def obtener_catalogos():
 
 ## Predicción
 @app.post("/api/prediccion")
-def calcular_prediccion(
-    request: PrediccionRequest,
-):
-    """
-    Ejecuta cálculos de predicciones.
-    """
+def calcular_prediccion(request: PrediccionRequest):
+    """Ejecuta calculos de predicciones"""
 
-    # ========================================================
-    # SI SE AGREGARON PARTIDOS NUEVOS:
-    # REENTRENAR UNA SOLA VEZ
-    # ========================================================
-
+    # Volvemos a levantar el servicio cuando se hayan agregado nuevos registros
     ensure_models_fresh()
 
-    # ========================================================
-    # PARÁMETROS
-    # ========================================================
-
+    ## Parámetros
     local = request.local.strip()
-
     visitante = request.visitante.strip()
-
     arbitro = request.arbitro.strip()
 
-    # ========================================================
-    # VALIDACIONES BÁSICAS
-    # ========================================================
-
+    ## Validaciones
     if not local:
-
         raise HTTPException(
             status_code=400,
-            detail="El equipo local es obligatorio.",
+            detail=("El equipo local es obligatorio."),
         )
 
     if not visitante:
-
         raise HTTPException(
             status_code=400,
-            detail="El equipo visitante es obligatorio.",
+            detail=("El equipo visitante es obligatorio."),
         )
 
     if not arbitro:
-
         raise HTTPException(
             status_code=400,
-            detail="El árbitro es obligatorio.",
+            detail=("El árbitro es obligatorio."),
         )
 
-    # ========================================================
-    # EQUIVALENCIAS
-    #
-    # IMPORTANTE:
-    # Esto debe ocurrir ANTES de validar contra el histórico.
-    #
-    # Ejemplo:
-    #
-    # Atlante
-    #   ↓
-    # Mazatlán
-    #   ↓
-    # Validación contra STATE["equipos"]
-    # ========================================================
-
-    local_modelo = normalize_team_name(local)
-
-    visitante_modelo = normalize_team_name(visitante)
-
-    # ========================================================
-    # VALIDAR QUE NO SEA EL MISMO EQUIPO
-    #
-    # Se compara el nombre utilizado por el modelo.
-    #
-    # Esto evita algo como:
-    #
-    # Local: Mazatlán
-    # Visitante: Atlante
-    #
-    # Ambos representan el mismo equipo para nuestro histórico.
-    # ========================================================
-
-    if local_modelo.casefold() == visitante_modelo.casefold():
-
+    if local.casefold() == visitante.casefold():
         raise HTTPException(
             status_code=400,
             detail=("El equipo local y visitante " "no pueden ser iguales."),
         )
 
-    # ========================================================
-    # EQUIPOS VÁLIDOS DEL HISTÓRICO
-    # ========================================================
-
+    ## Validar Equipos
     equipos_validos = {equipo.casefold() for equipo in STATE["equipos"]}
 
-    # ========================================================
-    # VALIDAR EQUIPO LOCAL
-    # ========================================================
-
-    if local_modelo.casefold() not in equipos_validos:
-
+    if local.casefold() not in equipos_validos:
         raise HTTPException(
             status_code=400,
             detail=(f"El equipo local '{local}' " "no existe en el histórico."),
         )
 
-    # ========================================================
-    # VALIDAR EQUIPO VISITANTE
-    # ========================================================
-
-    if visitante_modelo.casefold() not in equipos_validos:
-
+    if visitante.casefold() not in equipos_validos:
         raise HTTPException(
             status_code=400,
             detail=(f"El equipo visitante '{visitante}' " "no existe en el histórico."),
         )
 
-    # ========================================================
-    # PREDICCIÓN
-    # ========================================================
+    ## Equivalencias
+    local_modelo = EQUIVALENCIAS.get(
+        local,
+        local,
+    )
+
+    visitante_modelo = EQUIVALENCIAS.get(
+        visitante,
+        visitante,
+    )
 
     try:
-
         df = STATE["df"]
-
         dc_model = STATE["dc_model"]
-
         spec_model = STATE["spec_model"]
 
-        # ====================================================
-        # H2H
-        # ====================================================
-
+        ## H2H
         h2h = analizar_h2h(
             df,
             local_modelo,
             visitante_modelo,
         )
 
-        # ====================================================
-        # GOLES
-        # ====================================================
-
+        ## Goles
         goles = dc_model.predict_match(
             local_modelo,
             visitante_modelo,
         )
 
-        # ====================================================
-        # CÓRNERS
-        # ====================================================
-
+        ## Córners
         corners = spec_model.predict_corners(
             local_modelo,
             visitante_modelo,
         )
 
-        # ====================================================
-        # TARJETAS
-        # ====================================================
-
+        ## Tarjetas
         cards = spec_model.predict_cards(
             local_modelo,
             visitante_modelo,
             referee=arbitro,
         )
 
-        # ====================================================
-        # RESPUESTA
-        # ====================================================
-
+        ## Respuesta
         resultado = {
             "success": True,
-            # =================================================
-            # NOMBRES VISIBLES / SOLICITADOS
-            # =================================================
             "partido": {
-                "local": local_modelo,
-                "visitante": visitante_modelo,
+                "local": local,
+                "visitante": visitante,
                 "arbitro": arbitro,
             },
-            # =================================================
-            # NOMBRES REALES UTILIZADOS POR EL MODELO
-            # =================================================
             "modelo": {
                 "local": local_modelo,
                 "visitante": visitante_modelo,
@@ -630,29 +506,15 @@ def calcular_prediccion(
         return convertir_json(resultado)
 
     except Exception as error:
-
         print("❌ ERROR DE PREDICCIÓN:")
-
         print(error)
-
         raise HTTPException(
             status_code=500,
             detail=str(error),
         ) from error
 
 
-# ============================================================
-# LIVE - LISTADO
-#
-# THE SPORTS DB
-# ============================================================
-
-
-# ============================================================
-# LIVE CENTER
-# ============================================================
-
-
+# ENDPOINT PARA LISTADO EN VIVO CON: THE SPORTS DB
 @app.get("/api/live")
 def obtener_partidos_live(
     scope: str = Query(
@@ -672,7 +534,6 @@ def obtener_partidos_live(
         }
 
     except Exception as error:
-
         print(
             "ERROR LIVE CENTER:",
             error,
@@ -684,11 +545,7 @@ def obtener_partidos_live(
         )
 
 
-# ============================================================
-# QUOTA
-# ============================================================
-
-
+# ENDPOINT PARA OBTENER LIMITE DE PETICIONES
 @app.get("/api/live/quota/status")
 def obtener_live_quota():
 
@@ -698,15 +555,7 @@ def obtener_live_quota():
     }
 
 
-# ============================================================
-# LIVE - RESOLVER PARTIDO
-#
-# THE SPORTS DB -> API FOOTBALL
-#
-# DEBE IR ANTES DE /{fixture_id}
-# ============================================================
-
-
+# ENDPOINT PARA RELACIONAR PARTIDO ENTRE: THE SPORTS DB -> API FOOTBALL
 @app.post("/api/live/resolve")
 def resolver_live_match(
     request: ResolveLiveRequest,
@@ -726,18 +575,13 @@ def resolver_live_match(
         }
 
     except Exception as error:
-
         raise HTTPException(
             status_code=500,
             detail=str(error),
         )
 
 
-# ============================================================
-# LIVE - DETALLE
-# ============================================================
-
-
+# ENDPOINT PARA OBTENER DETALLES DEL PARTIDO EN VIVO
 @app.get("/api/live/{fixture_id}")
 def obtener_detalle_live(
     fixture_id: int,
@@ -764,7 +608,6 @@ def obtener_detalle_live(
         }
 
     except Exception as error:
-
         print(
             "ERROR LIVE DETAIL:",
             error,
@@ -776,11 +619,7 @@ def obtener_detalle_live(
         )
 
 
-# ============================================================
-# LIVE - MATCHLAB AI
-# ============================================================
-
-
+# ENDPOINT PARA SECCION DEL CHAT
 @app.post("/api/live/{fixture_id}/ai")
 def consultar_live_ai(
     fixture_id: int,
@@ -808,7 +647,6 @@ def consultar_live_ai(
         }
 
     except Exception as error:
-
         print(
             "ERROR LIVE AI:",
             error,
@@ -820,7 +658,7 @@ def consultar_live_ai(
         )
 
 
-# DATASET STATUS
+# ENDPOINT PARA OBTENER EL ESTATUS DEL PARTIDO
 @app.get("/api/dataset/status")
 def obtener_dataset_status():
 
@@ -832,14 +670,13 @@ def obtener_dataset_status():
         }
 
     except Exception as error:
-
         raise HTTPException(
             status_code=500,
             detail=str(error),
         )
 
 
-# DATASET SYNC MANUAL
+# ENDPOINT PARA SINCRONIZAR CSV ENTRE RAILWAY Y GITHUB
 @app.post("/api/dataset/sync")
 def sincronizar_dataset():
 
@@ -854,7 +691,6 @@ def sincronizar_dataset():
         }
 
     except Exception as error:
-
         raise HTTPException(
             status_code=500,
             detail=str(error),
@@ -868,15 +704,13 @@ DATASET_SYNC_TOKEN = os.getenv(
 )
 
 
+# ENDPOINT DE PRUEBA PARA EXPORTAR CSV DESDE RAILWAY
 @app.get("/api/dataset/export")
 def exportar_dataset(
     x_matchlab_token: str | None = Header(default=None),
 ):
 
-    # ========================================================
     # VALIDAR TOKEN
-    # ========================================================
-
     if not DATASET_SYNC_TOKEN or x_matchlab_token != DATASET_SYNC_TOKEN:
 
         raise HTTPException(
@@ -884,10 +718,7 @@ def exportar_dataset(
             detail="No autorizado.",
         )
 
-    # ========================================================
     # ARCHIVO OFICIAL
-    # ========================================================
-
     history_path = HISTORY_SERVICE.history_path
 
     if not history_path.exists():
@@ -897,10 +728,7 @@ def exportar_dataset(
             detail="No existe el histórico.",
         )
 
-    # ========================================================
     # RESPUESTA
-    # ========================================================
-
     return FileResponse(
         path=str(history_path),
         media_type="text/csv",
@@ -910,7 +738,6 @@ def exportar_dataset(
 
 ## FrontEnd React
 if FRONTEND_DIR is not None:
-
     print(f"🌐 Frontend encontrado: {FRONTEND_DIR}")
     app.mount(
         "/",
@@ -922,6 +749,4 @@ if FRONTEND_DIR is not None:
     )
 
 else:
-
     print("ℹ️ Frontend compilado no encontrado.")
-    print("   En desarrollo utiliza: npm run dev")

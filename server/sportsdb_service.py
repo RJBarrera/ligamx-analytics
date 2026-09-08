@@ -12,66 +12,40 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
-
 from dotenv import load_dotenv
 
-from team_identity import normalize_team_name
+# Diccionario de traducción temporal en caliente
+EQUIVALENCIAS = {"Atlante": "Mazatlán"}
 
-# ============================================================
 # RUTAS
-# ============================================================
-
 SERVER_DIR = Path(__file__).resolve().parent
-
 PROJECT_DIR = SERVER_DIR.parent
-
 
 load_dotenv(PROJECT_DIR / ".env")
 
-
-# ============================================================
-# CONFIGURACIÓN
-# ============================================================
-
+# CONFIGURACION
 SPORTSDB_API_KEY = os.getenv(
     "SPORTSDB_API_KEY",
     "123",
 )
 
 SPORTSDB_BASE_URL = "https://www.thesportsdb.com/api/v1/json"
-
 SPORTSDB_LIGA_MX_ID = 4350
 
-
 TIMEZONE_NAME = "America/Mazatlan"
-
 LOCAL_TIMEZONE = ZoneInfo(TIMEZONE_NAME)
-
 
 SCHEDULE_CACHE_SECONDS = 300
 
-
-# ============================================================
 # HTTP
-# ============================================================
-
 _SESSION = requests.Session()
 
-
-# ============================================================
 # CACHE
-# ============================================================
-
 _CACHE = {}
-
 _CACHE_LOCK = threading.Lock()
 
 
-# ============================================================
 # HELPERS
-# ============================================================
-
-
 def _cache_key(
     endpoint,
     params,
@@ -96,7 +70,6 @@ def _to_int(
 ):
 
     if value is None or value == "":
-
         return None
 
     try:
@@ -111,11 +84,7 @@ def _to_int(
         return None
 
 
-# ============================================================
 # FECHA/HORA
-# ============================================================
-
-
 def _parse_datetime(
     event,
 ):
@@ -128,10 +97,7 @@ def _parse_datetime(
     3. dateEvent + strTime
     """
 
-    # ========================================================
     # TIMESTAMP
-    # ========================================================
-
     timestamp = event.get("strTimestamp")
 
     if timestamp:
@@ -150,7 +116,6 @@ def _parse_datetime(
             dt = datetime.fromisoformat(timestamp_text)
 
             if dt.tzinfo is None:
-
                 dt = dt.replace(tzinfo=timezone.utc)
 
             return dt.astimezone(LOCAL_TIMEZONE)
@@ -162,22 +127,16 @@ def _parse_datetime(
 
             pass
 
-    # ========================================================
     # FECHA LOCAL
-    # ========================================================
-
     local_date = event.get("dateEventLocal")
-
     local_time = event.get("strTimeLocal")
 
     if local_date and local_time:
 
         try:
-
             clean_time = str(local_time).strip()
 
             if len(clean_time) == 5:
-
                 clean_time = f"{clean_time}:00"
 
             dt = datetime.fromisoformat(f"{local_date}T{clean_time}")
@@ -191,26 +150,19 @@ def _parse_datetime(
 
             pass
 
-    # ========================================================
     # FECHA GENERAL / UTC
-    # ========================================================
-
     date_value = event.get("dateEvent")
-
     time_value = event.get("strTime")
 
     if date_value and time_value:
 
         try:
-
             clean_time = str(time_value).strip()
 
             if len(clean_time) == 5:
-
                 clean_time = f"{clean_time}:00"
 
             dt = datetime.fromisoformat(f"{date_value}T{clean_time}")
-
             dt = dt.replace(tzinfo=timezone.utc)
 
             return dt.astimezone(LOCAL_TIMEZONE)
@@ -225,17 +177,12 @@ def _parse_datetime(
     return None
 
 
-# ============================================================
 # STATUS
-# ============================================================
-
-
 def _normalize_status(
     event,
 ):
 
     raw = str(event.get("strStatus") or "").strip()
-
     normalized = raw.casefold()
 
     if normalized in {
@@ -303,11 +250,7 @@ def _normalize_status(
     }
 
 
-# ============================================================
 # SERVICIO
-# ============================================================
-
-
 class SportsDBService:
 
     def __init__(
@@ -315,13 +258,9 @@ class SportsDBService:
     ):
 
         self.api_key = SPORTSDB_API_KEY
-
         self.base_url = SPORTSDB_BASE_URL
 
-    # ========================================================
     # REQUEST
-    # ========================================================
-
     def _get(
         self,
         endpoint,
@@ -379,20 +318,12 @@ class SportsDBService:
 
         except Exception:
 
-            # =================================================
             # STALE CACHE
-            # =================================================
-
             if cached:
-
                 return cached["data"]
-
             raise
 
-    # ========================================================
     # EVENTOS DE FECHA
-    # ========================================================
-
     def _events_for_date(
         self,
         date_value,
@@ -408,39 +339,27 @@ class SportsDBService:
 
         return payload.get("events") or []
 
-    # ========================================================
     # NORMALIZAR EVENTO
-    # ========================================================
-
     def _normalize_event(
         self,
         event,
     ):
 
         kickoff = _parse_datetime(event)
-
         status = _normalize_status(event)
-
         now = datetime.now(LOCAL_TIMEZONE)
 
-        # ====================================================
-        # VENTANA LIVE
-        #
+        # VENTANA EN VIVO
         # 20 min antes
         # hasta 3h15 después
-        # ====================================================
-
         live_candidate = False
 
         if kickoff:
-
             live_window_start = kickoff - timedelta(minutes=20)
-
             live_window_end = kickoff + timedelta(
                 hours=3,
                 minutes=15,
             )
-
             live_candidate = live_window_start <= now <= live_window_end
 
         if status["short"] in {
@@ -451,17 +370,12 @@ class SportsDBService:
             live_candidate = True
 
         if status["short"] == "FT":
-
             live_candidate = False
 
-        # ====================================================
         # MINUTOS PARA INICIO
-        # ====================================================
-
         minutes_to_start = None
 
         if kickoff:
-
             minutes_to_start = int((kickoff - now).total_seconds() / 60)
 
         return {
@@ -491,13 +405,13 @@ class SportsDBService:
             },
             "home": {
                 "id": event.get("idHomeTeam"),
-                "name": normalize_team_name(event.get("strHomeTeam")),
+                "name": EQUIVALENCIAS.get(event.get("strHomeTeam"), event.get("strHomeTeam")),
                 "logo": event.get("strHomeTeamBadge"),
                 "goals": _to_int(event.get("intHomeScore")),
             },
             "away": {
                 "id": event.get("idAwayTeam"),
-                "name": normalize_team_name(event.get("strAwayTeam")),
+                "name": EQUIVALENCIAS.get(event.get("strAwayTeam"), event.get("strAwayTeam")),
                 "logo": event.get("strAwayTeamBadge"),
                 "goals": _to_int(event.get("intAwayScore")),
             },
@@ -507,25 +421,18 @@ class SportsDBService:
             },
         }
 
-    # ========================================================
-    # PARTIDOS DEL DÍA
-    # ========================================================
-
+    # PARTIDOS DEL DIA
     def get_matches(
         self,
         scope="today",
     ):
 
         now = datetime.now(LOCAL_TIMEZONE)
-
         local_today = now.date()
 
-        # ====================================================
         # THE SPORTS DB USA FECHAS UTC
-        #
         # Consultamos ayer/hoy/mañana
         # y después filtramos LOCALMENTE.
-        # ====================================================
 
         source_dates = [
             (local_today - timedelta(days=1)).isoformat(),
@@ -549,20 +456,13 @@ class SportsDBService:
                     error,
                 )
 
-        # ====================================================
         # NORMALIZAR
-        # ====================================================
-
         normalized = [self._normalize_event(event) for event in raw_events]
 
-        # ====================================================
         # DEDUPLICAR
-        # ====================================================
-
         unique = {}
 
         for match in normalized:
-
             event_id = match.get("sportsdb_event_id")
 
             if not event_id:
@@ -572,10 +472,7 @@ class SportsDBService:
 
         matches = list(unique.values())
 
-        # ====================================================
         # FECHA LOCAL
-        # ====================================================
-
         local_today_string = local_today.isoformat()
 
         matches = [
@@ -584,10 +481,7 @@ class SportsDBService:
             if (match.get("date_local") == local_today_string)
         ]
 
-        # ====================================================
         # VENTANA LIVE
-        # ====================================================
-
         if scope == "live":
 
             matches = [
@@ -606,10 +500,7 @@ class SportsDBService:
                 )
             ]
 
-        # ====================================================
         # ORDER
-        # ====================================================
-
         matches.sort(key=lambda item: (item.get("kickoff_timestamp") or 0))
 
         return matches

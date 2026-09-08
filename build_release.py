@@ -148,63 +148,63 @@ def crear_instalador():
     """Crea archivo instalador"""
 
     contenido = r"""@echo off
-title MatchLab - Instalacion
+    title MatchLab - Instalacion
 
-cd /d "%~dp0"
+    cd /d "%~dp0"
 
-echo.
-echo ==================================================
-echo MATCHLAB - INSTALACION
-echo ==================================================
-echo.
-
-where python >nul 2>&1
-
-if errorlevel 1 (
-    echo ERROR: Python no se encuentra instalado.
     echo.
-    echo Instala Python 3 antes de continuar.
+    echo ==================================================
+    echo MATCHLAB - INSTALACION
+    echo ==================================================
     echo.
+
+    where python >nul 2>&1
+
+    if errorlevel 1 (
+        echo ERROR: Python no se encuentra instalado.
+        echo.
+        echo Instala Python 3 antes de continuar.
+        echo.
+        pause
+        exit /b 1
+    )
+
+    echo Creando entorno virtual...
+    python -m venv .venv
+
+    if errorlevel 1 (
+        echo.
+        echo ERROR creando el entorno virtual.
+        pause
+        exit /b 1
+    )
+
+    echo.
+    echo Instalando dependencias...
+    echo.
+
+    ".venv\Scripts\python.exe" -m pip install --upgrade pip
+
+    ".venv\Scripts\python.exe" -m pip install -r "server\requirements.txt"
+
+    if errorlevel 1 (
+        echo.
+        echo ERROR instalando dependencias.
+        pause
+        exit /b 1
+    )
+
+    echo.
+    echo ==================================================
+    echo INSTALACION COMPLETADA
+    echo ==================================================
+    echo.
+    echo Ahora puedes ejecutar:
+    echo INICIAR_MATCHLAB.bat
+    echo.
+
     pause
-    exit /b 1
-)
-
-echo Creando entorno virtual...
-python -m venv .venv
-
-if errorlevel 1 (
-    echo.
-    echo ERROR creando el entorno virtual.
-    pause
-    exit /b 1
-)
-
-echo.
-echo Instalando dependencias...
-echo.
-
-".venv\Scripts\python.exe" -m pip install --upgrade pip
-
-".venv\Scripts\python.exe" -m pip install -r "server\requirements.txt"
-
-if errorlevel 1 (
-    echo.
-    echo ERROR instalando dependencias.
-    pause
-    exit /b 1
-)
-
-echo.
-echo ==================================================
-echo INSTALACION COMPLETADA
-echo ==================================================
-echo.
-echo Ahora puedes ejecutar:
-echo INICIAR_MATCHLAB.bat
-echo.
-
-pause
-"""
+    """
 
     archivo = RELEASE_DIR / "INSTALAR.bat"
 
@@ -218,33 +218,33 @@ def crear_start():
     """Crea archivo start"""
 
     contenido = r"""@echo off
-title MatchLab - Liga MX Analytics
+    title MatchLab - Liga MX Analytics
 
-cd /d "%~dp0"
+    cd /d "%~dp0"
 
-if not exist ".venv\Scripts\python.exe" (
+    if not exist ".venv\Scripts\python.exe" (
+        echo.
+        echo MatchLab aun no esta instalado.
+        echo.
+        echo Ejecuta primero:
+        echo INSTALAR.bat
+        echo.
+        pause
+        exit /b 1
+    )
+
     echo.
-    echo MatchLab aun no esta instalado.
+    echo ==================================================
+    echo MATCHLAB - LIGA MX ANALYTICS
+    echo ==================================================
     echo.
-    echo Ejecuta primero:
-    echo INSTALAR.bat
+    echo Iniciando servidor...
     echo.
+
+    ".venv\Scripts\python.exe" "server\run_server.py"
+
     pause
-    exit /b 1
-)
-
-echo.
-echo ==================================================
-echo MATCHLAB - LIGA MX ANALYTICS
-echo ==================================================
-echo.
-echo Iniciando servidor...
-echo.
-
-".venv\Scripts\python.exe" "server\run_server.py"
-
-pause
-"""
+    """
 
     archivo = RELEASE_DIR / "INICIAR_MATCHLAB.bat"
 

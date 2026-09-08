@@ -31,10 +31,7 @@ function Navbar() {
   return (
     <header className="sports-navbar">
       <div className="sports-navbar__inner">
-        {/* ================================================= */}
         {/* BRAND */}
-        {/* ================================================= */}
-
         <a href="/" className="sports-navbar__brand" onClick={cerrarMenu}>
           <div className="sports-navbar__logo">
             <svg viewBox="0 0 40 40" aria-hidden="true">
@@ -72,10 +69,7 @@ function Navbar() {
           </div>
         </a>
 
-        {/* ================================================= */}
         {/* DESKTOP NAV */}
-        {/* ================================================= */}
-
         <nav className="sports-navbar__links">
           {NAV_ITEMS.map((item) => (
             <a key={item.label} href={item.href}>
@@ -89,10 +83,7 @@ function Navbar() {
           </a>
         </nav>
 
-        {/* ================================================= */}
         {/* RIGHT */}
-        {/* ================================================= */}
-
         <div className="sports-navbar__actions">
           <a href="/" className="sports-navbar__cta">
             Nueva predicción
@@ -115,10 +106,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* ================================================= */}
       {/* MOBILE MENU */}
-      {/* ================================================= */}
-
       <div
         className={`sports-navbar__mobile ${
           menuOpen ? "sports-navbar__mobile--open" : ""

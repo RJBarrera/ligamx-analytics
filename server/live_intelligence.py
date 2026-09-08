@@ -5,20 +5,12 @@ from collections import defaultdict
 
 from scipy.stats import poisson
 
-# ============================================================
-# HISTÓRICO TEMPORAL DE PARTIDOS LIVE
-# ============================================================
-
+# HISTORICO TEMPORAL DE PARTIDOS EN VIVO
 _LIVE_HISTORY = defaultdict(list)
-
 _HISTORY_LOCK = threading.Lock()
 
 
-# ============================================================
 # UTILIDADES
-# ============================================================
-
-
 def _number(
     value,
     default=0.0,
@@ -78,11 +70,7 @@ def _normalize_name(
     return " ".join(value.split())
 
 
-# ============================================================
-# ESTADÍSTICA
-# ============================================================
-
-
+# ESTADISTICA
 def _stat(
     detail,
     side,
@@ -106,11 +94,7 @@ def _stat(
     )
 
 
-# ============================================================
-# SNAPSHOT
-# ============================================================
-
-
+# CREAR CAPTURA EXACTA
 def _create_snapshot(
     detail,
 ):
@@ -181,51 +165,36 @@ def _create_snapshot(
     }
 
 
-# ============================================================
-# GUARDAR SNAPSHOT
-# ============================================================
-
-
+# GUARDAR
 def _record_snapshot(
     detail,
 ):
 
     fixture_id = detail.get("id")
-
     snapshot = _create_snapshot(detail)
 
     if not fixture_id or not snapshot:
-
         return []
 
     with _HISTORY_LOCK:
-
         history = _LIVE_HISTORY[fixture_id]
 
         if history:
-
             last = history[-1]
 
             # Evitar duplicados exactos.
             if last == snapshot:
-
                 return list(history)
 
         history.append(snapshot)
 
         # Solo necesitamos una ventana razonable.
         if len(history) > 60:
-
             del history[:-60]
-
         return list(history)
 
 
-# ============================================================
-# SCORE DE PRESIÓN
-# ============================================================
-
-
+# SCORE DE PRESION
 def _pressure_score(
     stats,
     side,
@@ -270,11 +239,7 @@ def _pressure_score(
     )
 
 
-# ============================================================
-# DELTA ENTRE SNAPSHOTS
-# ============================================================
-
-
+# DIFERENCIA ENTRE CAPTURAS
 def _snapshot_delta(
     current,
     previous,
@@ -325,11 +290,7 @@ def _snapshot_delta(
     return delta
 
 
-# ============================================================
-# MOMENTUM
-# ============================================================
-
-
+# CALCULAMOS EL DOMINIO
 def _calculate_momentum(
     history,
 ):
@@ -345,10 +306,7 @@ def _calculate_momentum(
 
     current = history[-1]
 
-    # ========================================================
     # BUSCAR APROXIMADAMENTE 10 MINUTOS ATRÁS
-    # ========================================================
-
     target_minute = max(
         0,
         current["minute"] - 10,
@@ -357,19 +315,12 @@ def _calculate_momentum(
     previous = None
 
     for snapshot in reversed(history[:-1]):
-
         if snapshot["minute"] <= target_minute:
-
             previous = snapshot
-
             break
 
-    # ========================================================
-    # SI AÚN NO HAY HISTORIA, USAR TODO EL PARTIDO
-    # ========================================================
-
+    # SI AUN NO HAY HISTORIA, USAR TOTAL DEL PARTIDO
     if previous:
-
         source = _snapshot_delta(
             current,
             previous,
@@ -378,9 +329,7 @@ def _calculate_momentum(
         label = f"Últimos " f"{source['window']} min"
 
     else:
-
         source = current
-
         label = "Presión acumulada"
 
     home_score = _pressure_score(
@@ -396,24 +345,17 @@ def _calculate_momentum(
     total = home_score + away_score
 
     if total <= 0:
-
         home_pct = 50.0
         away_pct = 50.0
 
     else:
-
         home_pct = home_score / total * 100
-
         away_pct = 100 - home_pct
 
-    # ========================================================
-    # HISTÓRICO VISUAL
-    # ========================================================
-
+    # HISTORICO VISUAL
     trend = []
 
     for snapshot in history:
-
         h_score = _pressure_score(
             snapshot,
             "home",
@@ -427,14 +369,11 @@ def _calculate_momentum(
         total_score = h_score + a_score
 
         if total_score <= 0:
-
             h_pct = 50
             a_pct = 50
 
         else:
-
             h_pct = h_score / total_score * 100
-
             a_pct = 100 - h_pct
 
         trend.append(
@@ -465,11 +404,7 @@ def _calculate_momentum(
     }
 
 
-# ============================================================
 # RESOLVER EQUIPO DEL MODELO
-# ============================================================
-
-
 def _resolve_model_team(
     api_name,
     teams,
@@ -477,20 +412,14 @@ def _resolve_model_team(
 
     api_key = _normalize_name(api_name)
 
-    # ========================================================
     # COINCIDENCIA EXACTA NORMALIZADA
-    # ========================================================
-
     for team in teams:
 
         if _normalize_name(team) == api_key:
 
             return team
 
-    # ========================================================
-    # ALIASES
-    # ========================================================
-
+    # ALIAS
     aliases = {
         "america": "club america",
         "club america": "club america",
@@ -503,34 +432,25 @@ def _resolve_model_team(
     target = aliases.get(api_key)
 
     if target:
-
         for team in teams:
-
             if _normalize_name(team) == target:
-
                 return team
 
     return None
 
 
-# ============================================================
 # PREMATCH DESDE DIXON-COLES
-# ============================================================
-
-
 def _prematch_prediction(
     detail,
     state,
 ):
 
     if not state:
-
         return None
 
     model = state.get("dc_model")
 
     if model is None:
-
         return None
 
     teams = (
@@ -595,18 +515,13 @@ def _prematch_prediction(
     }
 
 
-# ============================================================
-# PROYECCIÓN LIVE
-# ============================================================
-
-
+# PROYECCION EN VIVO
 def _live_projection(
     detail,
     prematch,
 ):
 
     if not prematch:
-
         return None
 
     elapsed = detail.get(
@@ -627,9 +542,7 @@ def _live_projection(
     )
 
     current_home = int(_number(detail["home"]["goals"]))
-
     current_away = int(_number(detail["away"]["goals"]))
-
     remaining_fraction = (
         max(
             0,
@@ -639,7 +552,6 @@ def _live_projection(
     )
 
     remaining_home_xg = prematch["expected_goals_home"] * remaining_fraction
-
     remaining_away_xg = prematch["expected_goals_away"] * remaining_fraction
 
     p_home = 0.0
@@ -649,41 +561,33 @@ def _live_projection(
     max_remaining_goals = 7
 
     for home_extra in range(max_remaining_goals + 1):
-
         home_probability = poisson.pmf(
             home_extra,
             remaining_home_xg,
         )
 
         for away_extra in range(max_remaining_goals + 1):
-
             away_probability = poisson.pmf(
                 away_extra,
                 remaining_away_xg,
             )
 
             probability = home_probability * away_probability
-
             final_home = current_home + home_extra
-
             final_away = current_away + away_extra
 
             if final_home > final_away:
-
                 p_home += probability
 
             elif final_home == final_away:
-
                 p_draw += probability
 
             else:
-
                 p_away += probability
 
     total = p_home + p_draw + p_away
 
     if total > 0:
-
         p_home /= total
         p_draw /= total
         p_away /= total
@@ -718,18 +622,13 @@ def _live_projection(
     }
 
 
-# ============================================================
 # CAMBIOS VS PREMATCH
-# ============================================================
-
-
 def _probability_shift(
     prematch,
     live,
 ):
 
     if not prematch or not live:
-
         return None
 
     output = {}
@@ -741,9 +640,7 @@ def _probability_shift(
     ):
 
         before = prematch["probabilities"][side]
-
         now = live["probabilities"][side]
-
         output[side] = {
             "prematch": round(
                 before,
@@ -762,28 +659,18 @@ def _probability_shift(
     return output
 
 
-# ============================================================
 # SEÑALES
-# ============================================================
-
-
 def _signals(
     detail,
     momentum,
 ):
 
     signals = []
-
     home_name = detail["home"]["name"]
-
     away_name = detail["away"]["name"]
 
-    # ========================================================
-    # MOMENTUM
-    # ========================================================
-
+    # DOMINIO DEL PARTIDO
     if momentum["home"] >= 65:
-
         signals.append(
             {
                 "type": "momentum",
@@ -796,7 +683,6 @@ def _signals(
         )
 
     elif momentum["away"] >= 65:
-
         signals.append(
             {
                 "type": "momentum",
@@ -808,10 +694,7 @@ def _signals(
             }
         )
 
-    # ========================================================
-    # CÓRNERS
-    # ========================================================
-
+    # CORNERS
     corners = _stat(
         detail,
         "home",
@@ -823,7 +706,6 @@ def _signals(
     )
 
     if corners >= 8:
-
         signals.append(
             {
                 "type": "corners",
@@ -834,10 +716,7 @@ def _signals(
             }
         )
 
-    # ========================================================
     # TIROS A PUERTA
-    # ========================================================
-
     shots_on_goal = _stat(
         detail,
         "home",
@@ -849,7 +728,6 @@ def _signals(
     )
 
     if shots_on_goal >= 8:
-
         signals.append(
             {
                 "type": "attack",
@@ -861,10 +739,7 @@ def _signals(
             }
         )
 
-    # ========================================================
     # TARJETAS
-    # ========================================================
-
     cards = (
         _stat(
             detail,
@@ -889,7 +764,6 @@ def _signals(
     )
 
     if cards >= 5:
-
         signals.append(
             {
                 "type": "cards",
@@ -902,20 +776,14 @@ def _signals(
     return signals[:5]
 
 
-# ============================================================
 # ENTRY POINT
-# ============================================================
-
-
 def build_live_intelligence(
     detail,
     state=None,
 ):
 
     history = _record_snapshot(detail)
-
     momentum = _calculate_momentum(history)
-
     prematch = _prematch_prediction(
         detail,
         state,

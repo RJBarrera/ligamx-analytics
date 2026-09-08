@@ -14,24 +14,16 @@ from sportsdb_service import (
     SportsDBService,
 )
 
-from team_identity import normalize_team_name
+# Diccionario de traducción temporal en caliente
+EQUIVALENCIAS = {"Atlante": "Mazatlán"}
 
-# ============================================================
 # RUTAS
-# ============================================================
-
 SERVER_DIR = Path(__file__).resolve().parent
-
 PROJECT_DIR = SERVER_DIR.parent
-
 
 load_dotenv(PROJECT_DIR / ".env")
 
-
-# ============================================================
 # API FOOTBALL
-# ============================================================
-
 API_BASE_URL = "https://v3.football.api-sports.io"
 
 API_FOOTBALL_KEY = os.getenv(
@@ -39,38 +31,24 @@ API_FOOTBALL_KEY = os.getenv(
     "",
 )
 
-
 LIGA_MX_ID = 262
 
 TIMEZONE = "America/Mazatlan"
 
-
-# ============================================================
 # MODO API
-# ============================================================
-
 API_FOOTBALL_MODE = os.getenv(
     "API_FOOTBALL_MODE",
     "FREE",
 ).upper()
 
 
-# ============================================================
-# POLLING
-#
-# FREE:
 # aproximadamente 1 consulta cada 90 s.
-#
-# Puedes cambiarlo luego en Railway/.env.
-# ============================================================
-
 OVERLAY_CACHE_SECONDS = int(
     os.getenv(
         "API_FOOTBALL_OVERLAY_SECONDS",
         "90",
     )
 )
-
 
 DETAIL_CACHE_SECONDS = int(
     os.getenv(
@@ -79,30 +57,19 @@ DETAIL_CACHE_SECONDS = int(
     )
 )
 
-
 RESOLVE_CACHE_SECONDS = 60 * 60 * 4
 
 
-# ============================================================
 # HTTP
-# ============================================================
-
 _SESSION = requests.Session()
 
 
-# ============================================================
 # CACHE
-# ============================================================
-
 _CACHE = {}
-
 _CACHE_LOCK = threading.Lock()
 
 
-# ============================================================
 # QUOTA
-# ============================================================
-
 QUOTA_STATUS = {
     "limit": None,
     "remaining": None,
@@ -110,34 +77,23 @@ QUOTA_STATUS = {
     "mode": API_FOOTBALL_MODE,
 }
 
-
-# ============================================================
 # FINALIZADOS EN ESTA EJECUCIÓN
-# ============================================================
-
 _FINISHED_MATCHES = set()
 
 
-# ============================================================
 # NORMALIZAR TEXTO
-# ============================================================
-
-
 def _normalize_text(
     value,
 ):
 
     value = str(value or "")
-
     value = unicodedata.normalize(
         "NFD",
         value,
     )
 
     value = "".join(char for char in value if (unicodedata.category(char) != "Mn"))
-
     value = value.casefold()
-
     value = re.sub(
         r"[^a-z0-9]+",
         " ",
@@ -147,10 +103,7 @@ def _normalize_text(
     return " ".join(value.split())
 
 
-# ============================================================
-# ALIASES
-# ============================================================
-
+# ALIAS
 TEAM_ALIASES = {
     "club america": "america",
     "america": "america",
@@ -199,21 +152,15 @@ def _canonical_team(
     value,
 ):
 
-    value = normalize_team_name(value)
-
+    value = EQUIVALENCIAS.get(value, value)
     normalized = _normalize_text(value)
-
     return TEAM_ALIASES.get(
         normalized,
         normalized,
     )
 
 
-# ============================================================
 # CACHE KEY
-# ============================================================
-
-
 def _cache_key(
     path,
     params,
@@ -233,11 +180,7 @@ def _cache_key(
     )
 
 
-# ============================================================
 # SAFE NUMBER
-# ============================================================
-
-
 def _safe_number(
     value,
 ):
@@ -279,21 +222,13 @@ def _safe_number(
         return None
 
 
-# ============================================================
 # QUOTA
-# ============================================================
-
-
 def get_quota_status():
 
     return {**QUOTA_STATUS}
 
 
-# ============================================================
 # SERVICE
-# ============================================================
-
-
 class LiveFootballService:
 
     def __init__(
@@ -304,70 +239,48 @@ class LiveFootballService:
 
         self.sportsdb = SportsDBService()
 
-    # ========================================================
     # API DISPONIBLE
-    # ========================================================
-
     def has_api_football(
         self,
     ):
 
         return bool(self.api_key)
 
-    # ========================================================
     # ACTUALIZAR QUOTA
-    # ========================================================
-
     def _update_quota(
         self,
         response,
     ):
 
         limit = response.headers.get("x-ratelimit-requests-limit")
-
         remaining = response.headers.get("x-ratelimit-requests-remaining")
 
         if limit is not None:
-
             try:
-
                 QUOTA_STATUS["limit"] = int(limit)
-
             except ValueError:
-
                 pass
 
         if remaining is not None:
-
             try:
-
                 QUOTA_STATUS["remaining"] = int(remaining)
-
             except ValueError:
-
                 pass
 
-    # ========================================================
     # DETECTAR CUOTA AGOTADA
-    # ========================================================
-
     def _is_quota_error(
         self,
         message,
     ):
 
         normalized = str(message or "").casefold()
-
         return (
             "request limit" in normalized
             or "reached the request limit" in normalized
             or "requests:" in normalized
         )
 
-    # ========================================================
     # API GET
-    # ========================================================
-
     def _api_get(
         self,
         path,
@@ -377,7 +290,6 @@ class LiveFootballService:
     ):
 
         if not self.api_key:
-
             raise RuntimeError("API-Football no está configurada.")
 
         params = params or {}
@@ -388,19 +300,15 @@ class LiveFootballService:
         )
 
         now = time.time()
-
         cached = None
 
         with _CACHE_LOCK:
-
             cached = _CACHE.get(key)
 
             if cached:
-
                 age = now - cached["timestamp"]
 
                 if age < cache_seconds:
-
                     return {
                         "data": cached["data"],
                         "cached": True,
@@ -408,15 +316,10 @@ class LiveFootballService:
                         "age_seconds": int(age),
                     }
 
-        # ====================================================
-        # SI SABEMOS QUE QUEDAN 0 REQUESTS
-        # EVITAMOS LLAMAR OTRA VEZ
-        # ====================================================
-
+        # SI QUEDAN 0 REQUESTS, EVITAMOS REALIZAR EL CONSUMO
         if QUOTA_STATUS["remaining"] == 0:
 
             if allow_stale and cached:
-
                 return {
                     "data": cached["data"],
                     "cached": True,
@@ -443,17 +346,14 @@ class LiveFootballService:
             self._update_quota(response)
 
             if not response.ok:
-
                 raise RuntimeError(
                     "API-Football respondió " f"HTTP {response.status_code}."
                 )
 
             payload = response.json()
-
             errors = payload.get("errors")
 
             if errors:
-
                 if isinstance(
                     errors,
                     dict,
@@ -476,7 +376,6 @@ class LiveFootballService:
                     )
 
                 else:
-
                     message = str(errors)
 
                 QUOTA_STATUS["last_error"] = message
@@ -507,10 +406,7 @@ class LiveFootballService:
 
         except Exception as error:
 
-            # =================================================
             # STALE CACHE
-            # =================================================
-
             if allow_stale and cached:
 
                 return {
@@ -522,10 +418,7 @@ class LiveFootballService:
 
             raise
 
-    # ========================================================
     # BUSCAR MATCH API EN LISTA
-    # ========================================================
-
     def _find_matching_fixture(
         self,
         schedule_match,
@@ -587,10 +480,7 @@ class LiveFootballService:
 
         return None
 
-    # ========================================================
     # APLICAR LIVE OVERLAY
-    # ========================================================
-
     def _apply_overlay(
         self,
         schedule_match,
@@ -679,10 +569,7 @@ class LiveFootballService:
             },
         }
 
-        # ====================================================
-        # SI FINALIZÓ, NO SEGUIR CONSIDERÁNDOLO LIVE
-        # ====================================================
-
+        # SI FINALIZO EL PARTIDO, NO SEGUIR CONSIDERANDOLO EN VIVO
         if status_short in {
             "FT",
             "AET",
@@ -692,32 +579,22 @@ class LiveFootballService:
             result["live_candidate"] = False
 
             if fixture_id:
-
                 _FINISHED_MATCHES.add(fixture_id)
 
         return result
 
-    # ========================================================
     # LISTADO + LIVE OVERLAY
-    # ========================================================
-
     def get_matches(
         self,
         scope="today",
     ):
 
-        # ====================================================
-        # 1. CARTELERA GRATIS
-        # ====================================================
-
+        # CARTELERA DE PARTIDO GRATIS
         matches = self.sportsdb.get_matches(
             scope="today",
         )
 
-        # ====================================================
-        # 2. DETERMINAR SI NECESITAMOS API-FOOTBALL
-        # ====================================================
-
+        # DETERMINAR SI NECESITAMOS API-FOOTBALL
         candidates = [
             match
             for match in matches
@@ -738,29 +615,14 @@ class LiveFootballService:
         ]
 
         overlay_active = len(candidates) > 0
-
         overlay_error = None
-
         stale = False
-
         api_called = False
 
-        # ====================================================
-        # 3. LIVE OVERLAY
-        #
-        # IMPORTANTE:
-        #
-        # UNA SOLA CONSULTA POR FECHA.
-        #
-        # Aunque haya 5 partidos simultáneos.
-        # ====================================================
-
+        # HACEMOS UNA SOLA CONSULTA POR FECHA AUNQUE HAYA MAS DE UN PARTIDO
         if overlay_active and self.has_api_football():
 
-            # =================================================
             # AGRUPAR FECHAS
-            # =================================================
-
             dates = sorted(
                 {
                     match.get("date_local")
@@ -792,31 +654,23 @@ class LiveFootballService:
                     )
 
                     api_fixtures_by_date[date_value] = response["data"]
-
                     stale = stale or response.get(
                         "stale",
                         False,
                     )
-
                     api_called = api_called or not response.get(
                         "cached",
                         False,
                     )
 
                 except Exception as error:
-
                     overlay_error = str(error)
 
-            # =================================================
-            # 4. OVERLAY SOBRE LAS MISMAS TARJETAS
-            # =================================================
-
+            # OVERLAY SOBRE LAS MISMAS TARJETAS
             updated_matches = []
 
             for match in matches:
-
                 date_value = match.get("date_local")
-
                 api_fixtures = api_fixtures_by_date.get(
                     date_value,
                     [],
@@ -828,7 +682,6 @@ class LiveFootballService:
                 )
 
                 if fixture:
-
                     updated_matches.append(
                         self._apply_overlay(
                             match,
@@ -837,27 +690,19 @@ class LiveFootballService:
                     )
 
                 else:
-
                     updated_matches.append(match)
 
             matches = updated_matches
 
-        # ====================================================
-        # 5. FILTRO VENTANA LIVE
-        # ====================================================
-
+        # FILTRO VENTANA EN VIVO
         if scope == "live":
-
             matches = [
                 match
                 for match in matches
                 if (match.get("live_candidate") or match.get("live_verified"))
             ]
 
-        # ====================================================
-        # 6. RESPONSE
-        # ====================================================
-
+        # RESPUESTA
         return {
             "matches": matches,
             "count": len(matches),
@@ -869,21 +714,14 @@ class LiveFootballService:
             "overlay_error": overlay_error,
             "api_called": api_called,
             "quota": get_quota_status(),
-            # =================================================
-            # React puede preguntar seguido.
-            #
             # El cache evita consumir proveedor.
-            # =================================================
             "ui_refresh_seconds": (20 if overlay_active else 60),
             "provider_refresh_seconds": (
                 OVERLAY_CACHE_SECONDS if overlay_active else 300
             ),
         }
 
-    # ========================================================
     # RESOLVER PARTIDO
-    # ========================================================
-
     def resolve_match(
         self,
         date,
@@ -931,14 +769,15 @@ class LiveFootballService:
 
         return {
             "fixture_id": fixture["fixture"]["id"],
-            "home": normalize_team_name(fixture["teams"]["home"]["name"]),
-            "away": normalize_team_name(fixture["teams"]["away"]["name"]),
+            "home": EQUIVALENCIAS.get(
+                fixture["teams"]["home"]["name"], fixture["teams"]["home"]["name"]
+            ),
+            "away": EQUIVALENCIAS.get(
+                fixture["teams"]["away"]["name"], fixture["teams"]["away"]["name"]
+            ),
         }
 
-    # ========================================================
     # DETALLE PARTIDO
-    # ========================================================
-
     def get_fixture_detail(
         self,
         fixture_id,
@@ -958,11 +797,9 @@ class LiveFootballService:
         data = response["data"]
 
         if not data:
-
             raise RuntimeError("No se encontró el partido " "en API-Football.")
 
         fixture = data[0]
-
         detail = self._normalize_fixture_detail(fixture)
 
         detail["stale"] = response.get(
@@ -979,10 +816,7 @@ class LiveFootballService:
 
         return detail
 
-    # ========================================================
-    # NORMALIZAR FIXTURE
-    # ========================================================
-
+    # NORMALIZAR PARTIDO
     def _normalize_fixture(
         self,
         item,
@@ -1039,11 +873,15 @@ class LiveFootballService:
                     "home",
                     {},
                 ).get("id"),
-                "name": normalize_team_name(
+                "name": EQUIVALENCIAS.get(
                     teams.get(
                         "home",
                         {},
-                    ).get("name")
+                    ).get("name"),
+                    teams.get(
+                        "home",
+                        {},
+                    ).get("name"),
                 ),
                 "logo": teams.get(
                     "home",
@@ -1056,11 +894,15 @@ class LiveFootballService:
                     "away",
                     {},
                 ).get("id"),
-                "name": normalize_team_name(
+                "name": EQUIVALENCIAS.get(
                     teams.get(
                         "away",
                         {},
-                    ).get("name")
+                    ).get("name"),
+                    teams.get(
+                        "away",
+                        {},
+                    ).get("name"),
                 ),
                 "logo": teams.get(
                     "away",
@@ -1070,34 +912,25 @@ class LiveFootballService:
             },
         }
 
-    # ========================================================
     # NORMALIZAR DETALLE
-    # ========================================================
-
     def _normalize_fixture_detail(
         self,
         item,
     ):
 
         base = self._normalize_fixture(item)
-
         base["events"] = self._normalize_events(item.get("events") or [])
-
         base["statistics"] = self._normalize_statistics(
             item.get("statistics") or [],
             base,
         )
 
         base["lineups"] = item.get("lineups") or []
-
         base["score"] = item.get("score") or {}
 
         return base
 
-    # ========================================================
     # EVENTS
-    # ========================================================
-
     def _normalize_events(
         self,
         events,
@@ -1121,12 +954,7 @@ class LiveFootballService:
                         "team",
                         {},
                     ).get("id"),
-                    "team": normalize_team_name(
-                        event.get(
-                            "team",
-                            {},
-                        ).get("name")
-                    ),
+                    "team": EQUIVALENCIAS.get(event.get("team",{},).get("name"), event.get("team",{},).get("name")),
                     "player": event.get(
                         "player",
                         {},
@@ -1150,10 +978,7 @@ class LiveFootballService:
 
         return output
 
-    # ========================================================
     # STATS
-    # ========================================================
-
     def _normalize_statistics(
         self,
         statistics,
@@ -1192,13 +1017,8 @@ class LiveFootballService:
 
         return result
 
-    # ============================================================
-
     # FIXTURES LIGA MX POR FECHA
-    #
     # UTILIZADO POR LIVE OVERLAY Y DATASET SYNC
-    # ============================================================
-
     def get_liga_mx_fixtures_by_date(
         self,
         date_value,

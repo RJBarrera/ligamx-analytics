@@ -12,22 +12,12 @@ from pathlib import Path
 
 import pandas as pd
 
-from team_identity import normalize_team_name
-
-# ============================================================
 # RUTAS
-# ============================================================
-
 SERVER_DIR = Path(__file__).resolve().parent
-
-
 SEED_HISTORY_PATH = SERVER_DIR / "historial_ligamx_2023.csv"
 
 
-# ============================================================
 # COLUMNAS DEL DATASET
-# ============================================================
-
 HISTORY_COLUMNS = [
     "fixture_id",
     "date",
@@ -44,22 +34,14 @@ HISTORY_COLUMNS = [
     "total_cards",
 ]
 
-
-# ============================================================
 # ESTADOS FINALES
-# ============================================================
-
 FINAL_STATUSES = {
     "FT",
     "AET",
     "PEN",
 }
 
-
-# ============================================================
 # ESTADO DEFAULT
-# ============================================================
-
 DEFAULT_STATE = {
     "last_update": None,
     "last_fixture_id": None,
@@ -74,12 +56,10 @@ DEFAULT_STATE = {
     "pending_fixtures": {},
 }
 
+# Diccionario de traducción temporal en caliente
+EQUIVALENCIAS = {"Atlante": "Mazatlán"}
 
-# ============================================================
 # HELPERS
-# ============================================================
-
-
 def _utc_now():
 
     return datetime.now(timezone.utc).isoformat()
@@ -131,61 +111,44 @@ def _to_int(
         return None
 
 
-# ============================================================
 # SERVICIO
-# ============================================================
-
-
 class MatchHistoryService:
 
     def __init__(
         self,
     ):
 
-        # ====================================================
         # LOCAL
-        #
         # server/historial_ligamx_2023.csv
-        #
+
         # RAILWAY
-        #
         # MATCHLAB_HISTORY_PATH=/data/historial_ligamx_2023.csv
         # ====================================================
-
         configured_history = os.getenv("MATCHLAB_HISTORY_PATH")
 
         if configured_history:
-
             self.history_path = Path(configured_history)
 
         else:
-
             self.history_path = SEED_HISTORY_PATH
 
         configured_state = os.getenv("MATCHLAB_DATASET_STATE_PATH")
 
         if configured_state:
-
             self.state_path = Path(configured_state)
 
         else:
-
             self.state_path = self.history_path.parent / "dataset_state.json"
 
         self._lock = threading.RLock()
-
         self._initialize_storage()
 
-    # ========================================================
     # INICIALIZAR STORAGE
-    # ========================================================
-
     def _initialize_storage(
         self,
     ):
 
         with self._lock:
-
             self.history_path.parent.mkdir(
                 parents=True,
                 exist_ok=True,
@@ -196,12 +159,7 @@ class MatchHistoryService:
                 exist_ok=True,
             )
 
-            # =================================================
-            # VOLUME VACÍO
-            #
-            # Copiar el histórico base del repositorio.
-            # =================================================
-
+            # Copiar el historico base del repositorio.
             if not self.history_path.exists() and SEED_HISTORY_PATH.exists():
 
                 if self.history_path.resolve() != SEED_HISTORY_PATH.resolve():
@@ -211,10 +169,7 @@ class MatchHistoryService:
                         self.history_path,
                     )
 
-            # =================================================
             # SI NO EXISTE NADA
-            # =================================================
-
             if not self.history_path.exists():
 
                 pd.DataFrame(columns=HISTORY_COLUMNS).to_csv(
@@ -225,13 +180,9 @@ class MatchHistoryService:
             self._validate_schema()
 
             if not self.state_path.exists():
-
                 self._write_state(DEFAULT_STATE.copy())
 
-    # ========================================================
     # VALIDAR CSV
-    # ========================================================
-
     def _validate_schema(
         self,
     ):
@@ -250,10 +201,7 @@ class MatchHistoryService:
                 "esperada. Columnas faltantes: " + ", ".join(missing)
             )
 
-    # ========================================================
     # STATE
-    # ========================================================
-
     def _read_state(
         self,
     ):
@@ -274,7 +222,6 @@ class MatchHistoryService:
             }
 
         except Exception:
-
             return DEFAULT_STATE.copy()
 
     def _write_state(
@@ -302,20 +249,14 @@ class MatchHistoryService:
             self.state_path,
         )
 
-    # ========================================================
     # LEER CSV
-    # ========================================================
-
     def _read_history(
         self,
     ):
 
         return pd.read_csv(self.history_path)
 
-    # ========================================================
     # ES FINAL
-    # ========================================================
-
     def is_finished(
         self,
         detail,
@@ -328,10 +269,7 @@ class MatchHistoryService:
 
         return status in FINAL_STATUSES
 
-    # ========================================================
-    # FIXTURE EXISTE
-    # ========================================================
-
+    # PARTIDO EXISTE
     def has_fixture(
         self,
         fixture_id,
@@ -353,10 +291,7 @@ class MatchHistoryService:
 
             return fixture_id in existing
 
-    # ========================================================
-    # EXTRAER ESTADÍSTICA
-    # ========================================================
-
+    # EXTRAER ESTADISTICA
     def _stat(
         self,
         detail,
@@ -385,10 +320,7 @@ class MatchHistoryService:
 
         return _to_int(values.get(name))
 
-    # ========================================================
     # TARJETAS
-    # ========================================================
-
     def _cards(
         self,
         detail,
@@ -433,37 +365,21 @@ class MatchHistoryService:
 
         return yellow + red
 
-    # ========================================================
     # CONSTRUIR FILA
-    # ========================================================
-
     def _build_row(
         self,
         detail,
     ):
 
         fixture_id = detail.get("fixture_id") or detail.get("id")
-
         date = detail.get("date")
-
         referee = str(detail.get("referee") or "Desconocido").strip()
-
-        home_name = normalize_team_name(
-            detail.get(
-                "home",
-                {},
-            ).get("name")
-            or ""
-        )
-
-        away_name = normalize_team_name(
-            detail.get(
-                "away",
-                {},
-            ).get("name")
-            or ""
-        )
-
+        local = (detail.get("home") or "Desconocido").strip()
+        visitante = (detail.get("away") or "Desconocido").strip()
+        
+        home_name = EQUIVALENCIAS.get(local, local)
+        away_name = EQUIVALENCIAS.get(visitante, visitante)
+        
         home_goals = _to_int(
             detail.get(
                 "home",
@@ -500,10 +416,7 @@ class MatchHistoryService:
             "away",
         )
 
-        # ====================================================
         # VALIDACIONES
-        # ====================================================
-
         missing = []
 
         if not fixture_id:
@@ -511,9 +424,6 @@ class MatchHistoryService:
 
         if not date:
             missing.append("date")
-
-        # if not referee:
-        #     missing.append("referee")
 
         if not home_name:
             missing.append("home_team")
@@ -546,14 +456,9 @@ class MatchHistoryService:
                 missing,
             )
 
-        # ====================================================
         # TOTALS
-        # ====================================================
-
         total_corners = home_corners + away_corners
-
         total_cards = home_cards + away_cards
-
         row = {
             "fixture_id": int(fixture_id),
             "date": date,
@@ -575,10 +480,7 @@ class MatchHistoryService:
             [],
         )
 
-    # ========================================================
-    # PENDIENTE
-    # ========================================================
-
+    # PARTIDOS PENDIENTE
     def _register_pending(
         self,
         fixture_id,
@@ -587,11 +489,8 @@ class MatchHistoryService:
     ):
 
         state = self._read_state()
-
         key = _fixture_key(fixture_id)
-
         pending = state.get("pending_fixtures") or {}
-
         pending[key] = {
             "fixture_id": fixture_id,
             "home": detail.get(
@@ -607,19 +506,14 @@ class MatchHistoryService:
         }
 
         state["pending_fixtures"] = pending
-
         state["last_sync_status"] = "pending"
-
         state["last_sync_message"] = (
             "Partido finalizado pero faltan " "datos para incorporarlo."
         )
 
         self._write_state(state)
 
-    # ========================================================
     # GUARDAR PARTIDO
-    # ========================================================
-
     def save_finished_match(
         self,
         detail,
@@ -643,21 +537,14 @@ class MatchHistoryService:
 
         with self._lock:
 
-            # =================================================
-            # DEDUPLICAR
-            # =================================================
-
+            # NO DUPLICAR
             if self.has_fixture(fixture_id):
-
                 return {
                     "action": "duplicate",
                     "fixture_id": fixture_id,
                 }
 
-            # =================================================
             # CONSTRUIR
-            # =================================================
-
             (
                 row,
                 missing,
@@ -677,16 +564,10 @@ class MatchHistoryService:
                     "missing": missing,
                 }
 
-            # =================================================
-            # LEER
-            # =================================================
-
+            # LEER CSV HISTORICO
             df = self._read_history()
 
-            # =================================================
             # CONSERVAR EXACTAMENTE EL ORDEN DEL CSV EXISTENTE
-            # =================================================
-
             existing_columns = list(df.columns)
 
             new_row = {
@@ -705,10 +586,7 @@ class MatchHistoryService:
                 ignore_index=True,
             )
 
-            # =================================================
-            # ESCRITURA ATÓMICA
-            # =================================================
-
+            # ESCRITURA
             temp_path = self.history_path.with_suffix(".csv.tmp")
 
             df.to_csv(
@@ -721,47 +599,29 @@ class MatchHistoryService:
                 self.history_path,
             )
 
-            # =================================================
             # ESTADO
-            # =================================================
-
             state = self._read_state()
-
             state["last_update"] = _utc_now()
-
             state["last_fixture_id"] = int(fixture_id)
-
             state["last_match"] = f"{row['home_team']} " f"vs " f"{row['away_team']}"
-
             state["last_result"] = f"{row['home_goals']}" "-" f"{row['away_goals']}"
-
             state["records_added_total"] = (
                 int(state.get("records_added_total") or 0) + 1
             )
 
-            # =================================================
             # MODELOS AHORA ESTÁN DESACTUALIZADOS
-            # =================================================
-
             state["dataset_dirty"] = True
-
             state["last_sync_status"] = "saved"
-
             state["last_sync_message"] = "Partido incorporado al histórico."
 
-            # =================================================
             # QUITAR PENDIENTE
-            # =================================================
-
             pending = state.get("pending_fixtures") or {}
-
             pending.pop(
                 _fixture_key(fixture_id),
                 None,
             )
 
             state["pending_fixtures"] = pending
-
             self._write_state(state)
 
             return {
@@ -771,56 +631,37 @@ class MatchHistoryService:
                 "records": len(df),
             }
 
-    # ========================================================
     # DATASET DIRTY
-    # ========================================================
-
     def is_dirty(
         self,
     ):
 
         with self._lock:
-
             state = self._read_state()
-
             return bool(state.get("dataset_dirty"))
 
-    # ========================================================
     # MODELO ACTUALIZADO
-    # ========================================================
-
     def mark_models_clean(
         self,
     ):
 
         with self._lock:
-
             state = self._read_state()
-
             state["dataset_dirty"] = False
-
             state["model_last_refresh"] = _utc_now()
-
             self._write_state(state)
 
-    # ========================================================
     # ESTADO DEL DATASET
-    # ========================================================
-
     def get_status(
         self,
     ):
 
         with self._lock:
-
             df = self._read_history()
-
             state = self._read_state()
-
             years = []
 
             if "date" in df.columns and not df.empty:
-
                 parsed_dates = pd.to_datetime(
                     df["date"],
                     errors="coerce",
@@ -850,24 +691,17 @@ class MatchHistoryService:
                 ),
             }
 
-    # ============================================================
-    # OBTENER FIXTURES PENDIENTES
-    # ============================================================
-
+    # OBTENER PARTIDOS PENDIENTES
     def get_pending_fixture_ids(
         self,
     ):
 
         with self._lock:
-
             state = self._read_state()
-
             pending = state.get("pending_fixtures") or {}
-
             fixture_ids = []
 
             for item in pending.values():
-
                 fixture_id = item.get("fixture_id")
 
                 if fixture_id is None:
