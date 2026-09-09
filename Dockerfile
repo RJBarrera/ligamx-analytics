@@ -36,4 +36,5 @@ COPY --from=frontend /frontend/dist /app/web
 
 WORKDIR /app/server
 
-CMD ["sh", "-c", "python -m uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# CMD ["sh", "-c", "python -m uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "cp /app/server/historial_ligamx_2023.csv /data/historial_ligamx_2023.csv && python -m uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8000}"]
