@@ -51,7 +51,7 @@ Se utilizan dos terminales.
 Entrar a:
 
 ```bat
-cd ligamx-analytics/server
+cd goalx/server
 ```
 
 Activar:
