@@ -35,7 +35,7 @@ function Navbar() {
         {/* BRAND */}
         <a href="/" className="sports-navbar__brand" onClick={cerrarMenu}>
           <div className="sports-navbar__logo">
-            <img
+           <img
               src={getTeamLogo("logo")}
               alt="GoalX"
               className="sports-select__team-logo"

@@ -589,7 +589,7 @@ class LiveFootballService:
         scope="today",
     ):
 
-        # CARTELERA DE PARTIDO GRATIS
+        # LISTADO DE PARTIDOS GRATIS
         schedule_scope = (
             scope
             if scope
@@ -972,16 +972,7 @@ class LiveFootballService:
                         "team",
                         {},
                     ).get("id"),
-                    "team": EQUIVALENCIAS.get(
-                        event.get(
-                            "team",
-                            {},
-                        ).get("name"),
-                        event.get(
-                            "team",
-                            {},
-                        ).get("name"),
-                    ),
+                    "team": EQUIVALENCIAS.get(event.get("team",{},).get("name"), event.get("team",{},).get("name")),
                     "player": event.get(
                         "player",
                         {},

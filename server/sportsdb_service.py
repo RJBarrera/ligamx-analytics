@@ -352,6 +352,7 @@ class SportsDBService:
 
         return payload.get("events") or []
 
+    # EVENTO ANTERIOR DE LA LIGA
     def _previous_league_events(
         self,
     ):
@@ -376,11 +377,9 @@ class SportsDBService:
         next_season = (
             str(next_event.get("strSeason") or "").strip() if next_event else ""
         )
-
         previous_season = (
             str(previous_event.get("strSeason") or "").strip() if previous_event else ""
         )
-
         previous_round = (
             _to_int(previous_event.get("intRound")) if previous_event else None
         )
@@ -400,25 +399,20 @@ class SportsDBService:
 
         return None, None
 
-    # PROXIMOS PARTIDOS
+    # Con este metodo, mostraremos todos los partidos de la siguiente jornada
     def _get_next_round_matches(
         self,
     ):
         now = datetime.now(LOCAL_TIMEZONE)
-
         current_round, current_season = self._get_current_round_context()
-
         next_events = self._next_league_events()
 
         if not next_events:
             return []
 
         anchor_event = next_events[0]
-
         anchor_round = _to_int(anchor_event.get("intRound"))
-
         anchor_season = str(anchor_event.get("strSeason") or "").strip()
-
         anchor_kickoff = _parse_datetime(anchor_event)
 
         target_round = None
@@ -426,7 +420,6 @@ class SportsDBService:
         target_kickoff = None
 
         if current_round is None:
-
             target_round = anchor_round
             target_season = anchor_season
             target_kickoff = anchor_kickoff
@@ -436,23 +429,18 @@ class SportsDBService:
             and anchor_round > current_round
             and (not current_season or anchor_season == current_season)
         ):
-
             target_round = anchor_round
             target_season = anchor_season
             target_kickoff = anchor_kickoff
 
         else:
-
             for offset in range(0, 61):
-
                 search_date = now.date() + timedelta(days=offset)
 
                 try:
-
                     events = self._events_for_date(search_date.isoformat())
 
                 except Exception as error:
-
                     print(
                         "SPORTSDB NEXT ROUND ERROR:",
                         search_date,
@@ -464,11 +452,8 @@ class SportsDBService:
                 candidates = []
 
                 for event in events:
-
                     event_round = _to_int(event.get("intRound"))
-
                     event_season = str(event.get("strSeason") or "").strip()
-
                     kickoff = _parse_datetime(event)
 
                     if event_round is None:
@@ -495,7 +480,6 @@ class SportsDBService:
                     )
 
                 if candidates:
-
                     candidates.sort(
                         key=lambda item: (
                             item[0],
@@ -526,13 +510,10 @@ class SportsDBService:
         unique = {}
 
         for source_date in source_dates:
-
             try:
-
                 events = self._events_for_date(source_date)
 
             except Exception as error:
-
                 print(
                     "SPORTSDB NEXT ROUND ERROR:",
                     source_date,
@@ -542,9 +523,7 @@ class SportsDBService:
                 continue
 
             for event in events:
-
                 event_round = _to_int(event.get("intRound"))
-
                 event_season = str(event.get("strSeason") or "").strip()
 
                 if event_round != target_round:
@@ -554,7 +533,6 @@ class SportsDBService:
                     continue
 
                 match = self._normalize_event(event)
-
                 event_id = match.get("sportsdb_event_id")
 
                 if not event_id:
@@ -563,7 +541,6 @@ class SportsDBService:
                 unique[str(event_id)] = match
 
         matches = list(unique.values())
-
         matches.sort(key=lambda item: (item.get("kickoff_timestamp") or 0))
 
         return matches
@@ -634,17 +611,13 @@ class SportsDBService:
             },
             "home": {
                 "id": event.get("idHomeTeam"),
-                "name": EQUIVALENCIAS.get(
-                    event.get("strHomeTeam"), event.get("strHomeTeam")
-                ),
+                "name": EQUIVALENCIAS.get(event.get("strHomeTeam"), event.get("strHomeTeam")),
                 "logo": event.get("strHomeTeamBadge"),
                 "goals": _to_int(event.get("intHomeScore")),
             },
             "away": {
                 "id": event.get("idAwayTeam"),
-                "name": EQUIVALENCIAS.get(
-                    event.get("strAwayTeam"), event.get("strAwayTeam")
-                ),
+                "name": EQUIVALENCIAS.get(event.get("strAwayTeam"), event.get("strAwayTeam")),
                 "logo": event.get("strAwayTeamBadge"),
                 "goals": _to_int(event.get("intAwayScore")),
             },
@@ -654,11 +627,11 @@ class SportsDBService:
             },
         }
 
+    # Con este metodo, mostraremos todos los partidos faltantes de la jornada actual
     def _get_upcoming_matches(
         self,
     ):
         now = datetime.now(LOCAL_TIMEZONE)
-
         current_round, current_season = self._get_current_round_context()
 
         if current_round is None:
@@ -667,15 +640,12 @@ class SportsDBService:
         unique = {}
 
         for offset in range(0, 61):
-
             search_date = now.date() + timedelta(days=offset)
 
             try:
-
                 events = self._events_for_date(search_date.isoformat())
 
             except Exception as error:
-
                 print(
                     "SPORTSDB UPCOMING ERROR:",
                     search_date,
@@ -685,9 +655,7 @@ class SportsDBService:
                 continue
 
             for event in events:
-
                 event_round = _to_int(event.get("intRound"))
-
                 event_season = str(event.get("strSeason") or "").strip()
 
                 if event_round != current_round:
@@ -697,7 +665,6 @@ class SportsDBService:
                     continue
 
                 match = self._normalize_event(event)
-
                 kickoff_timestamp = match.get("kickoff_timestamp")
 
                 if kickoff_timestamp is None or kickoff_timestamp <= int(
@@ -726,20 +693,21 @@ class SportsDBService:
                 unique[str(event_id)] = match
 
         matches = list(unique.values())
-
         matches.sort(key=lambda item: (item.get("kickoff_timestamp") or 0))
 
         return matches
 
-    # PARTIDOS DEL DIA
+    # PARTIDOS: DEL DIA | PROXIMOS (MISMA JORNADA) | PROXIMA JORNADA
     def get_matches(
         self,
         scope="today",
     ):
 
+        # Este metodo seria para consultar la proxima jornada
         if scope == "next":
             return self._get_next_round_matches()
 
+        # Este metodo seria para consultar los proximos partidos
         if scope == "upcoming":
             return self._get_upcoming_matches()
 

@@ -369,12 +369,6 @@
   animation: live-dot-pulse 1.5s infinite;
 }
 
-@keyframes live-dot-pulse {
-  50% {
-    box-shadow: 0 0 0 8px rgba(46, 219, 162, 0);
-  }
-}
-
 .live-toolbar__refresh {
   display: flex;
   align-items: center;
@@ -2106,7 +2100,7 @@
   }
 
   .live-toolbar__tabs button {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .live-engine-status {

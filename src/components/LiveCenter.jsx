@@ -726,11 +726,11 @@ function LiveCenter({ onSeleccionarPartido }) {
       return "Partidos de hoy";
     }
 
-    if (scope === "next") {
+    if (scope === "upcoming") {
       return "Próximos partidos";
     }
 
-    if (scope === "upcoming") {
+    if (scope === "next") {
       const round = matches?.[0]?.league?.round;
 
       return round ? `Próxima · ${round}` : "Próxima jornada";

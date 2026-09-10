@@ -8,6 +8,7 @@ import {
   faBrain,
   faTowerBroadcast,
   faChevronRight,
+  faFutbol
 } from "@fortawesome/free-solid-svg-icons";
 
 import { getTeamLogo } from "../utils/teamLogos";
@@ -159,14 +160,6 @@ function Footer() {
                 </span>
               </a>
             </div>
-
-            <div className="goalx-footer__contact-message">
-              <span>¿Dudas o sugerencias?</span>
-
-              <strong>
-                Escríbenos <span className="goalx-footer__contact-dot" />
-              </strong>
-            </div>
           </section>
         </div>
       </div>
@@ -176,7 +169,7 @@ function Footer() {
           <p>© {currentYear} GoalX. Todos los derechos reservados.</p>
 
           <p className="goalx-footer__bottom-message">
-            Datos · Análisis · Fútbol <span>♡</span>
+            Datos · Análisis · Fútbol <FontAwesomeIcon icon={faFutbol} />
           </p>
         </div>
       </div>

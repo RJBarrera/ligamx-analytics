@@ -26,13 +26,8 @@ function App() {
     <>
       <Navbar />
 
-      {/* <MatchAnalytics /> */}
-
       <MatchAnalytics partidoSeleccionado={partidoSeleccionado} />
-
       <LiveCenter onSeleccionarPartido={seleccionarPartidoParaPrediccion} />
-
-      {/* <LiveCenter /> */}
 
       <Footer />
     </>

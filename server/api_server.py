@@ -514,7 +514,9 @@ def calcular_prediccion(request: PrediccionRequest):
         ) from error
 
 
-# ENDPOINT PARA LISTADO EN VIVO CON: THE SPORTS DB
+# Este endpoint se encarga de mostrar los partidos de las opciones:
+# Encuentro en vivo - Paritidos de hoy - Proximos partidos y Proxima jornada
+# Se obtienen de la api: THE SPORTS DB
 @app.get("/api/live")
 def obtener_partidos_live(
     scope: str = Query(
@@ -555,7 +557,7 @@ def obtener_live_quota():
     }
 
 
-# ENDPOINT PARA RELACIONAR PARTIDO ENTRE: THE SPORTS DB -> API FOOTBALL
+# Este endpoint se encarga de relacionar el partido entre las apis: THE SPORTS DB -> API FOOTBALL
 @app.post("/api/live/resolve")
 def resolver_live_match(
     request: ResolveLiveRequest,
@@ -581,7 +583,8 @@ def resolver_live_match(
         )
 
 
-# ENDPOINT PARA OBTENER DETALLES DEL PARTIDO EN VIVO
+# Este endpoint se encarga de obtener los detalles del partido en vivo
+# Usando API FOOTBALL
 @app.get("/api/live/{fixture_id}")
 def obtener_detalle_live(
     fixture_id: int,
@@ -676,7 +679,7 @@ def obtener_dataset_status():
         )
 
 
-# ENDPOINT PARA SINCRONIZAR CSV ENTRE RAILWAY Y GITHUB
+# Este endpoint se encarga de realizar la replica del CSV entre Railway y Github
 @app.post("/api/dataset/sync")
 def sincronizar_dataset():
 
