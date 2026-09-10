@@ -44,8 +44,7 @@ function Navbar() {
 
           <div className="sports-navbar__brand-text">
             <strong>
-              Goal
-              <span>X</span>
+              Goal<span>X</span>
             </strong>
 
             <div className="glob-sports-navbar__engine-dot">
@@ -63,17 +62,14 @@ function Navbar() {
             </a>
           ))}
           <a href="#en-vivo" className="navbar-live-link">
-            <span className="navbar-live-dot" />
-            En Vivo
-            <small>LIVE</small>
+            <span className="navbar-live-dot" /> En Vivo <small>LIVE</small>
           </a>
         </nav>
 
         {/* RIGHT */}
         <div className="sports-navbar__actions">
           <a href="/" className="sports-navbar__cta">
-            Nueva predicción
-            <span>→</span>
+            Nueva predicción <span>→</span>
           </a>
 
           <button
@@ -109,8 +105,8 @@ function Navbar() {
         </nav>
 
         <div className="sports-navbar__mobile-engine">
-          <span className="sports-navbar__engine-dot" />
-          Motor estadístico disponible
+          <span className="sports-navbar__engine-dot" /> Motor estadístico
+          disponible
         </div>
       </div>
     </header>

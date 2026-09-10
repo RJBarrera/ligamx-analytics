@@ -175,7 +175,7 @@ function CustomTooltip({ active, payload, label }) {
 }
 
 // Componente Principal
-function MatchAnalytics() {
+function MatchAnalytics({ partidoSeleccionado }) {
   // Reporte PDF
   const reportRef = useRef(null);
 
@@ -235,6 +235,18 @@ function MatchAnalytics() {
 
     cargarCatalogos();
   }, []);
+
+  useEffect(() => {
+    if (!partidoSeleccionado) {
+      return;
+    }
+
+    setForm((current) => ({
+      ...current,
+      local: partidoSeleccionado.local || "",
+      visitante: partidoSeleccionado.visitante || "",
+    }));
+  }, [partidoSeleccionado]);
 
   // Actualizar Campo
   const actualizarCampo = (campo, valor) => {
@@ -781,11 +793,11 @@ function MatchAnalytics() {
               <div>
                 <span className="match-block-kicker">Panel de partidos</span>
 
-                <h2>Configura el encuentro</h2>
+                <h2>Selecciona tus equipos</h2>
 
                 <p>
-                  Selecciona los protagonistas del partido para ejecutar el
-                  motor estadístico.
+                  Selecciona los equipos del partido para ejecutar el motor
+                  estadístico.
                 </p>
               </div>
             </div>
@@ -795,7 +807,7 @@ function MatchAnalytics() {
                 {/* EQUIPO LOCAL */}
                 <SportsSelect
                   label="Equipo local"
-                  badge="HOME"
+                  badge="LOCAL"
                   value={form.local}
                   options={catalogos.equipos}
                   placeholder="Seleccionar equipo local"
@@ -815,7 +827,7 @@ function MatchAnalytics() {
                 {/* EQUIPO VISITANTE */}
                 <SportsSelect
                   label="Equipo visitante"
-                  badge="AWAY"
+                  badge="VISITANTE"
                   value={form.visitante}
                   options={catalogos.equipos}
                   placeholder="Seleccionar equipo visitante"
@@ -830,7 +842,7 @@ function MatchAnalytics() {
                 {/* ÁRBITRO */}
                 <SportsSelect
                   label="Árbitro"
-                  badge="REF"
+                  badge="ARBITRO"
                   value={form.arbitro}
                   options={catalogos.arbitros}
                   placeholder="Seleccionar árbitro"
@@ -847,7 +859,7 @@ function MatchAnalytics() {
                   <div className="match-error__icon">!</div>
 
                   <div>
-                    <strong>No fue posible conectar con Python</strong>
+                    <strong>No fue posible realizar la conexión</strong>
 
                     <span>{errorCatalogos}</span>
                   </div>
@@ -888,12 +900,11 @@ function MatchAnalytics() {
                 >
                   {loading ? (
                     <>
-                      <span className="match-spinner" />
-                      Procesando modelo...
+                      <span className="match-spinner" /> Procesando modelo...
                     </>
                   ) : (
                     <>
-                      Ejecutar análisis
+                      Ejecutar análisis{" "}
                       <span className="match-analyze-button__arrow">→</span>
                     </>
                   )}
@@ -917,7 +928,7 @@ function MatchAnalytics() {
                   </div>
                 </div>
 
-                <span className="match-block-kicker">Analytics Center</span>
+                <span className="match-block-kicker">Centro de Análisis</span>
 
                 <h2>Tu lectura del partido aparecerá aquí</h2>
 
@@ -958,8 +969,7 @@ function MatchAnalytics() {
                 <div className="match-results-toolbar">
                   <div className="match-results-toolbar__info">
                     <span className="match-results-toolbar__status">
-                      <span />
-                      Análisis completado
+                      <span /> Análisis completado
                     </span>
 
                     <div>
@@ -985,8 +995,7 @@ function MatchAnalytics() {
                       <span>ANÁLISIS DEL PARTIDO</span>
 
                       <div>
-                        <span className="match-live-dot" />
-                        Modelo procesado
+                        <span className="match-live-dot" /> Modelo procesado
                       </div>
                     </div>
 
@@ -1146,7 +1155,7 @@ function MatchAnalytics() {
                     <SectionHeader
                       code="xG"
                       eyebrow="Mercado de goles"
-                      title="Producción ofensiva esperada"
+                      title="Predicción ofensiva esperada"
                       description="Expectativas y probabilidades derivadas del modelo de goles."
                     />
 
@@ -1668,9 +1677,9 @@ function MatchAnalytics() {
 
                   {/* FOOTER */}
                   <footer className="match-results-footer">
-                    <span className="match-live-dot" />
-                    Resultados estadísticos basados en información histórica.
-                    Las probabilidades no representan resultados garantizados.
+                    <span className="match-live-dot" /> Resultados estadísticos
+                    basados en información histórica. Las probabilidades no
+                    representan resultados garantizados.
                   </footer>
                 </div>
               </>

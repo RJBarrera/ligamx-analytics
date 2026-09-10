@@ -590,29 +590,45 @@ class LiveFootballService:
     ):
 
         # CARTELERA DE PARTIDO GRATIS
+        schedule_scope = (
+            scope
+            if scope
+            in {
+                "next",
+                "upcoming",
+            }
+            else "today"
+        )
+
         matches = self.sportsdb.get_matches(
-            scope="today",
+            scope=schedule_scope,
         )
 
         # DETERMINAR SI NECESITAMOS API-FOOTBALL
-        candidates = [
-            match
-            for match in matches
-            if (
-                match.get("live_candidate")
-                and match.get(
-                    "status",
-                    {},
-                ).get("short")
-                not in {
-                    "FT",
-                    "AET",
-                    "PEN",
-                    "CANC",
-                    "PST",
-                }
-            )
-        ]
+        if scope in {
+            "next",
+            "upcoming",
+        }:
+            candidates = []
+        else:
+            candidates = [
+                match
+                for match in matches
+                if (
+                    match.get("live_candidate")
+                    and match.get(
+                        "status",
+                        {},
+                    ).get("short")
+                    not in {
+                        "FT",
+                        "AET",
+                        "PEN",
+                        "CANC",
+                        "PST",
+                    }
+                )
+            ]
 
         overlay_active = len(candidates) > 0
         overlay_error = None
@@ -715,7 +731,9 @@ class LiveFootballService:
             "api_called": api_called,
             "quota": get_quota_status(),
             # El cache evita consumir proveedor.
-            "ui_refresh_seconds": (20 if overlay_active else 60),
+            "ui_refresh_seconds": (
+                300 if scope == "next" else (20 if overlay_active else 60)
+            ),
             "provider_refresh_seconds": (
                 OVERLAY_CACHE_SECONDS if overlay_active else 300
             ),
@@ -954,7 +972,16 @@ class LiveFootballService:
                         "team",
                         {},
                     ).get("id"),
-                    "team": EQUIVALENCIAS.get(event.get("team",{},).get("name"), event.get("team",{},).get("name")),
+                    "team": EQUIVALENCIAS.get(
+                        event.get(
+                            "team",
+                            {},
+                        ).get("name"),
+                        event.get(
+                            "team",
+                            {},
+                        ).get("name"),
+                    ),
                     "player": event.get(
                         "player",
                         {},

@@ -48,6 +48,24 @@ const isLiveStatus = (status) => {
   return ["1H", "HT", "2H", "ET", "BT", "P", "SUSP", "INT"].includes(status);
 };
 
+const formatMatchDate = (dateValue) => {
+  if (!dateValue) {
+    return "";
+  }
+
+  try {
+    const date = new Date(`${dateValue}T12:00:00`);
+
+    return new Intl.DateTimeFormat("es-MX", {
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+    }).format(date);
+  } catch {
+    return dateValue;
+  }
+};
+
 // STATUS
 function LiveStatus({ match }) {
   const status = match?.status?.short;
@@ -75,8 +93,7 @@ function LiveStatus({ match }) {
   if (match?.live_candidate) {
     return (
       <span className="live-status live-status--standby">
-        <span />
-        POR INICIAR
+        <span /> POR INICIAR
       </span>
     );
   }
@@ -167,9 +184,13 @@ function LiveMatchCard({ match, selected, onClick }) {
       )}
 
       <div className="live-match-card__footer">
-        <span>{match.venue?.name || "Liga MX"}</span>
+        <span>
+          {match.date_local ? `${formatMatchDate(match.date_local)} · ` : ""}
 
-        <strong>Analizar →</strong>
+          {match.venue?.name || "Liga MX"}
+        </span>
+
+        {/* <strong>Analizar →</strong> */}
       </div>
     </button>
   );
@@ -238,7 +259,7 @@ const getEventIcon = (event) => {
 };
 
 // PRINCIPAL
-function LiveCenter() {
+function LiveCenter({ onSeleccionarPartido }) {
   const [scope, setScope] = useState("live");
 
   const [matches, setMatches] = useState([]);
@@ -400,6 +421,61 @@ function LiveCenter() {
     }
   };
 
+  // const seleccionarPartido = async (match) => {
+  //   if (!match || resolvingFixture) {
+  //     return;
+  //   }
+
+  //   setSelectedScheduleMatch(match);
+
+  //   setAiMessages([]);
+
+  //   setAiQuestion("");
+
+  //   setError("");
+
+  //   onSeleccionarPartido?.({
+  //     home: match.home?.name || "",
+  //     away: match.away?.name || "",
+  //   });
+
+  //   if (scope === "today" || scope === "upcoming" || scope === "next") {
+  //     return;
+  //   }
+
+  //   if (match.fixture_id) {
+  //     setSelectedFixture(match.fixture_id);
+
+  //     return;
+  //   }
+
+  //   setResolvingFixture(true);
+
+  //   try {
+  //     const { data } = await axios.post(`${API_URL}/api/live/resolve`, {
+  //       event_id: match.sportsdb_event_id,
+  //       date: match.date_local,
+  //       home: match.home?.name,
+  //       away: match.away?.name,
+  //     });
+
+  //     if (!data?.success || !data?.fixture_id) {
+  //       throw new Error("No fue posible identificar el fixture.");
+  //     }
+
+  //     setSelectedFixture(data.fixture_id);
+  //   } catch (requestError) {
+  //     console.error(requestError);
+
+  //     setError(
+  //       requestError?.response?.data?.detail ||
+  //         "Live Intelligence todavía no está disponible para este partido.",
+  //     );
+  //   } finally {
+  //     setResolvingFixture(false);
+  //   }
+  // };
+
   // DETALLE
   const loadDetail = useCallback(async (fixtureId, silent = false) => {
     if (!fixtureId) {
@@ -540,11 +616,15 @@ function LiveCenter() {
 
     setSelectedFixture(null);
 
+    setSelectedScheduleMatch(null);
+
     setDetail(null);
 
     setAiMessages([]);
 
     setAiQuestion("");
+
+    setError("");
   };
 
   // STATS
@@ -637,6 +717,55 @@ function LiveCenter() {
     [detail],
   );
 
+  const sectionTitle = useMemo(() => {
+    if (scope === "live") {
+      return "Partidos en vivo";
+    }
+
+    if (scope === "today") {
+      return "Partidos de hoy";
+    }
+
+    if (scope === "next") {
+      return "Próximos partidos";
+    }
+
+    if (scope === "upcoming") {
+      const round = matches?.[0]?.league?.round;
+
+      return round ? `Próxima · ${round}` : "Próxima jornada";
+    }
+
+    return "Partidos";
+  }, [scope, matches]);
+
+  const emptyState = useMemo(() => {
+    if (scope === "live") {
+      return {
+        badge: "EN VIVO",
+        title: "No hay partidos de Liga MX en vivo",
+        description:
+          "GoalX seguirá consultando automáticamente. También puedes revisar los partidos programados para hoy.",
+      };
+    }
+
+    if (scope === "today") {
+      return {
+        badge: "HOY",
+        title: "No hay partidos de Liga MX programados para hoy",
+        description:
+          "Puedes consultar la próxima jornada para revisar los siguientes encuentros.",
+      };
+    }
+
+    return {
+      badge: "PRÓXIMA",
+      title: "No hay una próxima jornada disponible",
+      description:
+        "El calendario de Liga MX todavía no tiene disponibles los siguientes encuentros.",
+    };
+  }, [scope]);
+
   // RENDER
   return (
     <section id="en-vivo" className="live-center">
@@ -652,7 +781,7 @@ function LiveCenter() {
                 onClick={() => changeScope("live")}
               >
                 <span className="live-toolbar__live-dot" />
-                Ventana live
+                Encuentro en vivo
               </button>
 
               <button
@@ -661,6 +790,22 @@ function LiveCenter() {
                 onClick={() => changeScope("today")}
               >
                 Partidos de hoy
+              </button>
+
+              <button
+                type="button"
+                className={scope === "upcoming" ? "active" : ""}
+                onClick={() => changeScope("upcoming")}
+              >
+                Próximos partidos
+              </button>
+
+              <button
+                type="button"
+                className={scope === "next" ? "active" : ""}
+                onClick={() => changeScope("next")}
+              >
+                Próxima jornada
               </button>
             </div>
 
@@ -769,7 +914,7 @@ function LiveCenter() {
                       {liveMeta.quota.limit}
                     </strong>
 
-                    <small>requests disponibles</small>
+                    <small>Peticiones disponibles</small>
                   </>
                 )}
               </div>
@@ -791,9 +936,7 @@ function LiveCenter() {
               <div>
                 <span>LIGA MX</span>
 
-                <h3>
-                  {scope === "live" ? "Partidos en vivo" : "Partidos de hoy"}
-                </h3>
+                <h3>{sectionTitle}</h3>
               </div>
 
               <small>{matches.length} encuentros</small>
@@ -814,7 +957,7 @@ function LiveCenter() {
                     key={match.id}
                     match={match}
                     selected={selectedScheduleMatch?.id === match.id}
-                    onClick={() => seleccionarPartido(match)}
+                    // onClick={() => seleccionarPartido(match)} // Se comenta por lo pronto
                   />
                 ))}
               </div>
@@ -825,15 +968,12 @@ function LiveCenter() {
                   <span />
                   <span />
 
-                  <strong>EN VIVO</strong>
+                  <strong>{emptyState.badge}</strong>
                 </div>
 
-                <h3>No hay partidos de Liga MX en vivo</h3>
+                <h3>{emptyState.title}</h3>
 
-                <p>
-                  StatMX seguirá consultando automáticamente. También puedes
-                  revisar los partidos programados para hoy.
-                </p>
+                <p>{emptyState.description}</p>
 
                 {scope === "live" && (
                   <button type="button" onClick={() => changeScope("today")}>
@@ -871,8 +1011,7 @@ function LiveCenter() {
             <div className="live-analysis">
               {loadingDetail && !detail ? (
                 <div className="live-detail-loading">
-                  <span />
-                  Procesando Live Intelligence...
+                  <span /> Procesando Live Intelligence...
                 </div>
               ) : (
                 detail && (
@@ -880,7 +1019,7 @@ function LiveCenter() {
                     {/* SCOREBOARD */}
                     <section className="live-scoreboard">
                       <div className="live-scoreboard__top">
-                        <span>StatMX en vivo</span>
+                        <span>GoalX en vivo</span>
 
                         <div>
                           <span className="live-toolbar__live-dot" />
@@ -933,12 +1072,12 @@ function LiveCenter() {
 
                       <div className="live-scoreboard__meta">
                         <span>
-                          Árbitro:
+                          Árbitro:{" "}
                           <strong> {detail.referee || "No disponible"}</strong>
                         </span>
 
                         <span>
-                          Actualizado:
+                          Actualizado:{" "}
                           <strong>
                             {" "}
                             {lastUpdated
@@ -961,8 +1100,7 @@ function LiveCenter() {
                         </div>
 
                         <div className="live-ai-badge">
-                          ML
-                          <span>Intelligence</span>
+                          ML <span>Intelligence</span>
                         </div>
                       </div>
 
@@ -1276,7 +1414,7 @@ function LiveCenter() {
                           <div className="live-ai__logo">✦</div>
 
                           <div>
-                            <span>StatMX AI</span>
+                            <span>GoalX AI</span>
 
                             <h3>Analista de partidos en directo</h3>
 
@@ -1288,8 +1426,7 @@ function LiveCenter() {
                         </div>
 
                         <div className="live-ai__status">
-                          <span />
-                          BASADO EN DATOS
+                          <span /> BASADO EN DATOS
                         </div>
                       </div>
 
@@ -1355,8 +1492,7 @@ function LiveCenter() {
                           <div className="live-ai-thinking">
                             <span />
                             <span />
-                            <span />
-                            Analizando partido...
+                            <span /> Analizando partido...
                           </div>
                         )}
                       </div>
@@ -1385,7 +1521,7 @@ function LiveCenter() {
                       </div>
 
                       <div className="live-ai__disclaimer">
-                        StatMX AI interpreta datos estadísticos disponibles y no
+                        GoalX AI interpreta datos estadísticos disponibles y no
                         inventa eventos ni garantiza resultados.
                       </div>
                     </section>

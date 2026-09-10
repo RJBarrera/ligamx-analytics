@@ -519,7 +519,7 @@ def calcular_prediccion(request: PrediccionRequest):
 def obtener_partidos_live(
     scope: str = Query(
         default="today",
-        pattern="^(live|today)$",
+        pattern="^(live|today|upcoming|next)$",
     ),
 ):
 
