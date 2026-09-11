@@ -132,8 +132,10 @@ class DatasetSyncService:
             # FECHA ACTUAL
             date_value = datetime.now(TIMEZONE).date().isoformat()
 
+            print("🔄 DATASET SYNC: consultando fixtures:",date_value,)
             # Obtiene todos los fixtures disponibles de Liga MX para la fecha actual.
             fixtures = self.live_service.get_liga_mx_fixtures_by_date(date_value)
+            print("🔄 DATASET SYNC: fixtures encontrados:",len(fixtures),)
 
             # CONTENEDORES DE RESULTADO
             saved = []
@@ -154,6 +156,8 @@ class DatasetSyncService:
                     "status",
                     {},
                 ).get("short")
+                
+                print("🔎 DATASET FIXTURE:",fixture_id,status,)
 
                 # VALIRDAR SI YA FINALIZO
                 if status not in FINAL_STATUSES:
@@ -166,12 +170,16 @@ class DatasetSyncService:
                 if fixture_id and self.history_service.has_fixture(fixture_id):
                     duplicates.append(fixture_id)
                     continue
+                
+                print("📥 DATASET: obteniendo detalle:",fixture_id,)
 
                 # OBTENEMOS EL DETALLE COMPLETO SI YA TERMINO EL PARTIDO
                 detail = self.live_service.get_fixture_detail(fixture_id)
+                print("📥 DATASET: detalle obtenido:",fixture_id,)
 
                 # REALIZAMOS EL INTENTO DE GUARDADO
                 result = self.history_service.save_finished_match(detail)
+                print("💾 DATASET:",fixture_id,result.get("action"),)
                 action = result.get("action")
 
                 if action == "saved":

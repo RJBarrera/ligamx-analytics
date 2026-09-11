@@ -1,5 +1,6 @@
 """api_server"""
 
+import traceback
 import asyncio
 import os
 import threading
@@ -312,8 +313,12 @@ async def dataset_sync_worker():
                 print("=" * 50)
 
         except Exception as error:
+            print(
+                "⚠️ Dataset Sync:",
+                error,
+            )
 
-            print("⚠️ Dataset Sync:", error)
+            traceback.print_exc()
 
         await asyncio.sleep(DATASET_SYNC_SECONDS)
 
